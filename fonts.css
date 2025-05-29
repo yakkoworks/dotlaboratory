@@ -1,33 +1,33 @@
 @font-face {
 	font-family: 'MplusRounded1c-Bold';
-	src: url("/fonts/MPLUSRounded1c-Bold.ttf");
+	src: url("assets/fonts/MPLUSRounded1c-Bold.ttf");
 }
 @font-face {
 	font-family: 'MplusRounded1c-Medium';
-	src: url("/fonts/MPLUSRounded1c-Medium.ttf");
+	src: url("assets/fonts/MPLUSRounded1c-Medium.ttf");
 }
 @font-face {
 	font-family: 'MplusRounded1c-Regular';
-	src: url("/fonts/MPLUSRounded1c-Regular.ttf");
+	src: url("assets/fonts/MPLUSRounded1c-Regular.ttf");
 }
 @font-face {
 	font-family: 'PoiretOne';
-	src: url("/fonts/PoiretOne-Regular.ttf");
+	src: url("assets/fonts/PoiretOne-Regular.ttf");
 }
 @font-face {
 	font-family: 'PrincessSofia';
-	src: url("/fonts/PrincessSofia-Regular.ttf");
+	src: url("assets/fonts/PrincessSofia-Regular.ttf");
 }
 @font-face {
 	font-family: '851tegakiKakutto';
-	src: url("/fonts/851tegakiKakutto.ttf");
+	src: url("assets/fonts/851tegakiKakutto.ttf");
 }
 @font-face {
 	font-family: 'Twemoji';
-	src: url("/fonts/Twemoji_14.ttf");
+	src: url("assets/fonts/Twemoji_14.ttf");
 }
 @font-face {
 	font-family: 'NotoColorEmoji-Regular';
-	src: url("/fonts/NotoColorEmoji-Regular.ttf");
+	src: url("assets/fonts/NotoColorEmoji-Regular.ttf");
 }
 
