@@ -1,7 +1,7 @@
 function onClickChara(id){
     Fancybox.show([
   {
-    src: `assets/html/${id}.html`,
+    src: `assets/${id}.html`,
     type: "iframe",
   },
 ]);
