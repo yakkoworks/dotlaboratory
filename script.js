@@ -8,10 +8,4 @@ function onClickChara(id){
     type: "inline",
   },
 ]);
-//     Fancybox.show([
-//   {
-//     src: `assets/${id}.html`,
-//     type: "iframe",
-//   },
-// ]);
 }

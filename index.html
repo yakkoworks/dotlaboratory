@@ -16,7 +16,7 @@
 		<div id="team1" class="section">
 			<h2>TwinkleSparkle</h2>
 			<div class="members">
-					<div class="chara" id="1-1" onclick="onClickChara(this.id)">
+					<div class="chara" data-chara-id="1-1" onclick="onClickChara(this.dataset.chara-id)">
 						<img src="./assets/images/thumbnail_1-1.png" class="thumbnail" style="background-color: #8B74B6;">
 						<h3>ペルセア</h3>
 					</div>
@@ -85,7 +85,7 @@
 					<img src="./assets/images/thumbnail_2-5.png" class="thumbnail" style="background-color: #C0D6F2;">
 					<h3>フルフル</h3>
 				</div>
-				<div class="chara" id="2-6">
+				<div class="chara">
 					<img src="./assets/images/thumbnail_2-6.png" class="thumbnail" style="background-color: #C3DABC;">
 					<h3>キャル</h3>
 				</div>
@@ -107,7 +107,9 @@
 	</div>
 	<div id="content" style="display: none;"></div>
 	<script>
-		Fancybox.bind('[data-fancybox]', {		});    
+		Fancybox.bind('[data-fancybox]', {
+			closeButton: true,
+		});    
 	</script>
 </body>
 </html>
