@@ -1,0 +1,37 @@
+html{
+    font-size: 16px;
+}
+body{
+    text-align: center;
+    overflow: hidden;
+}
+#container{
+    text-align: center;
+    display: grid;
+    row-gap: 3rem;
+}
+.members{
+    display: grid;
+    row-gap: 1.6rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.chara img{
+    width: 70%;
+    border-radius: 50%;
+}
+h1{
+    font-size: 2rem;
+}
+h2{
+    font-size: 1.6rem;
+    margin-bottom: 1.6rem;
+    margin-top: 0;
+}
+h3{
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0 auto;
+}
+.fancybox__content{
+    padding: 0 !important;
+}
