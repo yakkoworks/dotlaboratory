@@ -3,6 +3,7 @@ function onClickChara(id){
   {
     src: `https://yakkoworks.github.io/dotlaboratory/html/${id}.html`,
     type: "iframe",
+    height:720,
   },
 ]);
 }
