@@ -19,8 +19,7 @@ p {
 }
 
 #bg{
-	background-image: url(../images/20250530-035838.png);
-	background-size: contain;
+	background-size: cover;
 }
 #out {
 	zoom: 2;
@@ -33,6 +32,7 @@ p {
 	display: grid;
 	/* place-content: center; */
     align-content: space-around;
+	background-color: #00000099;
 }
 #header{
 	text-align: center;

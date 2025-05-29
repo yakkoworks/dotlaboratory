@@ -4,6 +4,7 @@ function onClickChara(id){
     src: `html/${id}.html`,
     type: "iframe",
     height:720,
+    width:540,
   },
 ]);
 }
