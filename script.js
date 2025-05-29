@@ -1,10 +1,11 @@
 function onClickChara(id){
+	fetch(`html/${id}.html`) // ロード元
+	.then(data => data.text())
+	.then(html => document.getElementById("content").innerHTML = html);
     Fancybox.show([
   {
-    src: `html/${id}.html`,
-    type: "iframe",
-    height:720,
-    width:540,
+    src: `#content`,
+    type: "inline",
   },
 ]);
 }

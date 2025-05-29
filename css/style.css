@@ -10,6 +10,9 @@ body{
     display: grid;
     row-gap: 3rem;
 }
+#content{
+    width: 100%;
+}
 .members{
     display: grid;
     row-gap: 1.6rem;
@@ -34,4 +37,5 @@ h3{
 }
 .fancybox__content{
     padding: 0 !important;
+    color: beige !important;
 }

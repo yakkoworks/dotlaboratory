@@ -1,16 +1,14 @@
 body{
     overflow: hidden;
-	font-family: MplusRounded1c-Regular;
-	color: white;
-	text-shadow: 1px 1px 1px #111, -1px -1px 1px #111, -1px 1px 1px #111, 1px -1px 0 #111, 0px 1px 0 #111, 0 -1px 0 #111, -1px 0 0 #111, 1px 0 0 #111, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff;
+	/* font-family: MplusRounded1c-Regular; */
 }
-
 p {
 	margin: 0;
 }
 #chara,#bg,#wrapper{
 	position: absolute;
-    /* aspect-ratio: 3 / 4; */
+	width: 540px;
+    height: 720px;
     top: 0;
     bottom: 0;
     left: 0;
@@ -35,23 +33,29 @@ p {
 	background-color: #00000099;
 }
 #header{
+	font-family: MplusRounded1c-Regular;
+	color: white;
+	text-shadow: 1px 1px 1px #111, -1px -1px 1px #111, -1px 1px 1px #111, 1px -1px 0 #111, 0px 1px 0 #111, 0 -1px 0 #111, -1px 0 0 #111, 1px 0 0 #111, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff;
 	text-align: center;
     display: grid;
     place-items: center;
     grid-template-rows: 1fr 1fr 1fr;
 }
 #header>#cpj{
-	font-size: larger;
+	font-size: 1.4rem;
 }
 #header>#name{
-	font-size: x-large;
+	font-size: 1.8rem;
 	font-family: MplusRounded1c-Bold;
 }
 #header>#names{
 	font-size: small;
 }
 #main{
-	padding-left: 20px;
+	/* padding-left: 20px; */
+	font-family: MplusRounded1c-Regular;
+	color: white;
+	text-shadow: 1px 1px 1px #111, -1px -1px 1px #111, -1px 1px 1px #111, 1px -1px 0 #111, 0px 1px 0 #111, 0 -1px 0 #111, -1px 0 0 #111, 1px 0 0 #111, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff;
 }
 #main>p{
 	margin: 15px 0;
