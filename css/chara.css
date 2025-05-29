@@ -10,8 +10,12 @@ p {
 }
 #chara,#bg,#wrapper{
 	position: absolute;
-	width: 540px;
-	height: 720px;
+    aspect-ratio: 3 / 4;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
 
 #bg{
@@ -53,8 +57,8 @@ p {
 	margin: 15px 0;
 }
 #footer{
-	width: 540px;
-	height: 100px;
+	/* width: 540px;
+	height: 100px; */
 	text-align: center;
 	position: relative;
 	display: flex;
