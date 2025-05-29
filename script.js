@@ -5,7 +5,7 @@ function onClickChara(id){
     Fancybox.show([
   {
     src: `#content`,
-    type: "clone",
+    type: "inline",
   },
 ]);
 }
