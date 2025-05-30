@@ -36,5 +36,7 @@ async function loadProfile(team,chara){
 function toggleProfile(chara){
 	Fancybox.show([{
 		src: `assets/images/main_${chara}.png`
-	}])
+	}],{
+		closeButton:true,
+	})
 }
