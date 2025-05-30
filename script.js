@@ -1,12 +1,17 @@
 async function init(){
 	await loadProfile("1","1-1");
 	await loadProfile("1","1-4k");
-	carousel_team1 = new Carousel(document.getElementById("carousel-team1"), { infinite: false,preload:0,Dots:false});
+	carousel_team1 = new Carousel(document.getElementById("carousel-team1"), {
+		infinite: false,
+		preload:0,
+		Dots:false,
+		center: true,
+	});
 	nav_team1 = new Carousel(document.querySelector("#nav-team1"),{
 		infinite: false,
-        transition: false,
-        // center: true,
-        // fill: true,
+        // transition: false,
+        center: true,
+        fill: true,
         slidesPerPage: 1,
         dragFree: true,
         Dots: false,

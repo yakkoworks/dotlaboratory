@@ -10,19 +10,7 @@ body{
     display: grid;
     row-gap: 3rem;
 }
-#content{
-    width: 100%;
-    position: relative;
-}
-.members{
-    display: grid;
-    row-gap: 1.6rem;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-}
-.member img{
-    width: 70%;
-    border-radius: 50%;
-}
+
 h1{
     font-size: 2rem;
 }
@@ -39,6 +27,10 @@ h3{
 .fancybox__content{
     padding: 0 !important;
     color: beige !important;
+}
+.carousel{
+    --f-carousel-slide-width: 95%;
+    --f-carousel-slide-padding: 5px;
 }
 .nav{
     display: flex;
