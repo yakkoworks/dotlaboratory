@@ -3,7 +3,7 @@ async function init(){
 	await loadProfile("1","1-4k");
 	carousel_team1 = new Carousel(document.getElementById("carousel-team1"), {
 		infinite: false,
-		preload:0,
+		fill:false,
 		Dots:false,
 		center: true,
 	});
