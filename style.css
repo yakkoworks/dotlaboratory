@@ -19,7 +19,7 @@ body{
     row-gap: 1.6rem;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-.chara img{
+.member img{
     width: 70%;
     border-radius: 50%;
 }
