@@ -20,7 +20,6 @@ async function loadProfile(team,chara){
 			const parser = new DOMParser();
 			var dom = parser.parseFromString(html, "text/html");
 			document.querySelector(`#carousel-team${team}`).appendChild(dom.documentElement.querySelector("body>div"));
-			console.log("loadProfile");
 			resolve('OK');
 		})
 	});
