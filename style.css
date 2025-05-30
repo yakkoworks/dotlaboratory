@@ -8,6 +8,9 @@ body{
     margin: 0;
     overflow: hidden;
 }
+a {
+	-webkit-tap-highlight-color: transparent; /* 強調をなくす */
+}
 #container{
     text-align: center;
     display: grid;
