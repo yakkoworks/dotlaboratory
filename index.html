@@ -16,10 +16,17 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/carousel/carousel.css">
 </head>
 <body onload="init()" oncontextmenu="return false;">
-	<h1>#dotlaboratory</h1>
-	<div id="container" style="display: none;">
-		<div class="section">
-			<h2>TwinkleSparkle</h2>
+	<div id="container">
+		<div id="logo">
+			<img src="assets/images/dotlaboratory.png">
+			<p>#dotlaboratory</p>
+		</div>
+		<div id="section1" class="section active">
+			<div class="section-header">
+				<div class="section-header-nav"><img src="assets/images/team-icon_3.png" onclick="changeActiveSection(`3`)"></div>
+				<div class="section-header-team team1">TwinkleSparkle</div>
+				<div class="section-header-nav"><img src="assets/images/team-icon_2.png" onclick="changeActiveSection(`2`)"></div>
+			</div>
 			<div id="carousel-team1"  class="carousel f-carousel"></div>
 			<div id="nav-team1" class="nav f-carousel">
 				<div class="nav-chara f-carousel__slide"><img src="assets/images/thumbnail_1-1.png" class="thumbnail"><p class="symbol">🌟</p></div>
@@ -33,6 +40,29 @@
 				<div class="nav-chara f-carousel__slide"><img src="assets/images/thumbnail_1-1.png" class="thumbnail"><p class="symbol">🔭</p></div>
 				<div class="nav-chara f-carousel__slide"><img src="assets/images/thumbnail_1-1.png" class="thumbnail"><p class="symbol">🎵</p></div>
 				<div class="nav-chara f-carousel__slide"><img src="assets/images/thumbnail_1-1.png" class="thumbnail"><p class="symbol">☄️</p></div>
+			</div>
+		</div>
+		<div id="section2" class="section">
+			<div class="section-header">
+				<div class="section-header-nav"><img src="assets/images/team-icon_1.png" onclick="changeActiveSection(`1`)"></div>
+				<div class="section-header-team team2">DayDreamers</div>
+				<div class="section-header-nav"><img src="assets/images/team-icon_3.png" onclick="changeActiveSection(`3`)"></div>
+			</div>
+			<div id="carousel-team2"  class="carousel f-carousel"></div>
+			<div id="nav-team2" class="nav f-carousel">
+				<div class="nav-chara f-carousel__slide"><img src="assets/images/thumbnail_1-1.png" class="thumbnail"><p class="symbol">🌟</p></div>
+			</div>
+		</div>
+		<div id="section3" class="section">
+			<div class="section-header">
+				<div class="section-header-nav"><img src="assets/images/team-icon_2.png" onclick="changeActiveSection(`2`)"></div>
+				<div class="section-header-team team2">RadiantDaze</div>
+				<div class="section-header-nav"><img src="assets/images/team-icon_1.png" onclick="changeActiveSection(`1`)"></div>
+			</div>
+			<div id="carousel-team3"  class="carousel f-carousel"></div>
+			<div id="nav-team3" class="nav f-carousel">
+				<div class="nav-chara f-carousel__slide"><img src="assets/images/thumbnail_1-1.png" class="thumbnail"><p class="symbol">🌙</p></div>
+				<div class="nav-chara f-carousel__slide"><img src="assets/images/thumbnail_1-1.png" class="thumbnail"><p class="symbol">☀</p></div>
 			</div>
 		</div>
 	</div>

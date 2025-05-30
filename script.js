@@ -1,25 +1,15 @@
 async function init(){
-	setZoomScale();
 	await loadProfile("1","1-1");
 	await loadProfile("1","1-4k");
-	carousel_team1 = new Carousel(document.getElementById("carousel-team1"), {
-		infinite: false,
-		fill:false,
-		Dots:false,
-		Navigation: false,
-		center: true,
-	});
-	nav_team1 = new Carousel(document.querySelector("#nav-team1"),{
-		infinite: false,
-		// transition: false,
-		center: true,
-		fill: true,
-		slidesPerPage: 1,
-		dragFree: true,
-		Dots: false,
-		Sync: {target: carousel_team1}
-	});
-	document.querySelector("#container").style.display = "block";
+	await loadProfile("2","1-4k");
+	await loadProfile("3","1-4k");
+	await loadProfile("3","1-1");
+	carousel_team1 = new Carousel(document.getElementById("carousel-team1"), {infinite: false,fill:false,Dots:false,Navigation: false,center: true,});
+	nav_team1 = new Carousel(document.querySelector("#nav-team1"),{infinite: false,center: true,fill: true,slidesPerPage: 1,dragFree: true,Dots: false,Sync: {target: carousel_team1}});
+	carousel_team2 = new Carousel(document.getElementById("carousel-team2"), {infinite: false,fill:false,Dots:false,Navigation: false,center: true,});
+	nav_team2 = new Carousel(document.querySelector("#nav-team2"),{infinite: false,center: true,fill: true,slidesPerPage: 1,dragFree: true,Dots: false,Sync: {target: carousel_team2}});
+	carousel_team3 = new Carousel(document.getElementById("carousel-team3"), {infinite: false,fill:false,Dots:false,Navigation: false,center: true,});
+	nav_team3 = new Carousel(document.querySelector("#nav-team3"),{infinite: false,center: true,fill: true,slidesPerPage: 1,dragFree: true,Dots: false,Sync: {target: carousel_team3}});
 }
 
 async function loadProfile(team,chara){
@@ -36,22 +26,9 @@ async function loadProfile(team,chara){
 	});
 }
 
-function setZoomScale(){
-	var dummy = document.createElement("div");
-	dummy.innerText = "テスト";
-	dummy.id = "sizing";
-	dummy.style.fontSize = "16px";
-	dummy.style.width = "1px"
-	dummy.style.height = "1px"
-	dummy.style.visibility = "hidden";
-	document.body.append(dummy);
-	var fontSize = $("#sizing").css("font-size");
-	var diameter = $("#sizing").css("width");
-	dummy.remove();
-	var reg = /(.+)px/;
-	fontSize = 16 * 16 / reg.exec(fontSize)[1];
-	diameter =  reg.exec(diameter)[1];
-	document.body.style.setProperty('--diameter', `${diameter}`);
-	document.body.style.setProperty('--rootFontSize', `${fontSize}`);
-	document.querySelector("html").style.fontSize = `${fontSize}px`;
+function changeActiveSection(team){
+	document.querySelectorAll(".section").forEach(element => {
+		element.classList.remove("active");
+	});
+	document.querySelector(`#section${team}`).classList.add("active");
 }

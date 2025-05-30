@@ -12,26 +12,37 @@ a {
 }
 #container{
     text-align: center;
-    display: grid;
-    row-gap: 3rem;
 }
 
-h1{
+#logo{
     margin: 0;
-    font-size: 4vh;
+    margin-top: 1vh;
+    font-size: 1.5vh;
 }
-h2{
-    font-size: 3vh;
-    margin: 1vh 0;
-}
-h3{
-    font-size: 1rem;
-    font-weight: 400;
-    margin: 0 auto;
+#logo img{
+    width: 5vh;
 }
 .fancybox__content{
     padding: 0 !important;
     color: beige !important;
+}
+.section {
+    align-self: center;
+    display: none;
+}
+.section.active{
+    display: block !important;
+}
+.section-header{
+    display: grid;
+    grid-template-columns: 10% 70% 10%;
+    font-size: 1.3rem;
+    align-items: center;
+    justify-content: center;
+}
+.section-header-nav img{
+    width: 1.3rem;
+    height: 1.3rem;
 }
 .carousel{
     --f-carousel-spacing: 10px !important;
@@ -43,6 +54,7 @@ h3{
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
 }
 .nav-chara{
     width:8% !important;
