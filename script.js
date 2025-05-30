@@ -17,6 +17,8 @@ async function init(){
         Dots: false,
 		Sync: {target: carousel_team1}
 	});
+	document.querySelector("#loading").style.display  = "none";
+	document.querySelector("#container").style.display  = "block";
 }
 
 async function loadProfile(team,chara){
