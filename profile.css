@@ -33,24 +33,24 @@ p {
 	grid-template-rows: 1fr 1fr 1fr;
 }
 .profile-header>.cpj{
-	font-size: 4vw;
+	font-size: 1.2rem;
 }
 .profile-header>.name{
-	font-size: 5vw;
+    font-size: 1.5rem;
 	font-family: MplusRounded1c-Bold;
 }
 .profile-header>.names{
-	font-size: 2.5vw;
+    font-size: 0.8rem;
 }
 .profile-main{
 	/* padding-left: 20px; */
 	font-family: MplusRounded1c-Regular;
-	font-size: 3vw;
+	font-size: 0.9rem;
 	color: white;
 	text-shadow: 1px 1px 1px #111, -1px -1px 1px #111, -1px 1px 1px #111, 1px -1px 0 #111, 0px 1px 0 #111, 0 -1px 0 #111, -1px 0 0 #111, 1px 0 0 #111, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff;
 }
 .profile-main>p{
-	margin: 15px 0;
+	margin: 1rem 0;
 }
 .profile-footer{
 	/* width: 540px;
@@ -60,7 +60,7 @@ p {
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
-	padding: 0 3rem;
+	/* padding: 0 3rem; */
 	box-sizing: border-box;
 	background-color: transparent;
 	z-index: 0;
@@ -69,7 +69,7 @@ p {
 	position: relative;
 	margin-bottom: 0.2rem;
 	/* font-weight: bold; */
-	font-size: 7vw;
+	font-size: 1.5rem;
 	text-align: center;
 	text-shadow: 1px 1px 1px #111, -1px -1px 1px #111, -1px 1px 1px #111, 1px -1px 0 #111, 0px 1px 0 #111, 0 -1px 0 #111, -1px 0 0 #111, 1px 0 0 #111, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff;
 }
@@ -80,7 +80,7 @@ p {
 	left: 50%;
 	top: -8px;
 	transform: translateX(-50%);
-	font-size: 10vw;
+	font-size: 2.5rem;
 	text-transform: uppercase;
 	z-index: -1;
 }

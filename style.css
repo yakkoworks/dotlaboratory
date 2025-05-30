@@ -1,5 +1,4 @@
 html{
-    font-size: 16px;
     user-select: none;
 }
 body{
@@ -18,12 +17,12 @@ a {
 }
 
 h1{
-    font-size: 2rem;
+    margin: 0;
+    font-size: 4vh;
 }
 h2{
-    font-size: 1.6rem;
-    margin-bottom: 1.6rem;
-    margin-top: 0;
+    font-size: 3vh;
+    margin: 1vh 0;
 }
 h3{
     font-size: 1rem;
@@ -47,6 +46,10 @@ h3{
 }
 .nav-chara{
     width:8% !important;
+    filter: brightness(0.4);
+}
+.is-nav-selected {
+    filter: brightness(1);
 }
 .symbol{
     font-family: NotoColorEmoji-Regular;
