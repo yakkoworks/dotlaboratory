@@ -5,6 +5,7 @@ async function init(){
 		infinite: false,
 		fill:false,
 		Dots:false,
+		Navigation: false,
 		center: true,
 	});
 	nav_team1 = new Carousel(document.querySelector("#nav-team1"),{
