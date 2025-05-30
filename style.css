@@ -3,6 +3,7 @@ html{
 }
 body{
     text-align: center;
+    margin: 0;
     overflow: hidden;
 }
 #container{
@@ -29,8 +30,10 @@ h3{
     color: beige !important;
 }
 .carousel{
-    --f-carousel-slide-width: 95%;
-    --f-carousel-slide-padding: 5px;
+    --f-carousel-spacing: 10px !important;
+}
+.carousel:first-child{
+    margin-left: 5px;
 }
 .nav{
     display: flex;
