@@ -40,3 +40,14 @@ h3{
     padding: 0 !important;
     color: beige !important;
 }
+.nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav-chara{
+    width:10% !important
+}
+.thumbnail,.sign{
+    width: 100%;
+}
