@@ -1,5 +1,5 @@
 body{
-    overflow: hidden;
+	overflow: hidden;
 	/* font-family: MplusRounded1c-Regular; */
 }
 p {
@@ -7,41 +7,45 @@ p {
 }
 .profile,.charaImg{
 	max-width: 100%;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
 }
 .profile{
 	position: absolute;
 	z-index: 3;
 	display: grid;
-    align-content: space-around;
-	background-color: #00000099;
+	align-content: space-evenly;
+	/* background-color: #00000099; */
+}
+.charaImg{
+	filter: brightness(0.35);
 }
 .profile-header{
 	font-family: MplusRounded1c-Regular;
 	color: white;
 	text-shadow: 1px 1px 1px #111, -1px -1px 1px #111, -1px 1px 1px #111, 1px -1px 0 #111, 0px 1px 0 #111, 0 -1px 0 #111, -1px 0 0 #111, 1px 0 0 #111, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff;
 	text-align: center;
-    display: grid;
-    place-items: center;
-    grid-template-rows: 1fr 1fr 1fr;
+	display: grid;
+	place-items: center;
+	grid-template-rows: 1fr 1fr 1fr;
 }
 .profile-header>.cpj{
-	font-size: 1.4rem;
+	font-size: 4vw;
 }
 .profile-header>.name{
-	font-size: 1.8rem;
+	font-size: 5vw;
 	font-family: MplusRounded1c-Bold;
 }
 .profile-header>.names{
-	font-size: small;
+	font-size: 2.5vw;
 }
 .profile-main{
 	/* padding-left: 20px; */
 	font-family: MplusRounded1c-Regular;
+	font-size: 3vw;
 	color: white;
 	text-shadow: 1px 1px 1px #111, -1px -1px 1px #111, -1px 1px 1px #111, 1px -1px 0 #111, 0px 1px 0 #111, 0 -1px 0 #111, -1px 0 0 #111, 1px 0 0 #111, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff;
 }
@@ -61,22 +65,22 @@ p {
 	background-color: transparent;
 	z-index: 0;
 }
-.profile-footer svg>.cpe{
+.profile-footer .cpe{
 	position: relative;
 	margin-bottom: 0.2rem;
 	/* font-weight: bold; */
-	font-size: 3rem;
+	font-size: 7vw;
 	text-align: center;
 	text-shadow: 1px 1px 1px #111, -1px -1px 1px #111, -1px 1px 1px #111, 1px -1px 0 #111, 0px 1px 0 #111, 0 -1px 0 #111, -1px 0 0 #111, 1px 0 0 #111, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff;
 }
-.profile-footer>.emoji {
+.profile-footer .emoji {
 	text-shadow: 1px 1px 1px #111, -1px -1px 1px #111, -1px 1px 1px #111, 1px -1px 0 #111, 0px 1px 0 #111, 0 -1px 0 #111, -1px 0 0 #111, 1px 0 0 #111, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff;
 	font-family: NotoColorEmoji-Regular;
 	position: absolute;
 	left: 50%;
-	top: -35px;
+	top: -8px;
 	transform: translateX(-50%);
-	font-size: 5rem;
+	font-size: 10vw;
 	text-transform: uppercase;
 	z-index: -1;
 }
