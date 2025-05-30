@@ -32,8 +32,9 @@ async function loadProfile(team,chara){
 		})
 	});
 }
-function onClickChara(team,chara){
-	Fancybox.show(
-		[{src:`#${chara}`,}],
-		{closeButton:true,autoFocus:false})
-	}
+
+function toggleProfile(chara){
+	Fancybox.show([{
+		src: `assets/images/main_${chara}.png`
+	}])
+}
