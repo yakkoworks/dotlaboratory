@@ -12,10 +12,10 @@
 	<link rel="stylesheet" href="fonts.css">
 	<link  rel="stylesheet"   href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
 </head>
-<body>
+<body onload="init()">
 	<h1>#dotlaboratory</h1>
 	<div id="container">
-		<div id="team1" class="section">
+		<div class="section">
 			<h2>TwinkleSparkle</h2>
 			<div class="members">
 					<div class="member" data-chara="1-1" onclick="onClickChara(this.dataset.chara)">
@@ -64,7 +64,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="team2" class="section">
+		<div class="section">
 			<h2>DayDreamers</h2>
 			<div class="members">
 				<div class="member" id="2-1">
@@ -93,7 +93,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="team3" class="section">
+		<div class="section">
 			<h2>RadiantDaze</h2>
 			<div class="members">
 				<div class="member" id="3-1">
@@ -107,7 +107,11 @@
 			</div>
 		</div>
 	</div>
-	<div id="content" style="display: none;"></div>
+	<div id="profiles" style="display: none;">
+		<div id="team1"></div>
+		<div id="team2"></div>
+		<div id="team3"></div>
+	</div>
 	<!-- <script>
 		Fancybox.bind('[data-fancybox]', {
 			closeButton: true,
