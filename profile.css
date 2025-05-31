@@ -1,10 +1,3 @@
-body{
-	overflow: hidden;
-	/* font-family: MplusRounded1c-Regular; */
-}
-p {
-	margin: 0;
-}
 .profile,.charaImg{
 	max-width: 100%;
 	top: 0;
@@ -33,19 +26,19 @@ p {
 	grid-template-rows: 1fr 1fr 1fr;
 }
 .profile-header>.cpj{
-	font-size: 1.2rem;
+	font-size: 4vw;
 }
 .profile-header>.name{
-    font-size: 1.5rem;
+    font-size: 5vw;
 	font-family: MplusRounded1c-Bold;
 }
 .profile-header>.names{
-    font-size: 0.8rem;
+    font-size: 3vw;
 }
 .profile-main{
 	/* padding-left: 20px; */
 	font-family: MplusRounded1c-Regular;
-	font-size: 0.9rem;
+	font-size: 3.2vw;
 	color: white;
 	text-shadow: 1px 1px 1px #111, -1px -1px 1px #111, -1px 1px 1px #111, 1px -1px 0 #111, 0px 1px 0 #111, 0 -1px 0 #111, -1px 0 0 #111, 1px 0 0 #111, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff;
 }
@@ -69,7 +62,7 @@ p {
 	position: relative;
 	margin-bottom: 0.2rem;
 	/* font-weight: bold; */
-	font-size: 1.5rem;
+	font-size: 5vw;
 	text-align: center;
 	text-shadow: 1px 1px 1px #111, -1px -1px 1px #111, -1px 1px 1px #111, 1px -1px 0 #111, 0px 1px 0 #111, 0 -1px 0 #111, -1px 0 0 #111, 1px 0 0 #111, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff;
 }
@@ -80,7 +73,7 @@ p {
 	left: 50%;
 	top: -8px;
 	transform: translateX(-50%);
-	font-size: 2.5rem;
+	font-size: 7vw;
 	text-transform: uppercase;
 	z-index: -1;
 }

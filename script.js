@@ -1,15 +1,21 @@
 async function init(){
 	await loadProfile("1","1-1");
+	await loadProfile("1","1-2");
+	await loadProfile("1","1-3");
 	await loadProfile("1","1-4k");
-	await loadProfile("2","1-4k");
-	await loadProfile("3","1-4k");
-	await loadProfile("3","1-1");
+	await loadProfile("1","1-5");
+	await loadProfile("1","1-6");
+	await loadProfile("1","1-7");
+	await loadProfile("1","1-8y");
+	await loadProfile("1","1-9");
+	await loadProfile("1","1-4y");
+	await loadProfile("1","1-8k");
 	carousel_team1 = new Carousel(document.getElementById("carousel-team1"), {infinite: false,fill:false,Dots:false,Navigation: false,center: true,});
 	nav_team1 = new Carousel(document.querySelector("#nav-team1"),{infinite: false,center: true,fill: true,slidesPerPage: 1,dragFree: true,Dots: false,Sync: {target: carousel_team1}});
-	carousel_team2 = new Carousel(document.getElementById("carousel-team2"), {infinite: false,fill:false,Dots:false,Navigation: false,center: true,});
-	nav_team2 = new Carousel(document.querySelector("#nav-team2"),{infinite: false,center: true,fill: true,slidesPerPage: 1,dragFree: true,Dots: false,Sync: {target: carousel_team2}});
-	carousel_team3 = new Carousel(document.getElementById("carousel-team3"), {infinite: false,fill:false,Dots:false,Navigation: false,center: true,});
-	nav_team3 = new Carousel(document.querySelector("#nav-team3"),{infinite: false,center: true,fill: true,slidesPerPage: 1,dragFree: true,Dots: false,Sync: {target: carousel_team3}});
+	// carousel_team2 = new Carousel(document.getElementById("carousel-team2"), {infinite: false,fill:false,Dots:false,Navigation: false,center: true,});
+	// nav_team2 = new Carousel(document.querySelector("#nav-team2"),{infinite: false,center: true,fill: true,slidesPerPage: 1,dragFree: true,Dots: false,Sync: {target: carousel_team2}});
+	// carousel_team3 = new Carousel(document.getElementById("carousel-team3"), {infinite: false,fill:false,Dots:false,Navigation: false,center: true,});
+	// nav_team3 = new Carousel(document.querySelector("#nav-team3"),{infinite: false,center: true,fill: true,slidesPerPage: 1,dragFree: true,Dots: false,Sync: {target: carousel_team3}});
 }
 
 async function loadProfile(team,chara){
