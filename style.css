@@ -78,3 +78,49 @@ p {
 .thumbnail,.sign{
     width: 100%;
 }
+
+#loading{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+#loading-logo{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 180px;
+    justify-content: center;
+}
+.fadeIn{
+    animation: fadeIn 0.7s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+}
+.loading{
+    animation: catch_anime 0.7s forwards;
+     /* transition: 1s; */
+  opacity: 0;
+  transform: translateY(20px);
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes catch_anime {
+  0% {
+    transform: translateY(20px);
+  }
+   100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

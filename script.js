@@ -1,4 +1,5 @@
 async function init(){
+	// showLoading();
 	await loadProfile("1","1-1");
 	await loadProfile("1","1-2");
 	await loadProfile("1","1-3");
@@ -24,6 +25,7 @@ async function init(){
 	nav_team2 = new Carousel(document.querySelector("#nav-team2"),{infinite: false,center: true,fill: true,slidesPerPage: 1,dragFree: true,Dots: false,Sync: {target: carousel_team2}});
 	carousel_team3 = new Carousel(document.getElementById("carousel-team3"), {infinite: false,fill:false,Dots:false,Navigation: false,center: true,});
 	nav_team3 = new Carousel(document.querySelector("#nav-team3"),{infinite: false,center: true,fill: true,slidesPerPage: 1,dragFree: true,Dots: false,Sync: {target: carousel_team3}});
+	hideLoading();
 }
 
 async function loadProfile(team,chara){
@@ -44,4 +46,12 @@ function changeActiveSection(team){
 		element.classList.remove("active");
 	});
 	document.querySelector(`#section${team}`).classList.add("active");
+}
+
+function hideLoading(){
+	setTimeout(() => {		
+		document.getElementById("loading").style.visibility = "hidden";
+		document.getElementById("container").style.visibility = "visible";
+		document.getElementById("container").classList.add("fadeIn")
+	}, 1500);
 }
