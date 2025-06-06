@@ -56,5 +56,5 @@ function hideLoading(){
 		document.getElementById("loading").style.visibility = "hidden";
 		document.getElementById("container").style.visibility = "visible";
 		document.getElementById("container").classList.add("fadeIn")
-	}, 1500);
+	}, 1000);
 }
