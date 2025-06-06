@@ -44,6 +44,9 @@ async function loadProfile(team,chara){
 function changeActiveSection(team){
 	document.querySelectorAll(".section").forEach(element => {
 		element.classList.remove("active");
+		carousel_team1.slideTo("#1-1");
+		carousel_team2.slideTo("#2-1");
+		carousel_team3.slideTo("#3-1");
 	});
 	document.querySelector(`#section${team}`).classList.add("active");
 }

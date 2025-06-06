@@ -98,7 +98,7 @@ p {
     width: 180px;
     justify-content: center;
 }
-.fadeIn{
+.fadeIn,.active{
     animation: fadeIn 0.7s cubic-bezier(0.33, 1, 0.68, 1) forwards;
 }
 .loading{
