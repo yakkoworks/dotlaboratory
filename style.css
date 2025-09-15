@@ -54,6 +54,7 @@ p {
 }
 .carousel{
     --f-carousel-spacing: 10px !important;
+    --f-carousel-slide-width: -webkit-fill-available !important;
 }
 .carousel:first-child{
     margin-left: 5px;
