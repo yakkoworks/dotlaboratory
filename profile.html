@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <link rel="icon" href="favicon.ico">
+        <link rel="stylesheet" href="fonts.css">
+        <link rel="stylesheet" href="profile.css">
+    </head>
+    <body>
+        <div class="wrapper">
+
+        </div>
+    </body>
+    <script>
+        async function loadProfile(chara){
+	return new Promise((resolve) => {
+		fetch(`/assets/slides/${chara}.html`)
+		.then(data => data.text())
+		.then(html => {
+			const parser = new DOMParser();
+			var dom = parser.parseFromString(html, "text/html");
+			document.querySelector(`.wrapper`).appendChild(dom.documentElement.querySelector("body>div"));
+			resolve('OK');
+		})
+	});
+}
+loadProfile("1-1");
+    </script>
+</html>

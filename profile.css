@@ -1,88 +1,17 @@
-.profile,.charaImg{
-	max-width: 100%;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	margin: auto;
+body{
+    font-family: MplusRounded1c-Regular;
 }
-.profile{
-	position: absolute;
-	z-index: 3;
-	display: grid;
-	align-content: space-evenly;
-	/* background-color: #00000099; */
+.chara{
+    position: relative;
+    width: 1080px;
+    height: 1440px;
+    zoom: 0.5;
 }
-.charaImg{
-	filter: brightness(0.35);
-}
-.profile-header{
-	font-family: MplusRounded1c-Regular;
-	color: white;
-	text-shadow: 1px 1px 1px #111, -1px -1px 1px #111, -1px 1px 1px #111, 1px -1px 0 #111, 0px 1px 0 #111, 0 -1px 0 #111, -1px 0 0 #111, 1px 0 0 #111, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff;
-	text-align: center;
-	display: grid;
-	place-items: center;
-	grid-template-rows: 1fr 1fr 1fr;
-}
-.profile-header>.cpj{
-	font-size: 4vw;
-}
-.profile-header>.name{
-    font-size: 5vw;
-	font-family: MplusRounded1c-Bold;
-}
-.profile-header>.names{
-    font-size: 3vw;
-}
-.profile-main{
-	/* padding-left: 20px; */
-	font-family: MplusRounded1c-Regular;
-	font-size: 3.2vw;
-	color: white;
-	text-shadow: 1px 1px 1px #111, -1px -1px 1px #111, -1px 1px 1px #111, 1px -1px 0 #111, 0px 1px 0 #111, 0 -1px 0 #111, -1px 0 0 #111, 1px 0 0 #111, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff;
-}
-.profile-main>p{
-	margin: 1rem 0;
-}
-.profile-footer{
-	/* width: 540px;
-	height: 100px; */
-	text-align: center;
-	position: relative;
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	/* padding: 0 3rem; */
-	box-sizing: border-box;
-	background-color: transparent;
-	z-index: 0;
-}
-.profile-footer .cpe{
-	position: relative;
-	margin-bottom: 0.2rem;
-	/* font-weight: bold; */
-	font-size: 5vw;
-	text-align: center;
-	text-shadow: 1px 1px 1px #111, -1px -1px 1px #111, -1px 1px 1px #111, 1px -1px 0 #111, 0px 1px 0 #111, 0 -1px 0 #111, -1px 0 0 #111, 1px 0 0 #111, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff;
-}
-.profile-footer .emoji {
-	text-shadow: 1px 1px 1px #111, -1px -1px 1px #111, -1px 1px 1px #111, 1px -1px 0 #111, 0px 1px 0 #111, 0 -1px 0 #111, -1px 0 0 #111, 1px 0 0 #111, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff;
-	font-family: NotoColorEmoji-Regular;
-	position: absolute;
-	left: 50%;
-	top: -8px;
-	transform: translateX(-50%);
-	font-size: 7vw;
-	text-transform: uppercase;
-	z-index: -1;
-}
-.team1{
-	font-family: PoiretOne;
-}
-.team2{
-	font-family: PrincessSofia;
-}
-.team3{
-	font-family: tegakiKakutto;
+.chara>img{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
 }

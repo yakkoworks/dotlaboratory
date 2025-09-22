@@ -1,0 +1,33 @@
+@font-face {
+	font-family: 'MplusRounded1c-Bold';
+	src: url("assets/fonts/MPLUSRounded1c-Bold.ttf");
+}
+@font-face {
+	font-family: 'MplusRounded1c-Medium';
+	src: url("assets/fonts/MPLUSRounded1c-Medium.ttf");
+}
+@font-face {
+	font-family: 'MplusRounded1c-Regular';
+	src: url("assets/fonts/MPLUSRounded1c-Regular.ttf");
+}
+@font-face {
+	font-family: 'PoiretOne';
+	src: url("assets/fonts/PoiretOne-Regular.ttf");
+}
+@font-face {
+	font-family: 'PrincessSofia';
+	src: url("assets/fonts/PrincessSofia-Regular.ttf");
+}
+@font-face {
+	font-family: 'tegakiKakutto';
+	src: url("assets/fonts/851tegakiKakutto.ttf");
+}
+@font-face {
+	font-family: 'Twemoji';
+	src: url("assets/fonts/Twemoji_14.ttf");
+}
+@font-face {
+	font-family: 'NotoColorEmoji-Regular';
+	src: url("assets/fonts/NotoColorEmoji-Regular.ttf");
+}
+
