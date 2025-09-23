@@ -1,17 +1,110 @@
 body{
     font-family: MplusRounded1c-Regular;
+    display: flex;
+}
+p{
+text-shadow: 0px 0px 1px #000;
+    margin: 0;
+    filter: drop-shadow(0px 0px 4px #ffffff) drop-shadow(0px 0px 4px #ffffff);
 }
 .chara{
+    overflow: hidden;
     position: relative;
-    width: 1080px;
-    height: 1440px;
-    zoom: 0.5;
+    width: 850px;
+    height: 850px;
+    zoom: 0.8;
 }
-.chara>img{
+.chara::before,.chara::after{
+    content: "";
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     margin: auto;
+    background-size: cover;
+}
+.chara::after{
+    background-size: contain;
+    background-image: url(/assets/images/note.png);
+    opacity: 0.85;
+}
+.charaImg{
+    z-index: 1;
+    position: absolute;
+    right: -200px;
+}
+.charaImg.h2{
+    top: 20px;
+}
+.charaImg.h3{
+    top: 50px;
+}
+.charaImg.h4{
+    top: 80px;
+}
+.profile{
+    grid-template-rows: 1fr 3fr 0.5fr;
+    width: 850px;
+    height: 850px;
+    display: grid;
+    z-index: 2;
+    position: absolute;
+}
+
+.profile div{
+    display: grid;
+    align-items: center;
+}
+
+.cpj{
+    font-size: 2rem;
+}
+.name{
+    font-family: 'MplusRounded1c-Medium';
+    font-size: 2.5rem;
+}
+.names{
+    font-size: 1rem;
+}
+.profile-header{
+    padding: 20px 20px 0 20px;
+}
+.profile-main{
+    padding: 0 20px;
+    display: grid;
+    font-size: 1.4rem;
+}
+
+.profile-footer{
+    padding: 0 20px;
+    position: relative;
+    align-items: center;
+    display: grid;
+}
+
+.profile-footer p{
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.cpe{
+    font-size: 2.5rem;
+    width: 100%;
+    text-align: center;
+}
+.emoji{
+    font-family: NotoColorEmoji-Regular;
+    font-size: 4rem;
+    left: 50%;
+}
+
+.cpe.team1{
+    font-family: PoiretOne;
+    font-weight: 900;
+}
+.chara.team1::before{
+    background-image: url(/assets/images/team-back_1.png);
 }
