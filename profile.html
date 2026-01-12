@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link rel="icon" href="favicon.ico">
+    <script src="https://cdn.jsdelivr.net/npm/dom-to-image@2.6.0/dist/dom-to-image.min.js"></script>
     <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="profile.css">
 </head>
@@ -28,7 +29,7 @@
             })
         });
     }
-    function domtoimage(){
+    function saveImage(){
         var node = document.querySelector(".chara");
         node.style.width = "850px";
         node.style.height = "850px";
@@ -36,10 +37,11 @@
         domtoimage.toPng(node,{width:850,height:850})
         .then(function (dataUrl) {
             var link = document.createElement('a');
-            link.download = `profile-${filename}.png`;
+            link.download = `profile_${filename}.png`;
             link.href = dataUrl;
             link.click();
         });
     }
+    loadProfile("1-1");
 </script>
 </html>

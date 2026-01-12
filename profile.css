@@ -14,20 +14,14 @@ text-shadow: 0px 0px 1px #000;
     height: 850px;
     /* zoom: 0.8; */
 }
-.chara::before,.chara::after{
-    content: "";
+.note{
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    background-size: cover;
-}
-.chara::after{
-    background-size: contain;
-    background-image: url(/assets/images/note.png);
     opacity: 0.65;
+    width: 850px;
+    height: 850px;
+    background-image: url(/assets/images/note.png);
+    background-size: contain;
+    z-index: 1;
 }
 .charaImg{
     z-index: 1;
@@ -111,9 +105,13 @@ text-shadow: 0px 0px 1px #000;
 .cpe.team3{
     font-family: tegakiKakutto;
 }
-.chara.team1::before{
+.chara.team1{
     background-image: url(/assets/images/team-back_1.png);
 }
-.chara.team2::before{
+.chara.team2{
     background-image: url(/assets/images/team-back_2.png);
+}
+.chara.team3{
+    background-position: top;
+    background-image: url(/assets/images/team-back_3.png);
 }
