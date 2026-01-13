@@ -13,7 +13,7 @@ position: relative;
 zoom: var(--zoomScale);
 }
 #header img{
-        width: 200px;
+    width: 200px;
     max-width: 100%;
     /* position: absolute; */
     top: 0;
@@ -29,8 +29,14 @@ zoom: var(--zoomScale);
 #main {
     display: block;
     zoom: var(--zoomScale);
+    
 }
-
+a{
+ transition: transform .2s;
+ &:active{
+  transform: scale(.95);
+ }
+}
 .f-iframe {
     zoom: var(--zoomScale);
 }
@@ -43,4 +49,38 @@ zoom: var(--zoomScale);
 }
 .section{
     display: none;
+}
+#loading{
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    border: none;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #F0ECE1;
+    text-align: center;
+    z-index: 999;
+}
+#loading img{
+    /* zoom: var(--zoomScale); */
+    width: 200px;
+    max-width: 100%;
+    justify-self: center;
+}
+
+.fadeout { 
+    animation: fadeOut 2s; /*keyframesで命名したものを使う。2秒間で消える*/
+    animation-fill-mode: both; /*0%の時と100%の時の状態を保つ*/
+}
+  
+@keyframes fadeOut {
+    0% {
+        opacity: 1; /*初めに存在する*/
+    }
+    100% {
+        opacity: 0; /*最後に消える*/
+        display: none;
+    }
 }

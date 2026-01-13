@@ -1,4 +1,10 @@
 async function init(){
+  // document.querySelector("#loading").showModal();
+  document.oncontextmenu = function () {return false;}
+  setTimeout(() => {
+    document.querySelector("#loading").classList.add("fadeout");
+    document.querySelector("#loading").close();
+  }, 2000);
   const maincontainer = document.getElementById("main");
   const mainoptions = {
     Thumbs: {
@@ -16,7 +22,7 @@ async function init(){
   Carousel(maincontainer, mainoptions,{ Thumbs }).init();
   
   var zoom = document.body.clientWidth / 1080;
-  document.body.style.setProperty('--zoomScale',zoom)
+  document.body.style.setProperty('--zoomScale',zoom);
 
 
 }
