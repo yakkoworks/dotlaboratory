@@ -1,8 +1,8 @@
 .wrapper{
-    zoom: 0.5;
+    /* zoom: 0.5; */
     /* background-color: #ccc; */
-    width: 1080px;
-    height: 1440px;
+    width: 1080px !important;
+    height: 1440px !important;
     display: grid;
     grid-template-rows: 3fr 1fr;
     justify-content: center;

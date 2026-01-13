@@ -1,6 +1,7 @@
 body{
     font-family: MplusRounded1c-Regular;
-    display: flex;
+    /* display: flex; */
+    margin: 0;
 }
 p{
 text-shadow: 0px 0px 1px #000;
@@ -10,37 +11,42 @@ text-shadow: 0px 0px 1px #000;
 .chara{
     overflow: hidden;
     position: relative;
-    width: 850px;
-    height: 850px;
+    width: 1080px;
+    height: 100%;
+        background-size: cover;
     /* zoom: 0.8; */
 }
 .note{
     position: absolute;
     opacity: 0.65;
-    width: 850px;
-    height: 850px;
+    width: 1080px;
+    height: 100%;
     background-image: url(/assets/images/note.png);
     background-size: contain;
     z-index: 1;
 }
 .charaImg{
+    zoom: 1.6;
     z-index: 1;
     position: absolute;
     right: -200px;
 }
+.charaImg.h1{
+    bottom: 0;
+}
 .charaImg.h2{
-    top: 20px;
+    bottom: -20px;
 }
 .charaImg.h3{
-    top: 50px;
+    bottom: -50px;
 }
 .charaImg.h4{
-    top: 80px;
+    bottom: -80px;
 }
 .profile{
     grid-template-rows: 1fr 3fr 0.5fr;
-    width: 850px;
-    height: 850px;
+    width: 1080px;
+    height: 100%;
     display: grid;
     z-index: 2;
     position: absolute;
@@ -52,22 +58,23 @@ text-shadow: 0px 0px 1px #000;
 }
 
 .cpj{
-    font-size: 2rem;
+    font-size: 3.5rem;
 }
 .name{
     font-family: 'MplusRounded1c-Medium';
-    font-size: 2.5rem;
+    font-size: 4.5rem;
 }
 .names{
-    font-size: 1rem;
+    font-size: 2.3rem;
 }
 .profile-header{
-    padding: 20px 20px 0 20px;
+    padding: 60px 20px 0 20px;
+    text-align: center;
 }
 .profile-main{
     padding: 0 20px;
     display: grid;
-    font-size: 1.4rem;
+    font-size: 2.4rem;
 }
 
 .profile-footer{
@@ -85,13 +92,13 @@ text-shadow: 0px 0px 1px #000;
 }
 
 .cpe{
-    font-size: 2.5rem;
+    font-size: 4.8rem;
     width: 100%;
     text-align: center;
 }
 .emoji{
     font-family: NotoColorEmoji-Regular;
-    font-size: 4rem;
+    font-size: 10rem;
     left: 50%;
 }
 
