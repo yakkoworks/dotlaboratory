@@ -159,6 +159,20 @@ function showProfile(team,index){
           thumbSrc: "assets/images/thumbnail_4-1.png",
         },
         {
+          src:"assets/slides/4-2.html",
+          thumbSrc: "assets/images/thumbnail_4-2.png",
+        },
+        {
+          src:"assets/slides/4-3.html",
+          thumbSrc: "assets/images/thumbnail_4-3.png",
+        },
+        {
+          src:"assets/slides/4-4.html",
+          thumbSrc: "assets/images/thumbnail_4-4.png",
+        },
+        {
+          src:"assets/slides/4-5.html",
+          thumbSrc: "assets/images/thumbnail_4-5.png",
         },
       ],option
     );
