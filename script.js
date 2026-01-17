@@ -150,6 +150,20 @@ function showProfile(team,index){
     );
     break;
     
+    case "4":
+    Fancybox.show(
+      [
+        // Array of gallery items
+        {
+          src:"assets/slides/4-1.html",
+          thumbSrc: "assets/images/thumbnail_4-1.png",
+        },
+        {
+        },
+      ],option
+    );
+    break;
+    
   }
   
 }
