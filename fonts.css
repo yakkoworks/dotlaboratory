@@ -23,8 +23,12 @@
 	src: url("/assets/fonts/851tegakiKakutto.ttf");
 }
 @font-face {
-	font-family: 'Twemoji';
-	src: url("/assets/fonts/Twemoji_14.ttf");
+	font-family: 'tegakiKakutto';
+	src: url("/assets/fonts/851tegakiKakutto.ttf");
+}
+@font-face {
+	font-family: 'Mamelon';
+	src: url("/assets/fonts/Mamelon.otf");
 }
 @font-face {
 	font-family: 'NotoColorEmoji-Regular';
