@@ -87,7 +87,7 @@ a{
 @keyframes fadeOut {
     0% {
         opacity: 1;
-        display: block;
+        /* display: block; */
     }
     100% {
         opacity: 0;
