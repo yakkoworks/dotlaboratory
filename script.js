@@ -31,7 +31,6 @@ async function init(){
 
 function showProfile(team,index){
   const option = {
-    // Your custom options
     startIndex:--index,
     Carousel:{
       style:{
@@ -55,7 +54,6 @@ function showProfile(team,index){
         display: {
           right: ["close"],
           left:[],
-          
         },
       },
       
