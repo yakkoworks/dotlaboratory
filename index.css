@@ -86,10 +86,11 @@ a{
   
 @keyframes fadeOut {
     0% {
-        opacity: 1; /*初めに存在する*/
+        opacity: 1;
+        display: block;
     }
     100% {
-        opacity: 0; /*最後に消える*/
+        opacity: 0;
         display: none;
     }
 }
