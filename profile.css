@@ -43,6 +43,7 @@ p{
     bottom: -70px;
 }
 .profile{
+    user-select: none;
     grid-template-rows: 1fr 3fr 1fr;
     width: 1080px;
     height: 100%;
@@ -110,6 +111,9 @@ p{
 }
 .cpe.team3{
     font-family: tegakiKakutto;
+}
+.cpe.team4{
+    font-family: Mamelon;
 }
 .chara.team1{
     background-image: url(/dotlaboratory/assets/images/team-back_1.png);
