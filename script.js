@@ -27,8 +27,6 @@ async function init(){
   var Hzoom = (header.clientHeight+main.clientHeight+thumbs.clientHeight) / document.body.clientHeight
   document.body.style.setProperty('--WzoomScale',Wzoom);
   document.body.style.setProperty('--HzoomScale',Hzoom);
-
-
 }
 
 function showProfile(team,index){

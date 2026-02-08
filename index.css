@@ -2,7 +2,7 @@ body{
     background-color: #F0ECE1;
     margin: 0;
     display: grid;
-
+    user-select: none;
 }
 #contents{
     display: grid;
@@ -11,10 +11,10 @@ body{
     justify-content: center;
 }
 #header {
-position: relative;
+    position: relative;
     text-align: center;
-        margin: 2rem 0;
-zoom: var(--WzoomScale);
+    margin: 2rem 0;
+    zoom: var(--WzoomScale);
 }
 #header img{
     width: 200px;
@@ -36,10 +36,10 @@ zoom: var(--WzoomScale);
     
 }
 a{
- transition: transform .2s;
- &:active{
-  transform: scale(.95);
- }
+    transition: transform .2s;
+    &:active{
+        transform: scale(.95);
+    }
 }
 .f-iframe {
     zoom: var(--WzoomScale);
@@ -80,10 +80,10 @@ a{
 }
 
 .fadeout { 
-    animation: fadeOut 2s; /*keyframesで命名したものを使う。2秒間で消える*/
-    animation-fill-mode: both; /*0%の時と100%の時の状態を保つ*/
+    animation: fadeOut 1.8s;
+    animation-fill-mode: both;
 }
-  
+
 @keyframes fadeOut {
     0% {
         opacity: 1;
@@ -102,8 +102,8 @@ a{
         zoom: 0.4;
     }
     .f-html{
-    justify-content: center;
-    display: grid;
+        justify-content: center;
+        display: grid;
     }
     #header,#main{
         zoom: 0.4;
