@@ -71,7 +71,7 @@
 
 /* tm1 */
 .wrapper#tm1 .back{
-        background-image: url(assets/images/team-back_1.png);
+    background-image: url(./assets/images/team-back_1.png);
 }
 #tm1 .single{
     width: 330px;
@@ -84,7 +84,7 @@
 }
 /* tm2 */
 .wrapper#tm2 .back{
-        background-image: url(assets/images/team-back_2.png);
+    background-image: url(assets/images/team-back_2.png);
 }
 #tm2 .single{
     width: 330px;
@@ -106,7 +106,7 @@ width: 510px;
     object-fit: cover;
 }
 .wrapper#tm3 .back{
-        background-image: url(assets/images/team-back_3.png);
+    background-image: url(assets/images/team-back_3.png);
 }
 
 #tm3 .single img.sign{
