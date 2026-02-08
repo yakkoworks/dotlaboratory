@@ -6,7 +6,7 @@ body{
 }
 #contents{
     display: grid;
-    height: 100vh;
+    /* height: 100vh; */
     align-content: center;
     justify-content: center;
 }
@@ -14,7 +14,7 @@ body{
 position: relative;
     text-align: center;
         margin: 2rem 0;
-zoom: var(--zoomScale);
+zoom: var(--WzoomScale);
 }
 #header img{
     width: 200px;
@@ -32,7 +32,7 @@ zoom: var(--zoomScale);
 }
 #main {
     display: block;
-    zoom: var(--zoomScale);
+    zoom: var(--WzoomScale);
     
 }
 a{
@@ -42,7 +42,7 @@ a{
  }
 }
 .f-iframe {
-    zoom: var(--zoomScale);
+    zoom: var(--WzoomScale);
 }
 .fancybox__slide{
     padding: 0 !important;
@@ -73,7 +73,7 @@ a{
     margin: auto;
 }
 #loading img{
-    /* zoom: var(--zoomScale); */
+    /* zoom: var(--WzoomScale); */
     width: 200px;
     max-width: 100%;
     justify-self: center;
@@ -91,5 +91,20 @@ a{
     100% {
         opacity: 0; /*最後に消える*/
         display: none;
+    }
+}
+
+
+@media (min-width: 600px) {
+    .f-iframe{
+        width: 1080px !important;
+        zoom: 0.4;
+    }
+    .f-html{
+    justify-content: center;
+    display: grid;
+    }
+    #header,#main{
+        zoom: 0.4;
     }
 }

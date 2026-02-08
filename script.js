@@ -20,9 +20,13 @@ async function init(){
     },
   };
   Carousel(maincontainer, mainoptions,{ Thumbs }).init();
-  
-  var zoom = document.body.clientWidth / 1080;
-  document.body.style.setProperty('--zoomScale',zoom);
+  var header = document.querySelector("#header");
+  var main = document.querySelector("#main");
+  var thumbs = document.querySelector("#contents>.f-thumbs");
+  var Wzoom = document.body.clientWidth / 1080;
+  var Hzoom = (header.clientHeight+main.clientHeight+thumbs.clientHeight) / document.body.clientHeight
+  document.body.style.setProperty('--WzoomScale',Wzoom);
+  document.body.style.setProperty('--HzoomScale',Hzoom);
 
 
 }
@@ -34,6 +38,7 @@ function showProfile(team,index){
     Carousel:{
       style:{
         "--f-html-padding":"0",
+        "--f-html-bg":"#F0ECE1"
       },
       infinite: false,
       Thumbs:{

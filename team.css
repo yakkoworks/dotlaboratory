@@ -112,3 +112,38 @@ width: 510px;
 #tm3 .single img.sign{
     width: 300px;
 }
+
+#tm4 .charas{
+    grid-template-columns: unset;
+    grid-template-rows: 1fr 1fr;
+}
+#tm4 .row1 .single .chara{
+        width: 510px;
+    height: 510px;
+    object-fit: cover;
+}
+.wrapper#tm4 .back{
+        background-image: url(/assets/images/team-back_4.png);
+}
+.row1{
+        display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.row1 .single{
+        width: 510px;
+    height: 510px;
+}
+.row2{
+    justify-items: center;
+        display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.row2 .single{
+    width: 330px;
+    height: 510px;
+}
+.row2 .single .chara{
+        width: 330px;
+    height: 510px;
+    object-fit: cover;
+}
