@@ -1,19 +1,15 @@
 
 ---
 import { resolveNavigation } from '../../navigation/resolve';
+import NavigationItem from './NavigationItem.astro';
 
 const navigation = await resolveNavigation();
 ---
 
 <nav aria-label="サイト内ナビゲーション">
     <ul>
-        <!-- {navigation.map((item) => (
-            <li>
-                {item.href
-                    ? <a href={item.href}>{item.label}</a>
-                    : <span>{item.label}</span>
-                }
-            </li>
-        ))} -->
+        {navigation.map(item => (
+            <NavigationItem item={item} />
+        ))}
     </ul>
 </nav>
