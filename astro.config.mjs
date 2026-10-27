@@ -26,30 +26,39 @@ export default defineConfig({
         customCss: [
             './src/styles/custom.css',
         ],
+        
         sidebar: [
             {
-                label: '🪐 StarMap ',
+                label: '🪐 StarMap',
                 collapsed: false,
                 items: [
                     {
                         label: '🧊 3D Modeling',
                         collapsed: true,
                         items: [
-                            { autogenerate: { directory: './starmap/3dmodeling', collapsed: true} }
+                            {
+                                autogenerate: {
+                                    directory: 'starmap/3dmodeling',
+                                },
+                            },
                         ],
                     },
                     {
-                        label: '💻 Development ',
+                        label: '💻 Development',
                         collapsed: true,
                         items: [
-                            { autogenerate: { directory: './starmap/development', collapsed: true } }
+                            {
+                                autogenerate: {
+                                    directory: 'starmap/development',
+                                },
+                            },
                         ],
                     },
                 ],
             },
             {
-                label: '📝 Annotations ',
-                link: './starmap/annotations'
+                label: '📝 Annotations',
+                slug: 'starmap/annotations',
             },
         ],
     })],
