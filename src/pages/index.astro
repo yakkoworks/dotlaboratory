@@ -1,11 +1,36 @@
----
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+const sections = [
+{
+	title: 'YakkoWorks StarMap',
+	description: '技術ドキュメント／ポートフォリオ',
+	href: '/starmap/',
+},
+];
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>dotlaboratory</title>
+</head>
+<body>
+	<main>
+		<h1>dotlaboratory</h1>
+		<p>I always want to be creating something.<br>いつもなにかをつくっていたい🌞</p>
+		
+		<nav aria-label="コンテンツ一覧">
+			<ul>
+				{sections.map((section) => (
+					<li>
+						<a href={section.href}>{section.title}</a>
+						<p>{section.description}</p>
+					</li>
+					))}
+				</ul>
+			</nav>
+		</main>
+	</body>
+	</html>
+	
