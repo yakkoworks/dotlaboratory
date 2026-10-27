@@ -16,7 +16,7 @@ export default defineConfig({
         components: {
             Head: './src/components/Head.astro',
             PageTitle: './src/components/PageTitle.astro',
-            
+            Sidebar: './src/components/StarlightSidebar.astro',
         },
         logo: {
             src: './src/assets/dotlaboratory.png',

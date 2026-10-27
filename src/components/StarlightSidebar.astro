@@ -1,0 +1,50 @@
+
+---
+import SidebarItem from './navigation/StarlightSidebarItem.astro';
+import MobileMenuFooter from '@astrojs/starlight/components/MobileMenuFooter.astro';
+import { navigation } from '../navigation/config';
+
+const { sidebar } = Astro.locals.starlightRoute;
+
+// 共通設定からカテゴリのURLを取得
+const groupHrefs: Record<string, string> = {};
+
+for (const section of navigation) {
+    if ('children' in section) {
+        groupHrefs[section.label] = section.href;
+
+        for (const item of section.children) {
+            if ('href' in item) {
+                groupHrefs[
+                    `${section.label}/${item.label}`
+                ] = item.href;
+            }
+        }
+    }
+}
+---
+
+<nav aria-label="サイト内ナビゲーション">
+    <ul class="sidebar-list">
+        {sidebar.map((entry, index) => (
+            <SidebarItem
+                entry={entry}
+                groupHrefs={groupHrefs}
+                path=""
+                nodeId={`sidebar-${index}`}
+            />
+        ))}
+    </ul>
+</nav>
+
+<div class="md:sl-hidden">
+    <MobileMenuFooter />
+</div>
+
+<style>
+    .sidebar-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+</style>
