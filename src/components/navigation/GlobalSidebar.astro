@@ -1,0 +1,19 @@
+
+---
+import { resolveNavigation } from '../../navigation/resolve';
+
+const navigation = await resolveNavigation();
+---
+
+<nav aria-label="サイト内ナビゲーション">
+    <ul>
+        <!-- {navigation.map((item) => (
+            <li>
+                {item.href
+                    ? <a href={item.href}>{item.label}</a>
+                    : <span>{item.label}</span>
+                }
+            </li>
+        ))} -->
+    </ul>
+</nav>

@@ -7,6 +7,7 @@ const sections = [
 	href: '/starmap/',
 },
 ];
+import GlobalSidebar from '../components/navigation/GlobalSidebar.astro';
 ---
 
 <html lang="ja">
@@ -19,7 +20,7 @@ const sections = [
 	<main>
 		<h1>dotlaboratory</h1>
 		<p>I always want to be creating something.<br>いつもなにかをつくっていたい🌞</p>
-		
+		<GlobalSidebar />
 		<nav aria-label="コンテンツ一覧">
 			<ul>
 				{sections.map((section) => (
