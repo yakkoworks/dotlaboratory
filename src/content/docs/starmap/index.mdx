@@ -1,8 +1,25 @@
 ---
-title: YakkoWorks StarMap
-description: dotlaboratoryの技術ドキュメントとポートフォリオ
+title: YakkoWorks - StarMap
+description: I always want to be creating something. 🌞
+tableOfContents: false
+# template: splash # Remove or comment out this line to display the site sidebar on this page.
+hero:
+  tagline: I always want to be creating something. <br>いつもなにかをつくっていたい🌞
+  image:
+    file: ../../../assets/dotlaboratory.png
 ---
 
-# Welcome to StarMap!
+import { CardGrid, LinkCard } from "@astrojs/starlight/components";
 
-ここはdotlaboratoryの技術資料室です
+<CardGrid>
+  <LinkCard
+    title="🧊 3D Modeling"
+    href="./3dmodeling/"
+    description="VRoid Studio／Blender"
+  />
+  <LinkCard
+    title="💻 Development"
+    href="./development/"
+    description="Frontend／Cordova…"
+  />
+</CardGrid>

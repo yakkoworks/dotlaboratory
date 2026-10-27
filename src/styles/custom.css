@@ -1,0 +1,94 @@
+/* フォントA */
+@font-face {
+  font-family: 'Mejiro';
+  src: url('../fonts/Mejiro-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* フォントB */
+@font-face {
+  font-family: 'NotoColorEmoji';
+  src: url('../fonts/NotoColorEmoji-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* body */
+html {
+  font-size: clamp(12px, 4vw, 15px); 
+}
+
+/* Starlight全体に適用 */
+:root {
+  --sl-font: 'Mejiro', 'NotoColorEmoji', sans-serif;
+}
+
+/* StarMap - Starlight Dark Theme */
+
+:root[data-theme='dark'] {
+  /* アクセントカラー：星明かりの琥珀色 */
+  --sl-color-accent-low: #45320d;
+  --sl-color-accent: #f4b942;
+  --sl-color-accent-high: #ffe4a0;
+  
+  /* 背景色：ほんのり暖色の夜空 */
+  --sl-color-bg: #181715;
+  --sl-color-bg-nav: #211e19;
+  --sl-color-bg-sidebar: #211e19;
+  
+  /* 境界線 */
+  --sl-color-hairline: #383126;
+  
+}
+
+/* リンクカード */
+.sl-link-card {
+  background-color: var(--sl-color-accent-high);
+  container-type: inline-size;
+}
+.sl-link-card:hover {
+  background-color: var(--sl-color-accent-high);
+}
+.sl-link-card .title{
+  color: var(--sl-color-bg);
+}
+.sl-link-card .description{
+  color: var(--sl-color-gray-6);
+  font-size: small;
+  /* text-align: center; */
+}
+.sl-link-card .icon{
+  color: var(--sl-color-gray-6);
+}
+
+/* Lightbox対象の画像 */
+.sl-markdown-content a.glightbox img {
+  cursor: zoom-in;
+}
+
+/* キーボード操作時のフォーカス表示 */
+.sl-markdown-content a.glightbox:focus-visible {
+  outline: 2px solid var(--sl-color-accent-high);
+  outline-offset: 4px;
+}
+
+/* ページタイトル */
+.page-overview-wrapper{
+  margin-bottom: 0 !important;
+}
+.glightbox-clean .gslide-description{
+  display: none;
+}
+
+/* スマホ版 */
+@media (max-width: 50rem) {
+  /* ハンバーガーボタン */
+  button.sl-menu-button  {
+    background-color: var(--sl-color-accent-high);
+    color: var(--sl-color-bg);
+    border-color: var(--sl-color-accent-high);
+  }
+}

@@ -1,0 +1,71 @@
+---
+title: YakkoWorks StarMap
+description: 20261022_Astro Starlight
+---
+
+## 記事をautogenerateの対象外にする
+対象外とする記事の Front Matter に `sidebar` キーを追加します<br />
+※StarMapでは各カテゴリのindexページにこの記述をしています
+```mdx
+---
+sidebar:
+  hidden: true
+---
+```
+
+
+
+
+## mdxファイルの自動整形
+
+VSCodeに「Prettier」を導入し<br />
+設定ファイルに以下を追記することでmdxの自動整形が行えるようになりました
+
+```
+	// settings.json
+   "[mdx]": {
+    "editor.autoIndent": "advanced",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  }
+```
+
+### 自動整形が厳格すぎるとき
+
+1行で書かないと,Astro Starlight側に正しく認識されない部分や<br />
+リスト,番号付きリストが強制的に1行化されてしまうことがありますが<br />
+これらは前後に空行を挟むことで回避可能です<br />
+
+```mdx
+// orderedList.mdx
+
+<Steps>
+
+1. アクセサリーのオブジェクトを選択＞プロパティエディタから「データ」を開く
+2. 「頂点グループ」の項目から「J_Bip_C_UpperChest」を探す
+3. 右のアイコンからロックをかける
+4. 操作パネルの「▽」から「未ロックグループをすべて削除」を選択
+
+</Steps>
+```
+
+### 一部を自動整形の対象外とする
+
+1行で書かないと,Astro Starlight側に正しく認識されないpタグ等の前には
+
+```mdx
+// prettier-ignore.mdx
+{/* <!-- prettier-ignore --> */}
+```
+
+を挟めば自動整形されなくなります<br />
+
+<br />
+複数行にわたる場合は
+```mdx
+// prettier-ignore-multiline.mdx
+{/* <!-- prettier-ignore-start --> */}
+自動整形から除外したい記述
+{/* <!-- prettier-ignore-end --> */}
+```
+こうすればOKです

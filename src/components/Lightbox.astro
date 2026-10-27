@@ -1,0 +1,45 @@
+<script>
+	import GLightbox from 'glightbox';
+	import 'glightbox/dist/css/glightbox.css';
+	
+	function setupLightbox() {
+		// 記事本文に含まれる画像だけを取得
+		const images = document.querySelectorAll<HTMLImageElement>(
+			'.sl-markdown-content img:not([data-no-lightbox])'
+			);
+			
+			for (const img of images) {
+				// 二重処理を防止
+				if (img.closest('a.glightbox')) continue;
+				
+				// リンク付き画像は既存のリンク動作を優先
+				if (img.closest('a')) continue;
+				
+				// 画像を囲むリンクを作成
+				const link = document.createElement('a');
+				
+				link.href = img.currentSrc || img.src;
+				link.classList.add('glightbox');
+				link.setAttribute('aria-label', img.alt || '画像を拡大');
+				
+				img.parentNode?.insertBefore(link, img);
+				link.appendChild(img);
+			}
+			
+			// Lightboxを初期化
+			GLightbox({
+				selector: '.glightbox',
+				touchNavigation: true,
+				loop: false,
+			});
+		}
+		
+		// ページ読み込み後に実行
+		if (document.readyState === 'loading') {
+			document.addEventListener('DOMContentLoaded', setupLightbox, {
+				once: true,
+			});
+		} else {
+			setupLightbox();
+		}
+	</script>

@@ -1,0 +1,48 @@
+---
+import Default from '@astrojs/starlight/components/PageTitle.astro';
+import { Image } from 'astro:assets';
+
+const { entry } = Astro.locals.starlightRoute;
+const { description, cover } = entry.data;
+---
+
+<Default><slot /></Default>
+
+<div class="page-overview-wrapper">
+  {description && <p class="page-description">{description}</p>}
+  
+  {cover && (
+    <div class="page-thumbnail">
+      <Image 
+      // data-image-component="true"
+      class="glightbox"
+      src={cover} 
+      alt={entry.data.title} 
+      width={3200} 
+      // height={450} 
+      quality="high"
+      />
+    </div>
+    )}
+  </div>
+  
+  <style>
+    .page-overview-wrapper {
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+    }
+    .page-description {
+      /* font-size: var(--sl-text-lg); */
+      color: var(--sl-color-gray-3);
+      line-height: 1.6;
+      white-space: pre-line;
+      margin-bottom: 1rem !important;
+    }
+    .page-thumbnail img {
+      width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      object-fit: cover;
+    }
+  </style>
+  
