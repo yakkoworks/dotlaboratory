@@ -14,16 +14,15 @@
 .home-navigation .group-heading span {
 	display: block;
 	padding: 0.3rem;
-	color: var(--sl-color-gray-2);
 	text-decoration: none;
 }
 
 .home-navigation a:hover {
-	color: var(--sl-color-white);
+	color: var(--color-white);
 }
 
 .home-navigation a[aria-current="page"] {
-	color: var(--sl-color-text-accent);
+	color: var(--color-accent);
 	font-weight: bold;
 }
 
