@@ -9,6 +9,7 @@ interface Props {
 
 const { item, nodeId } = Astro.props;
 const hasChildren = Boolean(item.children?.length);
+const initiallyExpanded = item.href === '/starmap/';
 ---
 
 <li>
@@ -24,7 +25,7 @@ const hasChildren = Boolean(item.children?.length);
                 type="button"
                 data-sidebar-toggle
                 aria-controls={nodeId}
-                aria-expanded="false"
+                aria-expanded={initiallyExpanded}
                 aria-label={`${item.label}の開閉`}
             >
                 ▸
@@ -33,7 +34,7 @@ const hasChildren = Boolean(item.children?.length);
     </div>
 
     {hasChildren && (
-        <ul id={nodeId} hidden>
+        <ul id={nodeId} hidden={!initiallyExpanded}>
             {item.children?.map((child, index) => (
                 <Astro.self
                     item={child}

@@ -5,7 +5,7 @@ export const navigation = [
         href: '/',
     },
     {
-        label: '🪐 StarMap',
+        label: '🪐 YakkoWorks StarMap',
         href: '/starmap/',
         children: [
             {

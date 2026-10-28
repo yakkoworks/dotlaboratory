@@ -6,6 +6,7 @@ import { navigation } from './config';
 export type NavigationItem = {
 	label: string;
 	href?: string;
+	defaultExpanded?:boolean;
 	children?: NavigationItem[];
 };
 
