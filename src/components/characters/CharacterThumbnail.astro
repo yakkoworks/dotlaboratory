@@ -5,15 +5,17 @@ interface Props {
 	thumb: ImageMetadata;
 	thumbAlt:string;
 	sign: ImageMetadata;
+	charaId:string
 }
 const {
 	thumb,
 	thumbAlt,
 	sign,
+	charaId,
 }  = Astro.props;
 ---
 
-<div class="character-thumb">
+<div class="character-thumb" data-chara-id={charaId}>
 	<div class="character-thumb-layer-bg">
 		<Image src={thumb} alt={thumbAlt} class="character-thumb-bg" />
 	</div>
