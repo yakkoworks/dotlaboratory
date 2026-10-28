@@ -3,6 +3,7 @@ import { z } from "astro/zod";
 import { glob } from "astro/loaders";
 import { docsLoader } from "@astrojs/starlight/loaders";
 import { docsSchema } from "@astrojs/starlight/schema";
+import { TEAMS } from "./constants/teams";
 
 const docs = defineCollection({
 	loader: docsLoader(),
@@ -19,7 +20,7 @@ const docs = defineCollection({
 const characters = defineCollection({
 	loader: glob({
 		base: "./src/content/characters",
-		pattern: "**/*.md",
+		pattern: "**/*.mdx",
 	}),
 
 	schema: ({ image }) =>
@@ -31,7 +32,11 @@ const characters = defineCollection({
 			cpe: z.string(),
 			themeColor: z.string().optional(),
 			portrait: image(),
-			team: z.number().int().positive(),
+			team: z.union([
+				z.literal(TEAMS.STAR),
+				z.literal(TEAMS.FLOWER),
+				z.literal(TEAMS.YELLOW),
+			]),
 		}),
 });
 export const collections = {
