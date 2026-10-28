@@ -20,7 +20,7 @@ const docs = defineCollection({
 const characters = defineCollection({
 	loader: glob({
 		base: "./src/content/characters",
-		pattern: "**/*.mdx",
+		pattern: '**/*.{md,mdx}',
 	}),
 
 	schema: ({ image }) =>
@@ -32,11 +32,13 @@ const characters = defineCollection({
 			cpe: z.string(),
 			themeColor: z.string().optional(),
 			portrait: image(),
+			thumbnail: image(),
 			team: z.union([
 				z.literal(TEAMS.STAR),
 				z.literal(TEAMS.FLOWER),
 				z.literal(TEAMS.YELLOW),
 			]),
+			order: z.number().int().nonnegative(),
 		}),
 });
 export const collections = {
