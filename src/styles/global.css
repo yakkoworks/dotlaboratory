@@ -1,0 +1,44 @@
+/* フォントA */
+@font-face {
+	font-family: "Mejiro";
+	src: url("../fonts/Mejiro-VariableFont_wght.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+/* フォントB */
+@font-face {
+	font-family: "NotoColorEmoji";
+	src: url("../fonts/NotoColorEmoji-Regular.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+:root {
+	--color-accent-low: #45320d;
+	--color-accent: #f4b942;
+	--color-accent-high: #ffe4a0;
+	--color-bg: #181715;
+	--color-bg-nav: #211e19;
+	--color-bg-sidebar: #211e19;
+	--color-hairline: #383126;
+	--color-white: #ffffff;
+}
+
+body{
+	background-color: var(--color-bg);
+	color: var(--color-white);
+	line-height: 1.2;
+	font-family: 'Mejiro', 'NotoColorEmoji', sans-serif;
+}
+
+ul>li {
+	list-style-type: none;
+}
+
+a{
+	color: var(--color-accent);
+	text-decoration: none;
+}

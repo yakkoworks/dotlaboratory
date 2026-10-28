@@ -29,7 +29,7 @@ export default defineConfig({
 				src: "./src/assets/dotlaboratory.png",
 				replacesTitle: true,
 			},
-			customCss: ["./src/styles/custom.css"],
+			customCss: ["./src/styles/starlight.css"],
 			sidebar: starlightSidebar,
 		}),
 	],

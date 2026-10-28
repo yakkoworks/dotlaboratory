@@ -1,37 +1,31 @@
-
 ---
-const sections = [
-{
-	title: 'YakkoWorks StarMap',
-	description: '技術ドキュメント／ポートフォリオ',
-	href: '/starmap/',
-},
-];
-import GlobalSidebar from '../components/navigation/GlobalSidebar.astro';
+import '../styles/global.css'
+import GlobalSidebar from "../components/navigation/GlobalSidebar.astro";
 ---
 
 <html lang="ja">
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width" />
-	<title>dotlaboratory</title>
-</head>
-<body>
-	<main>
-		<h1>dotlaboratory</h1>
-		<p>I always want to be creating something.<br>いつもなにかをつくっていたい🌞</p>
-		<GlobalSidebar />
-		<!-- <nav aria-label="コンテンツ一覧">
-			<ul>
-				{sections.map((section) => (
-					<li>
-						<a href={section.href}>{section.title}</a>
-						<p>{section.description}</p>
-					</li>
-					))}
-				</ul>
-			</nav> -->
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>dotlaboratory</title>
+	</head>
+	<body>
+		<main>
+			<div id="site-title">
+				<h1>dotlaboratory</h1>
+				<p>
+					I always want to be creating something.<br
+					/>いつもなにかをつくっていたい🌞
+				</p>
+			</div>
+			<GlobalSidebar />
 		</main>
 	</body>
-	</html>
-	
+</html>
+
+<style>
+	#site-title {
+		text-align: center;
+		line-height: 1.8;
+	}
+</style>
