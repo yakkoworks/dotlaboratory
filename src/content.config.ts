@@ -11,6 +11,7 @@ export const collections = {
 				return z.object({
 					// ローカルの画像へと解決されるフィールドを追加します。
 					cover: image().optional(),
+					note:z.string().optional(),
 				});
 			},
 		}),
