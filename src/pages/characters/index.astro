@@ -1,47 +1,51 @@
 
 ---
 import { getCollection } from 'astro:content';
-
+import CharacterThumbnail  from '../../components/characters/CharacterThumbnail.astro';
 const characters = await getCollection('characters');
 
 const teams = [
-    { id: 1, name: 'TwinkleSparkle' },
-    { id: 2, name: 'DayDreamers' },
-    { id: 3, name: 'RadiantDaze' },
+{ id: 1, name: 'TwinkleSparkle' },
+{ id: 2, name: 'DayDreamers' },
+{ id: 3, name: 'RadiantDaze' },
 ];
 
 const charactersByTeam = teams.map(team => ({
     ...team,
     members: characters
-        .filter(character => character.data.team === team.id)
-        .sort((a, b) => a.data.order - b.data.order),
+    .filter(character => character.data.team === team.id)
+    .sort((a, b) => a.data.order - b.data.order),
 }));
 ---
 
 <html lang="ja">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <title>やっこキャラズ | dotlaboratory</title>
-    </head>
-    <body>
-        <h1>やっこキャラズ</h1>
-
-        {charactersByTeam.map(team => (
-            <section>
-                <h2>{team.name}</h2>
-
-                <ul>
-                    {team.members.map(character => (
-                        <li>
-                            <a href={`/characters/${character.id}/`}>
-                                {character.data.em}
-                                {character.data.name}
-                            </a>
-                        </li>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>やっこキャラズ | dotlaboratory</title>
+</head>
+<body>
+    <h1>やっこキャラズ</h1>
+    
+    {charactersByTeam.map(team => (
+        <section>
+            <h2>{team.name}</h2>
+            
+            <ul>
+                {team.members.map(character => (
+                    <li>
+                        <a href={`/characters/${character.id}/`}>
+                            <CharacterThumbnail
+                            thumb={character.data.thumbnail}
+                            thumbAlt={character.data.name}
+                            sign={character.data.sign}
+                            />
+                        </a>
+                    </li>
                     ))}
                 </ul>
             </section>
-        ))}
-    </body>
-</html>
+            ))}
+        </body>
+        </html>
+        

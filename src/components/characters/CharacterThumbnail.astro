@@ -1,0 +1,53 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from 'astro';
+interface Props {
+	thumb: ImageMetadata;
+	thumbAlt:string;
+	sign: ImageMetadata;
+}
+const {
+	thumb,
+	thumbAlt,
+	sign,
+}  = Astro.props;
+---
+
+<div class="character-thumb">
+	<div class="character-thumb-layer-bg">
+		<Image src={thumb} alt={thumbAlt} class="character-thumb-bg" />
+	</div>
+	<div class="character-thumb-layer-fr">
+		<Image src={sign} alt="" class="character-thumb-fr" />
+	</div>
+</div>
+
+<style>
+	.character-thumb{
+		position: relative;
+		width: 200px;
+		height: 200px;
+		overflow: hidden;
+	}
+	.character-thumb-layer-bg,.character-thumb-layer-fr{
+		position: absolute;
+		margin: auto;
+	}
+	.character-thumb-layer-bg{
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}
+	.character-thumb-layer-fr{
+		bottom: 0;
+		right: 0;
+	}
+	.character-thumb-bg, .character-thumb-fr{
+		max-width: 100%;
+		height: auto;
+	}
+	.character-thumb-fr{
+		width: 100px;
+	}
+</style>

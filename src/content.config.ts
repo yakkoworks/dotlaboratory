@@ -33,6 +33,7 @@ const characters = defineCollection({
 			themeColor: z.string().optional(),
 			portrait: image(),
 			thumbnail: image(),
+			sign: image(),
 			team: z.union([
 				z.literal(TEAMS.STAR),
 				z.literal(TEAMS.FLOWER),
