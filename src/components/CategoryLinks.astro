@@ -1,0 +1,42 @@
+---
+// src/components/CategoryLinks.astro
+import { getCollection } from "astro:content";
+import { LinkCard, CardGrid } from "@astrojs/starlight/components";
+
+// MDX側から「どのカテゴリを表示するか」を受け取るためのProps定義
+interface Props {
+	category: string;
+}
+
+const { category } = Astro.props;
+
+// Starlight の 'docs' コレクションから、特定のカテゴリに属する記事をフィルタリング
+const allDocs = await getCollection("docs");
+// console.log(allDocs);
+const filteredDocs = allDocs.filter((doc) => {
+	// 1. 指定された親カテゴリ配下のフォルダにあるか
+	const isInPrefix = doc.id.includes(`${category}/`);
+
+	// 2. スラッシュが2つ以上含まれているか
+	const slashCount = doc.id.split("/").length - 1;
+	const hasMultipleSlashes = slashCount >= 2;
+
+	// 3. index ページではないか
+	const isNotIndex = !doc.id.endsWith("index");
+
+	// すべての条件を満たすものだけを返す
+	return isInPrefix && hasMultipleSlashes && isNotIndex;
+});
+---
+
+<CardGrid>
+	{
+		filteredDocs.map((doc) => (
+			<LinkCard
+				title={doc.data.title}
+				href={`/${doc.id}/`}
+				description={doc.data.description}
+			/>
+		))
+	}
+</CardGrid>
