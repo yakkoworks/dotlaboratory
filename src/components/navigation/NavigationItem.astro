@@ -4,23 +4,65 @@ import type { NavigationItem } from '../../navigation/resolve';
 
 interface Props {
     item: NavigationItem;
+    nodeId: string;
 }
 
-const { item } = Astro.props;
+const { item, nodeId } = Astro.props;
+const hasChildren = Boolean(item.children?.length);
 ---
 
 <li>
-    {
-        item.href
-            ? <a href={item.href}>{item.label}</a>
-            : <span>{item.label}</span>
-    }
+    <div class="group-heading">
+        {
+            item.href
+                ? <a href={item.href}>{item.label}</a>
+                : <span>{item.label}</span>
+        }
 
-    {item.children && item.children.length > 0 && (
-        <ul>
-            {item.children.map(child => (
-                <Astro.self item={child} />
+        {hasChildren && (
+            <button
+                type="button"
+                data-sidebar-toggle
+                aria-controls={nodeId}
+                aria-expanded="false"
+                aria-label={`${item.label}の開閉`}
+            >
+                ▸
+            </button>
+        )}
+    </div>
+
+    {hasChildren && (
+        <ul id={nodeId} hidden>
+            {item.children?.map((child, index) => (
+                <Astro.self
+                    item={child}
+                    nodeId={`${nodeId}-${index}`}
+                />
             ))}
         </ul>
     )}
 </li>
+
+<script>
+    document.addEventListener('click', (event) => {
+        if (!(event.target instanceof Element)) return;
+
+        const button = event.target.closest<HTMLButtonElement>(
+            '[data-sidebar-toggle]'
+        );
+
+        if (!button) return;
+
+        const id = button.getAttribute('aria-controls');
+        const target = id && document.getElementById(id);
+
+        if (!target) return;
+
+        const expanded =
+            button.getAttribute('aria-expanded') === 'true';
+
+        button.setAttribute('aria-expanded', String(!expanded));
+        target.hidden = expanded;
+    });
+</script>

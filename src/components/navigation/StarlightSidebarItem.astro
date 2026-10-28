@@ -1,158 +1,145 @@
-
 ---
-type SidebarEntry =
-    (typeof Astro.locals.starlightRoute.sidebar)[number];
+type SidebarEntry = (typeof Astro.locals.starlightRoute.sidebar)[number];
 
 interface Props {
-    entry: SidebarEntry;
-    groupHrefs: Record<string, string>;
-    path: string;
-    nodeId: string;
+	entry: SidebarEntry;
+	groupHrefs: Record<string, string>;
+	path: string;
+	nodeId: string;
 }
 
 const { entry, groupHrefs, path, nodeId } = Astro.props;
 
-const currentPath = path
-    ? `${path}/${entry.label}`
-    : entry.label;
+const currentPath = path ? `${path}/${entry.label}` : entry.label;
 
 const href = groupHrefs[currentPath];
 
 function containsCurrent(item: SidebarEntry): boolean {
-    return item.type === 'link'
-        ? item.isCurrent
-        : item.entries.some(containsCurrent);
+	return item.type === "link"
+		? item.isCurrent
+		: item.entries.some(containsCurrent);
 }
 
 const hasActiveGroupPage = Object.entries(groupHrefs).some(
-    ([key, url]) =>
-        (key === currentPath ||
-         key.startsWith(`${currentPath}/`)) &&
-        url === Astro.url.pathname
+	([key, url]) =>
+		(key === currentPath || key.startsWith(`${currentPath}/`)) &&
+		url === Astro.url.pathname,
 );
 
-const expanded = entry.type === 'group' &&
-    (
-        !entry.collapsed ||
-        containsCurrent(entry) ||
-        hasActiveGroupPage
-    );
+const expanded =
+	entry.type === "group" &&
+	(!entry.collapsed || containsCurrent(entry) || hasActiveGroupPage);
 ---
 
 <li>
-    {entry.type === 'link' ? (
-        <a
-            href={entry.href}
-            aria-current={entry.isCurrent ? 'page' : undefined}
-        >
-            {entry.label}
-        </a>
-    ) : (
-        <>
-            <div class="group-heading">
-                {href ? (
-                    <a href={href}>{entry.label}</a>
-                ) : (
-                    <span>{entry.label}</span>
-                )}
+	{
+		entry.type === "link" ? (
+			<a href={entry.href} aria-current={entry.isCurrent ? "page" : undefined}>
+				{entry.label}
+			</a>
+		) : (
+			<>
+				<div class="group-heading">
+					{href ? <a href={href}>{entry.label}</a> : <span>{entry.label}</span>}
 
-                <button
-                    type="button"
-                    data-sidebar-toggle
-                    aria-controls={nodeId}
-                    aria-expanded={expanded}
-                    aria-label={`${entry.label}の開閉`}
-                >
-                    ▸
-                </button>
-            </div>
+					<button
+						type="button"
+						data-sidebar-toggle
+						aria-controls={nodeId}
+						aria-expanded={expanded}
+						aria-label={`${entry.label}の開閉`}
+					>
+						▸
+					</button>
+				</div>
 
-            <ul id={nodeId} hidden={!expanded}>
-                {entry.entries.map((child, index) => (
-                    <Astro.self
-                        entry={child}
-                        groupHrefs={groupHrefs}
-                        path={currentPath}
-                        nodeId={`${nodeId}-${index}`}
-                    />
-                ))}
-            </ul>
-        </>
-    )}
+				<ul id={nodeId} hidden={!expanded}>
+					{entry.entries.map((child, index) => (
+						<Astro.self
+							entry={child}
+							groupHrefs={groupHrefs}
+							path={currentPath}
+							nodeId={`${nodeId}-${index}`}
+						/>
+					))}
+				</ul>
+			</>
+		)
+	}
 </li>
 
 <script>
-    document.addEventListener('click', (event) => {
-        if (!(event.target instanceof Element)) return;
+	document.addEventListener("click", (event) => {
+		if (!(event.target instanceof Element)) return;
 
-        const button = event.target.closest<HTMLButtonElement>(
-            '[data-sidebar-toggle]'
-        );
+		const button = event.target.closest<HTMLButtonElement>(
+			"[data-sidebar-toggle]",
+		);
 
-        if (!button) return;
+		if (!button) return;
 
-        const id = button.getAttribute('aria-controls');
-        const target = id && document.getElementById(id);
+		const id = button.getAttribute("aria-controls");
+		const target = id && document.getElementById(id);
 
-        if (!target) return;
+		if (!target) return;
 
-        const expanded =
-            button.getAttribute('aria-expanded') === 'true';
+		const expanded = button.getAttribute("aria-expanded") === "true";
 
-        button.setAttribute('aria-expanded', String(!expanded));
-        target.hidden = expanded;
-    });
+		button.setAttribute("aria-expanded", String(!expanded));
+		target.hidden = expanded;
+	});
 </script>
 
 <style>
-    li {
-        list-style: none;
-        margin: 0;
-    }
+	li {
+		list-style: none;
+		margin: 0;
+	}
 
-    .group-heading {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 0.5rem;
-    }
+	.group-heading {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.5rem;
+	}
 
-    a, .group-heading span {
-        display: block;
-        padding: 0.3rem;
-        color: var(--sl-color-gray-2);
-        text-decoration: none;
-    }
+	a,
+	.group-heading span {
+		display: block;
+		padding: 0.3rem;
+		color: var(--sl-color-gray-2);
+		text-decoration: none;
+	}
 
-    a:hover {
-        color: var(--sl-color-white);
-    }
+	a:hover {
+		color: var(--sl-color-white);
+	}
 
-    a[aria-current='page'] {
-        color: var(--sl-color-text-accent);
-        font-weight: bold;
-    }
+	a[aria-current="page"] {
+		color: var(--sl-color-text-accent);
+		font-weight: bold;
+	}
 
-    button {
-        background: transparent;
-        border: 0;
-        color: inherit;
-        cursor: pointer;
-        min-width: 2rem;
-        min-height: 2rem;
-    }
+	button {
+		background: transparent;
+		border: 0;
+		color: inherit;
+		cursor: pointer;
+		min-width: 2rem;
+		min-height: 2rem;
+	}
 
-    button[aria-expanded='true'] {
-        transform: rotate(90deg);
-    }
+	button[aria-expanded="true"] {
+		transform: rotate(90deg);
+	}
 
-    ul {
-        margin: 0 0 0 0.5rem;
-        padding-left: 0.75rem;
-        border-left: 1px solid var(--sl-color-hairline-light);
-    }
+	ul {
+		margin: 0 0 0 0.5rem;
+		padding-left: 0.75rem;
+		border-left: 1px solid var(--sl-color-hairline-light);
+	}
 
-    ul[hidden] {
-        display: none;
-    }
+	ul[hidden] {
+		display: none;
+	}
 </style>
