@@ -16,14 +16,22 @@
   font-display: swap;
 }
 
-/* body */
-html {
-  font-size: clamp(12px, 4vw, 15px); 
-}
-
 /* Starlight全体に適用 */
 :root {
   --sl-font: 'Mejiro', 'NotoColorEmoji', sans-serif;
+  
+  --sl-text-base: clamp(0.9375rem, 0.88rem + 0.25vw, 1.0625rem);
+  
+  /* 小さなテキスト */
+  --sl-text-sm: clamp(0.8rem, 0.77rem + 0.15vw, 0.875rem);
+  --sl-text-xs: clamp(0.7rem, 0.68rem + 0.1vw, 0.75rem);
+
+  /* 見出し (h1 ~ h5 に対応する変数) */
+  --sl-text-h1: clamp(2rem, 1.6rem + 1.8vw, 3rem);     /* 32px ~ 48px */
+  --sl-text-h2: clamp(1.5rem, 1.3rem + 1vw, 2rem);      /* 24px ~ 32px */
+  --sl-text-h3: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem); /* 20px ~ 24px */
+  --sl-text-h4: clamp(1.125rem, 1.08rem + 0.2vw, 1.25rem);
+  --sl-text-h5: clamp(1rem, 1rem + 0vw, 1.125rem);
 }
 
 /* StarMap - Starlight Dark Theme */
@@ -76,11 +84,18 @@ html {
 }
 
 /* ページタイトル */
-.page-overview-wrapper{
-  margin-bottom: 0 !important;
-}
 .glightbox-clean .gslide-description{
   display: none;
+}
+
+/* h1 のフォントサイズ*/
+.sl-container h1{
+  font-size: var(--sl-text-h2);
+}
+
+/* サイドバーのフォントサイズ */
+.sidebar-content{
+  font-size: var(--sl-text-sm);
 }
 
 /* スマホ版 */
