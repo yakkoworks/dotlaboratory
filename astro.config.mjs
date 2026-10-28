@@ -30,7 +30,7 @@ export default defineConfig({
             src: "./src/assets/dotlaboratory.png",
             replacesTitle: true,
         },
-        customCss: ["./src/styles/starlight.css"],
+        customCss: ["./src/styles/starmap.css"],
         sidebar: starlightSidebar,
 		}), mdx()],
 });
