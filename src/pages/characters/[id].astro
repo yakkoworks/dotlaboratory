@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import { getCollection, render } from "astro:content";
 import { TEAM_NAMES } from '../../constants/teams';
+import CharacterPortrait from "../../components/characters/CharacterPortrait.astro";
 
 export async function getStaticPaths() {
     const characters = await getCollection('characters');
@@ -12,8 +13,9 @@ export async function getStaticPaths() {
             character,
             teamMembers: characters
             .filter(member =>
-            member.data.team === character.data.team &&
-            member.id !== character.id
+            member.data.team === character.data.team
+            // member.data.team === character.data.team &&
+            // member.id !== character.id
             )
             .sort((a, b) => a.data.order - b.data.order),
         },
@@ -22,7 +24,7 @@ export async function getStaticPaths() {
 const { character, teamMembers } = Astro.props;
 const { Content } = await render(character);
 const teamName = TEAM_NAMES[
-    character.data.team as keyof typeof TEAM_NAMES
+character.data.team as keyof typeof TEAM_NAMES
 ];
 ---
 
@@ -34,31 +36,49 @@ const teamName = TEAM_NAMES[
     <title>{character.data.name}</title>
 </head>
 <body>
-    <article data-character-profile>
-        <h1>{character.data.name}</h1>
-        <Image
-        src={character.data.portrait}
-        alt={`${character.data.name}`}
-        width={400}
-        />
-        <Content />
-    {teamMembers.length > 0 && (
-        <nav aria-label="同じチームのキャラクター">
-            <h2>{teamName}</h2>
-            <ul>
-                {teamMembers.map(member => (
+    <article data-character-profile  class={`team${character.data.team} character-profile`}>
+        <div class="character-profile-content">
+                <Image
+                class='character-profile-portrait'
+                src={character.data.portrait}
+                alt={`${character.data.name}`}
+                width={400}
+                />
+            <div class="character-profile-detail">
+                <Content />
+            </div>
+        </div>
+        {teamMembers.length > 0 && (
+            <nav aria-label={teamName} id="team-members">
+                <h2>{teamName}</h2>
+                <ul>
+                    {teamMembers.map(member => (
+                        (member.id != character.id) ?
+                        <li>
+                            <a
+                            href={`/characters/${member.id}/`}
+                            data-character-link
+                            >
+                            {/* {member.data.em} {member.data.name} */}
+                            <CharacterPortrait 
+                            portrait={member.data.portrait}
+                            portraitAlt={member.data.name}
+                            em={member.data.em} />
+                        </a>
+                    </li>
+                    :
                     <li>
-                        <a
-                        href={`/characters/${member.id}/`}
-                        data-character-link
-                        >
-                        {member.data.em} {member.data.name}
-                    </a>
-                </li>
-                ))}
-            </ul>
-        </nav>
-        )}
-    </article>
+                        <CharacterPortrait 
+                        portrait={member.data.portrait}
+                        portraitAlt={member.data.name}
+                        em={member.data.em} />
+                        
+                    </li>
+                    ))}
+                </ul>
+            </nav>
+            )}
+        </article>
     </body>
     </html>
+    

@@ -1,0 +1,68 @@
+.character-profile{
+    height: inherit;
+    width: 100%;
+    overflow: hidden;
+}
+
+.character-profile h1{
+    text-align: center;
+}
+
+.character-profile-content{
+    position: relative;
+    height: 60%;
+    overflow: hidden;
+}
+.character-profile-content div{
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.character-profile-portrait{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+#team-members{
+    height: 30%;
+    overflow: hidden;
+}
+#team-members ul{
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+#team-members li {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    /* height: 120px; */
+}
+
+.character-portrait{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+.character-portrait-em{
+    margin: 0;
+}
+
+.character-portrait-chara{
+    width: 100%;
+    object-fit: cover;
+}
+
+#team-members h2{
+    text-align: center;
+    margin: 1rem 0 ;
+}

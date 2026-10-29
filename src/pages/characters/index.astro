@@ -4,6 +4,8 @@ import { getCollection } from 'astro:content';
 import CharacterThumbnail  from '../../components/characters/CharacterThumbnail.astro';
 import CharacterModal from '../../components/characters/CharacterModal.astro';
 const characters = await getCollection('characters');
+import '../../styles/character.css';
+import "../../styles/global.css";
 
 const teams = [
 { id: 1, name: 'TwinkleSparkle' },
@@ -42,7 +44,6 @@ const charactersByTeam = teams.map(team => ({
                         thumb={character.data.thumbnail}
                         thumbAlt={character.data.name}
                         sign={character.data.sign}
-                        charaId={character.id}
                         />
                     </a>
                 </li>

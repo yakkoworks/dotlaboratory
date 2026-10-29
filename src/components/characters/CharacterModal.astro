@@ -1,84 +1,114 @@
+---
+import "../../styles/global.css";
+---
 
 <dialog id="characters-modal" aria-label="キャラクター詳細">
     <div id="characters-modal-inner"></div>
-
+    
     <button
-        id="characters-modal-close"
-        type="button"
+    id="characters-modal-close"
+    type="button"
     >
-        閉じる
+    X
     </button>
 </dialog>
 
 <script>
     const modal = document.querySelector<HTMLDialogElement>(
         '#characters-modal'
-    );
-
-    const inner = document.querySelector<HTMLElement>(
-        '#characters-modal-inner'
-    );
-
-    // サムネイルのクリックを検知
-    document.addEventListener('click', async (event) => {
-        if (!(event.target instanceof Element)) return;
-
-        const link = event.target.closest<HTMLAnchorElement>(
-            'a[data-character-link]'
         );
-
-        if (!link || !modal || !inner) return;
-
-        // 通常のページ遷移をキャンセル！
-        event.preventDefault();
-
-        try {
-            // 個別ページのHTMLを取得
-            const response = await fetch(link.href);
-
-            if (!response.ok) {
-                throw new Error(`HTTP ${response.status}`);
-            }
-
-            const html = await response.text();
-
-            // 文字列をHTMLとして解析
-            const document = new DOMParser().parseFromString(
-                html,
-                'text/html'
+        
+        const inner = document.querySelector<HTMLElement>(
+            '#characters-modal-inner'
             );
-
-            // プロフィール部分だけ取り出す
-            const profile = document.querySelector(
-                '[data-character-profile]'
-            );
-
-            if (!profile) {
-                throw new Error('プロフィールが見つからない');
-            }
-
-            // モーダルの中身を更新
-            inner.replaceChildren(profile);
-
-            // モーダルを表示！
-            if (!modal.open) {
-                modal.showModal();
-            }
-
-        } catch (error) {
-            console.error(error);
-            inner.textContent = 'プロフィールを読み込めなかったよ';
-
-            if (!modal.open) {
-                modal.showModal();
-            }
-        }
-    });
-
-    // 閉じるボタン
-    document
-        .querySelector('#characters-modal-close')
-        ?.addEventListener('click', () => {
-            modal?.close();
-        });
-</script>
+            
+            // サムネイルのクリックを検知
+            document.addEventListener('click', async (event) => {
+                if (!(event.target instanceof Element)) return;
+                
+                const link = event.target.closest<HTMLAnchorElement>(
+                    'a[data-character-link]'
+                    );
+                    
+                    if (!link || !modal || !inner) return;
+                    
+                    // 通常のページ遷移をキャンセル！
+                    event.preventDefault();
+                    
+                    try {
+                        // 個別ページのHTMLを取得
+                        const response = await fetch(link.href);
+                        
+                        if (!response.ok) {
+                            throw new Error(`HTTP ${response.status}`);
+                        }
+                        
+                        const html = await response.text();
+                        
+                        // 文字列をHTMLとして解析
+                        const document = new DOMParser().parseFromString(
+                        html,
+                        'text/html'
+                        );
+                        
+                        // プロフィール部分だけ取り出す
+                        const profile = document.querySelector(
+                        '[data-character-profile]'
+                        );
+                        
+                        if (!profile) {
+                            throw new Error('プロフィールが見つからない');
+                        }
+                        
+                        // モーダルの中身を更新
+                        inner.replaceChildren(profile);
+                        
+                        // モーダルを表示！
+                        if (!modal.open) {
+                            modal.showModal();
+                        }
+                        
+                    } catch (error) {
+                        console.error(error);
+                        inner.textContent = 'プロフィールを読み込めなかったよ';
+                        
+                        if (!modal.open) {
+                            modal.showModal();
+                        }
+                    }
+                });
+                
+                // 閉じるボタン
+                document
+                .querySelector('#characters-modal-close')
+                ?.addEventListener('click', () => {
+                    modal?.close();
+                });
+            </script>
+            
+            <style>
+                #characters-modal{
+                    height: 95vh;
+                    width: 95vw;
+                    box-sizing: border-box; 
+                    padding: 0.8rem;
+                    overflow: visible;
+                }
+                #characters-modal-outer{
+                    position: relative;
+                    height: 95vh;
+                    width: 95vw;
+                }  
+                #characters-modal-inner{
+                    height: inherit;
+                }
+                #characters-modal-close{
+                    width: 3rem;
+                    height: 3rem;
+                    border-radius: 50%;
+                    border: 2px solid var(--color-hairline);
+                    position: absolute;
+                    top: -1rem;
+                    right: -1rem;
+                }
+            </style>

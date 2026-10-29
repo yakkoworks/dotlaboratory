@@ -1,0 +1,21 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from 'astro';
+import '../../styles/character.css';
+
+interface Props {
+	portrait: ImageMetadata;
+	portraitAlt:string;
+	em: string;
+}
+const {
+	portrait,
+	portraitAlt,
+	em,
+}  = Astro.props;
+---
+
+<div class="character-portrait">
+	<p class="character-portrait-em">{em}</p>
+	<Image src={portrait} alt={portraitAlt} class="character-portrait-chara" width={200}/>
+</div>

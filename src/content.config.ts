@@ -3,7 +3,6 @@ import { z } from "astro/zod";
 import { glob } from "astro/loaders";
 import { docsLoader } from "@astrojs/starlight/loaders";
 import { docsSchema } from "@astrojs/starlight/schema";
-import { TEAMS } from "./constants/teams";
 
 const docs = defineCollection({
 	loader: docsLoader(),
@@ -34,11 +33,7 @@ const characters = defineCollection({
 			portrait: image(),
 			thumbnail: image(),
 			sign: image(),
-			team: z.union([
-				z.literal(TEAMS.STAR),
-				z.literal(TEAMS.FLOWER),
-				z.literal(TEAMS.YELLOW),
-			]),
+			team: z.number().int().nonnegative(),
 			order: z.number().int().nonnegative(),
 		}),
 });
