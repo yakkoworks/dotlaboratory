@@ -25,8 +25,8 @@ const {
 <style>
 	.character-thumb{
 		position: relative;
-		width: 200px;
-		height: 200px;
+		width: clamp(40px, 20vw, 100px);
+		height: clamp(40px, 20vw, 100px);
 		overflow: hidden;
 	}
 	.character-thumb-layer-bg,.character-thumb-layer-fr{
@@ -48,6 +48,6 @@ const {
 		height: auto;
 	}
 	.character-thumb-fr{
-		width: 100px;
+		width: clamp(20px, 10vw, 50px);
 	}
 </style>

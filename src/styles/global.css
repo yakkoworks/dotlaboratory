@@ -27,11 +27,16 @@
 	--color-white: #ffffff;
 }
 
+html{
+	/* font-size: 12px; */
+}
+
 body{
 	background-color: var(--color-bg);
 	color: var(--color-white);
 	line-height: 1.2;
-	font-family: 'Mejiro', 'NotoColorEmoji', sans-serif;
+	font-family: 'Mejiro', 'NotoColorEmoji';
+	/* font-size: clamp(1rem, 0.833rem + 0.833vw, 1.5rem); */
 }
 
 ul>li {

@@ -35,6 +35,7 @@ const characters = defineCollection({
 			sign: image(),
 			team: z.number().int().nonnegative(),
 			order: z.number().int().nonnegative(),
+			detail: z.string().optional(),
 		}),
 });
 export const collections = {
