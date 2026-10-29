@@ -1,5 +1,5 @@
-export const TEAMS = {
-    STAR: 1,    // 星組：TwinkleSparkle
-    FLOWER: 2,  // 花組：DayDreamers
-    YELLOW: 3,  // 黄組：RadiantDaze
+export const TEAM_NAMES = {
+    1: 'TwinkleSparkle',
+    2: 'DayDreamers',
+    3: 'RadiantDaze',
 } as const;
