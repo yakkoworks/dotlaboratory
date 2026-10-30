@@ -27,10 +27,6 @@
 	--color-white: #ffffff;
 }
 
-html{
-	/* font-size: 12px; */
-}
-
 body{
 	background-color: var(--color-bg);
 	color: var(--color-white);

@@ -55,15 +55,19 @@ const charactersByTeam = teams.map(team => ({
     </html>
     
     <style>
-        ul.characters-thumbs{
-            list-style: none;
-            display: flex;
-            gap: 0.5rem;
-        }
-        ul.characters-thumbs li{
-            display: inline-flex;
-        }
+
+.characters-thumbs {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+
+    width: min(100%, 760px);
+    list-style: none;
+    padding: 0;
+}
+
+.characters-thumbs li {
+    min-width: 0;
+}
+
     </style>
-    
-    <script>
-    </script>

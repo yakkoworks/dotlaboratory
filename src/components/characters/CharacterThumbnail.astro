@@ -23,11 +23,12 @@ const {
 </div>
 
 <style>
-	.character-thumb{
+	.character-thumb {
 		position: relative;
-		width: clamp(40px, 20vw, 100px);
-		height: clamp(40px, 20vw, 100px);
+		width: 100%;
+		aspect-ratio: 1;
 		overflow: hidden;
+		border-radius: 10%;
 	}
 	.character-thumb-layer-bg,.character-thumb-layer-fr{
 		position: absolute;
@@ -41,13 +42,13 @@ const {
 	}
 	.character-thumb-layer-fr{
 		bottom: 0;
-		right: 0;
+		left: 50%;
 	}
 	.character-thumb-bg, .character-thumb-fr{
 		max-width: 100%;
 		height: auto;
 	}
 	.character-thumb-fr{
-		width: clamp(20px, 10vw, 50px);
+		width: min(100%, 120px);
 	}
 </style>
