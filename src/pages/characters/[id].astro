@@ -3,6 +3,8 @@ import { Image } from "astro:assets";
 import { getCollection, render } from "astro:content";
 import { TEAM_NAMES } from '../../constants/teams';
 import CharacterPortrait from "../../components/characters/CharacterPortrait.astro";
+import "../../styles/global.css";
+import "../../styles/character.css";
 
 export async function getStaticPaths() {
     const characters = await getCollection('characters');

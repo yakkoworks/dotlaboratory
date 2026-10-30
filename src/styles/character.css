@@ -1,9 +1,29 @@
+@font-face {
+	font-family: "MPLUSRounded1c";
+	src: url("../fonts/MPLUSRounded1c-Regular.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+.character-profile-content{
+    font-family: "MPLUSRounded1c","NotoColorEmoji";
+}
+
 .character-profile-header,.character-profile-footer{
     text-align: center;
 }
 
 .character-name{
     font-size: 1.3rem;
+}
+
+.character-detail {
+    line-height: 1.6;
+}
+
+.character-detail p {
+    margin-block: 0 1.2em;
 }
 
 #team-members{
