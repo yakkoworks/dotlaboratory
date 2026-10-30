@@ -98,8 +98,11 @@ import "../../styles/global.css";
                     box-sizing: border-box;
                     padding: 0;
                     overflow: visible;
-                    border-radius: 20px;
+                    border-radius: 10px;
                     border: 3px solid var(--color-hairline);
+
+                    scrollbar-color: var(--color-hairline) transparent; 
+                    scrollbar-width: thin;
                 }
                 
                 @media (max-width: 767px) {
@@ -107,7 +110,9 @@ import "../../styles/global.css";
                         width: calc(100dvw - 1rem);
                     }
                 }
-                
+                #characters-modal::backdrop {
+                    background-color: color-mix(in srgb, var(--color-bg), transparent 5%);
+                }
                 #characters-modal-inner {
                     height: 100%;
                     overflow-y: auto;
@@ -128,4 +133,7 @@ import "../../styles/global.css";
                     border: 2px solid var(--color-hairline);
                 }
                 
+                html:has(dialog[open]) {
+                    overflow: hidden;
+                }
             </style>
