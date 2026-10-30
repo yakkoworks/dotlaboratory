@@ -9,7 +9,7 @@ import "../../styles/global.css";
     id="characters-modal-close"
     type="button"
     >
-    X
+    ×
 </button>
 </dialog>
 
@@ -21,7 +21,9 @@ import "../../styles/global.css";
         const inner = document.querySelector<HTMLElement>(
             '#characters-modal-inner'
             );
-            
+
+            let currentController: AbortController | null = null;
+
             // サムネイルのクリックを検知
             document.addEventListener('click', async (event) => {
                 if (!(event.target instanceof Element)) return;
@@ -34,10 +36,19 @@ import "../../styles/global.css";
                     
                     // 通常のページ遷移をキャンセル！
                     event.preventDefault();
+
+                    // 前の通信が残っていれば中断！
+                    currentController?.abort();
+                    
+                    // 新しい通信のためのControllerを生成
+                    const controller = new AbortController();
+                    currentController = controller;
                     
                     try {
                         // 個別ページのHTMLを取得
-                        const response = await fetch(link.href);
+                        const response = await fetch(link.href, {
+                            signal: controller.signal,
+                        });
                         
                         if (!response.ok) {
                             throw new Error(`HTTP ${response.status}`);
@@ -59,7 +70,9 @@ import "../../styles/global.css";
                         if (!profile) {
                             throw new Error('プロフィールが見つからない');
                         }
-                        
+                        // 意図的に中断した通信なら何もしない
+                        if (controller.signal.aborted) return;
+
                         // モーダルの中身を更新
                         inner.replaceChildren(profile);
                         
@@ -69,6 +82,10 @@ import "../../styles/global.css";
                         }
                         
                     } catch (error) {
+                        
+                        // 意図的に中断した通信なら何もしない
+                        if (controller.signal.aborted) return;
+                        
                         console.error(error);
                         inner.textContent = 'プロフィールを読み込めなかったよ';
                         
@@ -76,14 +93,22 @@ import "../../styles/global.css";
                             modal.showModal();
                         }
                     }
-                });
+                })
                 
-                // 閉じるボタン
+                // 閉じるボタンをクリック
                 document
                 .querySelector('#characters-modal-close')
                 ?.addEventListener('click', () => {
                     modal?.close();
                 });
+
+                // モーダルが閉じられたときにabortする
+                document
+                .querySelector('#characters-modal')
+                ?.addEventListener('close', () => {
+                    currentController?.abort();
+                });
+
             </script>
             
             <style>
@@ -100,7 +125,7 @@ import "../../styles/global.css";
                     overflow: visible;
                     border-radius: 10px;
                     border: 3px solid var(--color-hairline);
-
+                    
                     scrollbar-color: var(--color-hairline) transparent; 
                     scrollbar-width: thin;
                 }
