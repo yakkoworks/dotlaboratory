@@ -38,64 +38,73 @@ const { Content } = await render(character);
     <title>{character.data.name}</title>
 </head>
 <body>
-    <article data-character-profile  class={`team${character.data.team} character-profile`}>
-        <div class="character-profile-content">
-            <Image
-            class='character-profile-portrait'
-            src={character.data.portrait}
-            alt={`${character.data.name}`}
-            width={400}
-            />
-            <div class="character-profile-detail">
-                <div class="character-profile-header">
-                    <p class="character-cpj">{character.data.cpj}</p>
-                    <h1 class="character-name">{character.data.name}</h1>
-                    <p class="character-sname">{character.data.sname}</p>
-                </div>
-                <div class="character-detail">
-                    <Content />
-                </div>
-                <div class="character-profile-footer">
-                    <p class="character-cpe">{character.data.cpe}</p>
-                    <p class="character-em">{character.data.em}</p>
-                </div>
+    <article
+    data-character-profile
+    class={`team${character.data.team} character-profile`}
+    style={{
+        '--portrait-scale': character.data.portraitScale,
+        '--portrait-x': `${character.data.portraitX}px`,
+        '--portrait-y': `${character.data.portraitY}px`,
+    }}
+    >
+    
+    <div class="character-profile-content">
+        <Image
+        class='character-profile-portrait'
+        src={character.data.portrait}
+        alt={`${character.data.name}`}
+        width={640}
+        />
+        <div class="character-profile-detail">
+            <div class="character-profile-header">
+                <p class="character-cpj">{character.data.cpj}</p>
+                <h1 class="character-name">{character.data.name}</h1>
+                <p class="character-sname">{character.data.sname}</p>
+            </div>
+            <div class="character-detail">
+                <Content />
+            </div>
+            <div class="character-profile-footer">
+                <p class="character-cpe">{character.data.cpe}</p>
+                <p class="character-em">{character.data.em}</p>
             </div>
         </div>
-        {teamMembers.length > 0 && (
-            <nav aria-label={teamName} id="team-members">
-                <h2>{teamName}</h2>
-                <ul>
-                    
-                    {teamMembers.map(member => (
-                        <li>
-                            {member.id === character.id ? (
-                                <span class="team-member" aria-current="page">
-                                    <CharacterPortrait
-                                    portrait={member.data.portrait}
-                                    portraitAlt={member.data.name}
-                                    em={member.data.em}
-                                    />
-                                </span>
-                                ) : (
-                                <a
-                                class="team-member"
-                                href={`/characters/${member.id}/`}
-                                data-character-link
-                                >
+    </div>
+    {teamMembers.length > 0 && (
+        <nav aria-label={teamName} id="team-members">
+            <h2>{teamName}</h2>
+            <ul>
+                
+                {teamMembers.map(member => (
+                    <li>
+                        {member.id === character.id ? (
+                            <span class="team-member" aria-current="page">
                                 <CharacterPortrait
                                 portrait={member.data.portrait}
                                 portraitAlt={member.data.name}
                                 em={member.data.em}
                                 />
-                            </a>
-                            )}
-                        </li>
-                        ))}
-                        
-                    </ul>
-                </nav>
-                )}
-            </article>
-        </body>
-        </html>
-        
+                            </span>
+                            ) : (
+                            <a
+                            class="team-member"
+                            href={`/characters/${member.id}/`}
+                            data-character-link
+                            >
+                            <CharacterPortrait
+                            portrait={member.data.portrait}
+                            portraitAlt={member.data.name}
+                            em={member.data.em}
+                            />
+                        </a>
+                        )}
+                    </li>
+                    ))}
+                    
+                </ul>
+            </nav>
+            )}
+        </article>
+    </body>
+    </html>
+    

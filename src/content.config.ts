@@ -21,22 +21,26 @@ const characters = defineCollection({
 		base: "./src/content/characters",
 		pattern: '**/*.{md,mdx}',
 	}),
-
+	
 	schema: ({ image }) =>
 		z.object({
-			name: z.string(),
-			sname: z.string().optional(),
-			em: z.string(),
-			cpj: z.string(),
-			cpe: z.string(),
-			themeColor: z.string().optional(),
-			portrait: image(),
-			thumbnail: image(),
-			sign: image(),
-			team: z.number().int().nonnegative(),
-			order: z.number().int().nonnegative(),
-			description: z.string().optional(),
-		}),
+		name: z.string(),
+		sname: z.string().optional(),
+		em: z.string(),
+		cpj: z.string(),
+		cpe: z.string(),
+		themeColor: z.string().optional(),
+		portrait: image(),
+		thumbnail: image(),
+		sign: image(),
+		team: z.number().int().nonnegative(),
+		order: z.number().int().nonnegative(),
+		description: z.string().optional(),
+		portraitScale: z.number().min(0.5).max(1.6).default(1),
+		portraitX: z.number().default(0),
+		portraitY: z.number().default(0),
+		
+	}),
 });
 export const collections = {
 	docs,
