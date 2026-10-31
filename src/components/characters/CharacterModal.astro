@@ -21,9 +21,9 @@ import "../../styles/global.css";
         const inner = document.querySelector<HTMLElement>(
             '#characters-modal-inner'
             );
-
+            
             let currentController: AbortController | null = null;
-
+            
             // サムネイルのクリックを検知
             document.addEventListener('click', async (event) => {
                 if (!(event.target instanceof Element)) return;
@@ -36,7 +36,7 @@ import "../../styles/global.css";
                     
                     // 通常のページ遷移をキャンセル！
                     event.preventDefault();
-
+                    
                     // 前の通信が残っていれば中断！
                     currentController?.abort();
                     
@@ -72,7 +72,7 @@ import "../../styles/global.css";
                         }
                         // 意図的に中断した通信なら何もしない
                         if (controller.signal.aborted) return;
-
+                        
                         // モーダルの中身を更新
                         inner.replaceChildren(profile);
                         
@@ -101,14 +101,19 @@ import "../../styles/global.css";
                 ?.addEventListener('click', () => {
                     modal?.close();
                 });
-
+                
                 // モーダルが閉じられたときにabortする
-                document
-                .querySelector('#characters-modal')
-                ?.addEventListener('close', () => {
+                modal?.addEventListener('close', () => {
                     currentController?.abort();
                 });
-
+                
+                // モーダルの背景をクリックして閉じる
+                modal?.addEventListener('click', (ev) => {
+                    // console.log(ev)
+                    if (ev.target === modal) {
+                        modal.close();
+                    }
+                })
             </script>
             
             <style>

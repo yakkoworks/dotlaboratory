@@ -18,6 +18,11 @@
     text-align: center;
 }
 
+.character-em {
+    font-size: 3rem;
+    margin: 0;
+}
+
 
 /* PC・スマホ共通 */
 .character-profile-portrait {
@@ -240,11 +245,6 @@
         top: auto;
         z-index: 3;
     }
-    
-    .character-em {
-        font-size: 3rem;
-    }
-    
     /* チームメンバー */
     #team-members {
         padding: 0 0.5rem 0.5rem;
