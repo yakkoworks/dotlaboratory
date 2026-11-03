@@ -5,13 +5,71 @@
     font-style: normal;
     font-display: swap;
 }
-
-.character-profile{
-    background: var(--color-cream);
-    color: var(--color-black);
-    border-radius: 10px;
+@font-face {
+    font-family: "PoiretOne";
+    src: url("../fonts/PoiretOne-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "PrincessSofia";
+    src: url("../fonts/PrincessSofia-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "851tegakiKakutto";
+    src: url("../fonts/851tegakiKakutto.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }
 
+/* PC・スマホ共通 */
+.character-profile{
+    background:var(--color-cream);
+    color: var(--color-black);
+    border-radius: 10px;
+    display: grid;
+}
+
+.character-profile::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    
+    /* キャラクターごとのテーマカラー */
+    background-color: var(--theme-color, #7c99ce);
+    
+    /* 模様の形だけを表示する */
+    mask-image: var(--bg-pattern);
+    mask-repeat: repeat;
+    
+    /* モーダルの角丸に合わせる */
+    border-radius: inherit;
+}
+
+.character-profile.team1::before{
+    mask-size: 320px 160px;
+}
+
+.character-profile.team2::before{
+    mask-size: 402px 594px;
+}
+
+.character-profile.team3::before{
+    mask-size: 768px 768px;
+}
+
+/* 模様よりもプロフィールを前面へ */
+.character-profile > * {
+    position: relative;
+    z-index: 1;
+}
 .character-profile-content{
     font-family: "MPLUSRounded1c","NotoColorEmoji";
 }
@@ -32,7 +90,6 @@
     
 }
 
-/* PC・スマホ共通 */
 .character-profile-portrait {
     transform-origin: center bottom;
     
@@ -51,6 +108,7 @@
 
 .character-detail {
     line-height: 1.6;
+    align-self: center;
 }
 
 .character-detail p {
@@ -67,6 +125,10 @@
     display: flex;
     padding: 0;
     margin: 0;
+    /* background-image: var(--bg-pattern);
+    background-size: contain;
+    background-clip: content-box; */
+    /* background-repeat: round; */
 }
 
 #team-members li {
@@ -91,10 +153,48 @@
 }
 
 #team-members h2{
-    text-align: center;
     margin: 1rem 0 ;
     align-self: center;
+    display: flex !important;
+    align-items: center;
 }
+
+.team1 #team-members h2,.team1 .character-cpe{font-family: "PoiretOne";}
+.team2 #team-members h2,.team2 .character-cpe{font-family: "PrincessSofia";}
+.team3 #team-members h2,.team3 .character-cpe{font-family: "851tegakiKakutto";}
+
+
+#team-members h2::before,
+#team-members h2::after{
+    content: "";
+    flex-grow: 1;
+    height: 2px;
+    background-color: #333;
+    margin: 0 2rem;
+}
+
+.team1 #team-members h2::before{
+    background: linear-gradient(to right,#FF6B6B,#FFCD6B,#6BFF6B,#6BCDFF,#CD6BFF);
+}
+.team1 #team-members h2::after{
+    background: linear-gradient(to left,#FF6B6B,#FFCD6B,#6BFF6B,#6BCDFF,#CD6BFF);
+}
+
+.team2 #team-members h2::before{
+    background: linear-gradient(to right,#991D1D,#870093,#991D1D);
+}
+.team2 #team-members h2::after{
+    background: linear-gradient(to left,#991D1D,#870093,#991D1D);
+}
+
+.team3 #team-members h2::before{
+    background: linear-gradient(to right,#1148DD,#A053AA,#FF9721);
+}
+.team3 #team-members h2::after{
+    background: linear-gradient(to left,#1148DD,#A053AA,#FF9721);
+}
+
+
 
 
 @media (min-width: 768px) {
@@ -192,7 +292,9 @@
         inset: 0;
         z-index: 1;
         pointer-events: none;
-        background: linear-gradient( to right, var(--color-cream) 0%, color-mix( in srgb, var(--color-cream), transparent 25% ), transparent 100% );
+        border-radius: 10px;
+        background: color-mix( in srgb, var(--color-cream), transparent 55% );
+        /* background: linear-gradient( to right, var(--color-cream) 0%, color-mix( in srgb, var(--color-cream), transparent 25% ), transparent 100% ); */
         
     }
     
@@ -311,7 +413,7 @@
     
     /* 立ち絵の最大高さを少し抑える */
     .character-profile-portrait {
-        max-height: min(44dvh, 440px);
+        max-height: min(60dvh, 480px);
         align-self: end;
     }
     

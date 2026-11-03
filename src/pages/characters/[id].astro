@@ -42,12 +42,13 @@ const { Content } = await render(character);
     data-character-profile
     class={`team${character.data.team} character-profile`}
     style={{
-        '--portrait-scale': character.data.portraitScale,
+        '--portrait-scale': `${character.data.portraitScale}`,
         '--portrait-x': `${character.data.portraitX}px`,
         '--portrait-y': `${character.data.portraitY}px`,
+        '--bg-pattern': `url(/characters/pattern_${character.data.team}.png)`,
+        '--theme-color': character.data.themeColor,
     }}
-    >
-    
+    >    
     <div class="character-profile-content">
         <Image
         class='character-profile-portrait'
@@ -71,7 +72,7 @@ const { Content } = await render(character);
         </div>
     </div>
     {teamMembers.length > 0 && (
-        <nav aria-label={teamName} id="team-members">
+        <nav aria-label={teamName} id="team-members" style={{}}>
             <h2>{teamName}</h2>
             <ul>
                 
