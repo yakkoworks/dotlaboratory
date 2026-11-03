@@ -1,27 +1,23 @@
 
 export const navigation = [
-    // {
-    //     label: 'dotlaboratory',
-    //     href: '/',
-    // },
     {
         label: '👥 やっこキャラズ',
-        href: '/characters',
+        href: '/characters/',
         children: [
             {
                 label: 'TwinkleSparkle',
-                collection: 'characters',
                 href: 'characters#team1',
+                icon: '/characters/team1.svg',
             },
             {
                 label: 'DayDreamers',
-                collection: 'characters',
                 href: 'characters#team2',
+                icon: '/characters/team2.svg',
             },
             {
                 label: 'RadiantDaze',
-                collection: 'characters',
                 href: 'characters#team3',
+                icon: '/characters/team3.svg',
             },
         ]
     },

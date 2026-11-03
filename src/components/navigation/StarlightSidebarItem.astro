@@ -29,6 +29,7 @@ const hasActiveGroupPage = Object.entries(groupHrefs).some(
 const expanded =
 	entry.type === "group" &&
 	(!entry.collapsed || containsCurrent(entry) || hasActiveGroupPage);
+
 ---
 
 <li>

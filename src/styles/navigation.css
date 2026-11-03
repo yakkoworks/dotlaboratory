@@ -75,3 +75,18 @@
     grid-template-columns: minmax(0, 1fr);
     gap: 1rem;
 }
+
+
+.navigation .group-heading .nav-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.navigation .nav-icon {
+    display: block;
+    width: 1.25em;
+    height: 1.25em;
+    object-fit: contain;
+    flex-shrink: 0;
+}

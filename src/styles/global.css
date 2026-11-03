@@ -4,7 +4,7 @@
 	src: url("../fonts/Mejiro-Regular.ttf") format("truetype");
 	font-weight: normal;
 	font-style: normal;
-	font-display: swap;
+	font-display: block;
 }
 
 /* フォントB */
@@ -13,7 +13,7 @@
 	src: url("../fonts/NotoColorEmoji-Regular.ttf") format("truetype");
 	font-weight: normal;
 	font-style: normal;
-	font-display: swap;
+	font-display: block;
 }
 
 :root {

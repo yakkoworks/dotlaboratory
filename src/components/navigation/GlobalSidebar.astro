@@ -5,7 +5,7 @@ import NavigationItem from './NavigationItem.astro';
 
 const navigation = await resolveNavigation();
 ---
-<nav aria-label="サイト内ナビゲーション">
+<nav aria-label="ナビゲーション">
     <ul>
         {navigation.map((item, index) => (
             <NavigationItem

@@ -6,6 +6,7 @@ import { navigation } from './config';
 export type NavigationItem = {
 	label: string;
 	href?: string;
+	icon?:string;
 	defaultExpanded?:boolean;
 	children?: NavigationItem[];
 };
@@ -53,12 +54,14 @@ export async function resolveNavigation(): Promise<NavigationItem[]> {
 			return {
 				label: section.label,
 				href: section.href,
+				icon: 'icon' in section ? section.icon : undefined,
 			};
 		}
 		
 		return {
 			label: section.label,
 			href: section.href,
+			icon: 'icon' in section ? section.icon : undefined,
 			children: section.children.map(item => {
 				// ディレクトリの場合
 				if ('directory' in item) {
@@ -66,6 +69,7 @@ export async function resolveNavigation(): Promise<NavigationItem[]> {
 						label: item.label,
 						href: item.href,
 						children: getArticles(item.directory),
+						icon: 'icon' in item ? item.icon : undefined,
 					};
 				}								
 				// 単独ドキュメントの場合
@@ -77,8 +81,12 @@ export async function resolveNavigation(): Promise<NavigationItem[]> {
 					label: item.label,
 					href: doc
 					? getDocHref(doc)
+					: item.href.startsWith('/')
+					? item.href
 					: `/${item.href}`,
+					icon: 'icon' in item ? item.icon : undefined,
 				};
+				
 			}),
 		};
 	});

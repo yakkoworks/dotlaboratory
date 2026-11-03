@@ -33,4 +33,5 @@ export default defineConfig({
         customCss: ["./src/styles/starmap.css"],
         sidebar: starlightSidebar,
 		}), mdx()],
+        
 });
