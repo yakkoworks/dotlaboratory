@@ -6,17 +6,17 @@ export const navigation = [
         children: [
             {
                 label: 'TwinkleSparkle',
-                href: 'characters#team1',
+                href: '/characters/#team1',
                 icon: '/characters/team1.svg',
             },
             {
                 label: 'DayDreamers',
-                href: 'characters#team2',
+                href: '/characters/#team2',
                 icon: '/characters/team2.svg',
             },
             {
                 label: 'RadiantDaze',
-                href: 'characters#team3',
+                href: '/characters/#team3',
                 icon: '/characters/team3.svg',
             },
         ]

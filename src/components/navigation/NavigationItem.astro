@@ -9,7 +9,7 @@ interface Props {
 
 const { item, nodeId } = Astro.props;
 const hasChildren = Boolean(item.children?.length);
-const initiallyExpanded = item.href === '/starmap/' || item.href === '/characters' ? true : false;
+const initiallyExpanded = item.href === '/starmap/' || item.href === '/characters/' ? true : false;
 ---
 
 <li>

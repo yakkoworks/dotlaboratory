@@ -54,7 +54,7 @@ const charactersNav =
     characters && 'children' in characters
         ? {
             label: characters.label,
-            collapsed: true,
+            collapsed: false,
             items: characters.children.flatMap(item =>
                 'href' in item
                     ? [{

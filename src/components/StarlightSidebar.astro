@@ -8,7 +8,27 @@ import { navigation } from '../navigation/config';
 const { sidebar } = Astro.locals.starlightRoute;
 
 // 共通設定からカテゴリのURLを取得
+
 const groupHrefs: Record<string, string> = {};
+const groupIcons: Record<string, string> = {};
+
+for (const section of navigation) {
+    if ('children' in section) {
+        groupHrefs[section.label] = section.href;
+        
+        for (const item of section.children) {
+            const key = `${section.label}/${item.label}`;
+            
+            if ('href' in item) {
+                groupHrefs[key] = item.href;
+            }
+            
+            if ('icon' in item) {
+                groupIcons[key] = item.icon;
+            }
+        }
+    }
+}
 
 for (const section of navigation) {
     if ('children' in section) {
@@ -32,6 +52,7 @@ for (const section of navigation) {
             <SidebarItem
             entry={entry}
             groupHrefs={groupHrefs}
+            groupIcons={groupIcons}
             path=""
             nodeId={`sidebar-${index}`}
             />
