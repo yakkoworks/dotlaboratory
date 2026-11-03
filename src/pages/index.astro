@@ -1,34 +1,42 @@
 ---
 import "../styles/global.css";
-import "../styles/home.css";
+import "../styles/navigation.css";
 import GlobalSidebar from "../components/navigation/GlobalSidebar.astro";
 ---
 
 <html lang="ja">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>dotlaboratory</title>
-	</head>
-	<body>
-		<main>
-			<div id="site-title">
-				<h1>dotlaboratory</h1>
-				<p>
-					I always want to be creating something.<br
-					/>いつもなにかをつくっていたい🌞
-				</p>
-			</div>
-			<section class="home-navigation">
-				<GlobalSidebar />
-			</section>
-		</main>
-	</body>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>dotlaboratory</title>
+</head>
+<body>
+	<main>
+		<div id="site-title">
+			<h1>dotlaboratory</h1>
+			<p>
+				I always want to be creating something.<br
+				/>いつもなにかをつくっていたい🌞
+			</p>
+		</div>
+		<section class="navigation">
+			<GlobalSidebar />
+		</section>
+	</main>
+</body>
 </html>
 
 <style>
 	#site-title {
 		text-align: center;
 		line-height: 1.8;
+	}
+	main .navigation{
+		display: grid;
+	}
+	@media (min-width: 768px) {
+		main .navigation{
+			justify-content: center;
+		}
 	}
 </style>

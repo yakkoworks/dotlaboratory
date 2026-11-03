@@ -5,6 +5,27 @@ export const navigation = [
         href: '/',
     },
     {
+        label: '👥 やっこキャラズ',
+        href: '/characters',
+        children: [
+            {
+                label: 'TwinkleSparkle',
+                collection: 'characters',
+                href: 'characters#team1',
+            },
+            {
+                label: 'DayDreamers',
+                collection: 'characters',
+                href: 'characters#team2',
+            },
+            {
+                label: 'RadiantDaze',
+                collection: 'characters',
+                href: 'characters#team3',
+            },
+        ]
+    },
+    {
         label: '🪐 YakkoWorks StarMap',
         href: '/starmap/',
         children: [
@@ -23,7 +44,7 @@ export const navigation = [
             {
                 label: '📝 Annotations',
                 collection: 'docs',
-                slug: 'starmap/annotations',
+                href: 'starmap/annotations',
             },
         ],
     },

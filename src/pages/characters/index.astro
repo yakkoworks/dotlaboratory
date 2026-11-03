@@ -2,9 +2,11 @@
 import { getCollection } from 'astro:content';
 import CharacterThumbnail  from '../../components/characters/CharacterThumbnail.astro';
 import CharacterModal from '../../components/characters/CharacterModal.astro';
+import GlobalSidebar from "../../components/navigation/GlobalSidebar.astro";
 const characters = await getCollection('characters');
-import '../../styles/character.css';
 import "../../styles/global.css";
+import "../../styles/navigation.css";
+import '../../styles/character.css';
 
 const teams = [
 { id: 1, name: 'TwinkleSparkle' },
@@ -27,6 +29,9 @@ const charactersByTeam = teams.map(team => ({
     <title>やっこキャラズ | dotlaboratory</title>
 </head>
 <body>
+    <section class="character-navigation navigation">
+        <GlobalSidebar />
+    </section>
     <div id="characters">
         <h1>やっこキャラズ</h1>
         {charactersByTeam.map(team => (
@@ -94,7 +99,7 @@ const charactersByTeam = teams.map(team => ({
                 grid-column: 2;
                 
             }
-            section{
+            #characters section{
                 grid-row: 2;
                 align-content: flex-start;
                 justify-items: center;

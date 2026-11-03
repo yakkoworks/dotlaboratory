@@ -70,14 +70,14 @@ export async function resolveNavigation(): Promise<NavigationItem[]> {
 				}								
 				// 単独ドキュメントの場合
 				const doc = docs.find(
-					doc => doc.id === item.slug
+					doc => doc.id === item.href
 				);
 				
 				return {
 					label: item.label,
 					href: doc
 					? getDocHref(doc)
-					: `/${item.slug}/`,
+					: `/${item.href}`,
 				};
 			}),
 		};
