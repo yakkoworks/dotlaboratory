@@ -11,46 +11,49 @@ import GlobalSidebar from "../components/navigation/GlobalSidebar.astro";
 	<title>dotlaboratory</title>
 </head>
 <body>
-	<header class="characters-toolbar">
-		<a href="/" class="characters-home">
+	<header class="top-toolbar">
+		<a href="/" class="top-home">
 			<img src="/dotlaboratory.png" alt="">
 		</a>
-		
-		<details class="characters-menu">
+		<details class="top-menu">
 			<summary
-			class="characters-menu-toggle"
+			class="top-menu-toggle"
 			aria-label="サイトメニュー"
 			>
 			<svg aria-hidden="true" class="menu-open" width="16" height="16" viewBox="0 0 24 24"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"></path></svg>
 			<svg  aria-hidden="true" class="menu-close" width="16" height="16" viewBox="0 0 24 24"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"></path></svg>
 		</summary>
 		
-		<div class="characters-menu-panel navigation">
+		<div class="top-menu-panel navigation">
 			<GlobalSidebar />
 		</div>
 	</details>
 </header>
-<main>
-	<div id="site-title">
-		<h1>dotlaboratory</h1>
-		<p>
-			I always want to be creating something.<br
-			/>いつもなにかをつくっていたい🌞
-		</p>
-	</div>
+
+<!-- <main>
+<div id="site-title">
+<h1>dotlaboratory</h1>
+<p>
+I always want to be creating something.<br
+/>いつもなにかをつくっていたい🌞
+</p>
+</div>
+</main> -->
+<main class="top-page">
+	<section class="hero-map">
+		<!-- 星図 -->
+	</section>
+	
+	<aside class="observation-log">
+		<!-- 観測記録 -->
+	</aside>
 </main>
 </body>
 </html>
 
 <style>
-	
-	#site-title {
-		text-align: center;
-		line-height: 1.8;
-	}
-	
 	/* ページ上部のヘッダー */
-	.characters-toolbar {        
+	.top-toolbar {        
 		position: sticky;
 		top: 0;
 		z-index: 100;
@@ -69,7 +72,7 @@ import GlobalSidebar from "../components/navigation/GlobalSidebar.astro";
 	}
 	
 	/* dotlaboratory */
-	.characters-home img{
+	.top-home img{
 		width: calc(4.3125rem - 2 * 0.75rem);
 		height: auto;
 		max-width: 100%;
@@ -78,7 +81,7 @@ import GlobalSidebar from "../components/navigation/GlobalSidebar.astro";
 	}
 	
 	/* メニューボタン */
-	.characters-menu-toggle {
+	.top-menu-toggle {
 		display: grid;
 		place-items: center;
 		
@@ -93,11 +96,11 @@ import GlobalSidebar from "../components/navigation/GlobalSidebar.astro";
 		list-style: none;
 	}
 	
-	.characters-menu-toggle::-webkit-details-marker {
+	.top-menu-toggle::-webkit-details-marker {
 		display: none;
 	}
 	
-	.characters-menu-toggle:focus-visible {
+	.top-menu-toggle:focus-visible {
 		outline: 3px solid #fff;
 		outline-offset: 3px;
 	}
@@ -107,16 +110,16 @@ import GlobalSidebar from "../components/navigation/GlobalSidebar.astro";
 		display: none;
 	}
 	
-	.characters-menu[open] .menu-open {
+	.top-menu[open] .menu-open {
 		display: none;
 	}
 	
-	.characters-menu[open] .menu-close {
+	.top-menu[open] .menu-close {
 		display: inline;
 	}
 	
 	/* 開いたときのナビゲーション */
-	.characters-menu-panel {
+	.top-menu-panel {
 		position: absolute;
 		top: 100%;
 		right: 0;
