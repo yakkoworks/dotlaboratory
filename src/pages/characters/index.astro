@@ -29,7 +29,7 @@ const charactersByTeam = teams.map(team => ({
     <title>やっこキャラズ | dotlaboratory</title>
 </head>
 <body>
-    <section class="character-navigation navigation">
+    <section id="character-navigation" class="navigation">
         <GlobalSidebar />
     </section>
     <div id="characters">
@@ -86,7 +86,6 @@ const charactersByTeam = teams.map(team => ({
         .characters-thumbs li {
             min-width: 0;
         }
-        
         @media (min-width: 768px) {
             #characters{
                 display: grid;

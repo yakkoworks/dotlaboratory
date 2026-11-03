@@ -45,8 +45,8 @@
 }
 
 .navigation nav > ul {
-    display: flex;
-    gap: 2rem;
+	display: inline-grid;
+	gap: 2rem;
 }
 
 .navigation ul:not(:first-child) {
@@ -58,8 +58,16 @@
 }
 
 @media (max-width: 768px) {
-    .navigation nav > ul {
-		display: grid;
-        grid-template-columns: 1fr;
-    }
+	.navigation nav > ul {
+		grid-template-columns: 1fr;
+	}
+}
+@media (min-width: 768px) {
+	.navigation nav > ul {
+		grid-auto-flow: column;
+	}
+}
+
+#character-navigation nav > ul > li ul{
+	/* display: none; */
 }
