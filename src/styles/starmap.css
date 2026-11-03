@@ -119,6 +119,20 @@ a{
 	margin-right: 0.4em;
 }
 
+.title-wrapper img{
+	width: calc(4.3125rem - 2 * 0.75rem);
+	height: auto;
+	max-width: 100%;
+	object-fit: contain;
+	display: block;
+}
+
+@media (min-width: 50rem) {
+	:root{
+		--sl-nav-pad-x: 1rem;
+	}
+}
+
 /* スマホ版 */
 @media (max-width: 50rem) {
 	/* ハンバーガーボタン */
