@@ -29,81 +29,221 @@ const charactersByTeam = teams.map(team => ({
     <title>やっこキャラズ | dotlaboratory</title>
 </head>
 <body>
-    <section id="character-navigation" class="navigation">
-        <GlobalSidebar />
-    </section>
-    <div id="characters">
-        <h1>やっこキャラズ</h1>
-        {charactersByTeam.map(team => (
-            <section>
-                <h2 id={`team${team.id}`} class="team-logo">{team.name}</h2>
-                
-                <ul class="characters-thumbs">
-                    {team.members.map(character => (
-                        <li>
-                            <a
-                            href={`/characters/${character.id}/`}
-                            data-character-link
-                            >
-                            <CharacterThumbnail
-                            thumb={character.data.thumbnail}
-                            thumbAlt={character.data.name}
-                            sign={character.data.sign}
-                            color={character.data.themeColor}
-                            />
-                        </a>
-                    </li>
-                    ))}
-                </ul>
-            </section>
-            ))}
+    <header class="characters-toolbar">
+        <a href="/" class="characters-home">
+            dotlaboratory
+        </a>
+        
+        <details class="characters-menu">
+            <summary
+            class="characters-menu-toggle"
+            aria-label="サイトメニュー"
+            >
+            <span class="menu-open" aria-hidden="true">☰</span>
+            <span class="menu-close" aria-hidden="true">×</span>
+        </summary>
+        
+        <div class="characters-menu-panel navigation">
+            <GlobalSidebar />
         </div>
-        <CharacterModal                    />
-    </body>
-    </html>
+    </details>
+</header>
+<div id="characters">
+    <h1>やっこキャラズ</h1>
+    {charactersByTeam.map(team => (
+        <section id={`team${team.id}`}>
+            <h2 class="team-logo">{team.name}</h2>
+            
+            <ul class="characters-thumbs">
+                {team.members.map(character => (
+                    <li>
+                        <a
+                        href={`/characters/${character.id}/`}
+                        data-character-link
+                        >
+                        <CharacterThumbnail
+                        thumb={character.data.thumbnail}
+                        thumbAlt={character.data.name}
+                        sign={character.data.sign}
+                        color={character.data.themeColor}
+                        />
+                    </a>
+                </li>
+                ))}
+            </ul>
+        </section>
+        ))}
+    </div>
+    <CharacterModal                    />
+</body>
+</html>
+
+<style>
+    h1{
+        text-align: center;
+        font-family: "MPLUSRounded1c";
+    }
+    h2{
+        text-align: center;
+        margin: 0;
+    }
+    #team1 h2{font-family: "PoiretOne"; font-weight: bold;}
+    #team2 h2{font-family: "PrincessSofia";}
+    #team3 h2{font-family: "851tegakiKakutto";}
+
+    #team3 ul{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    #characters {
+        padding: 0 1rem;
+    }
+    .characters-thumbs {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.5rem;
+        
+        width: min(100%, 760px);
+        list-style: none;
+        padding: 0;
+    }
     
-    <style>
-        h1{
-            text-align: center;
-            font-family: "MPLUSRounded1c";
-        }
-        h2{
-            text-align: center;
-        }
-        h2#team1{font-family: "PoiretOne";}
-        h2#team2{font-family: "PrincessSofia";}
-        h2#team3{font-family: "851tegakiKakutto";}
-        .characters-thumbs {
+    .characters-thumbs li {
+        min-width: 0;
+    }
+    @media (min-width: 768px) {
+        #characters{
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 0.5rem;
-            
-            width: min(100%, 760px);
-            list-style: none;
-            padding: 0;
+            column-gap: 1rem;
         }
         
-        .characters-thumbs li {
-            min-width: 0;
+        h1{
+            grid-row: 1;
+            grid-column: 2;
         }
-        @media (min-width: 768px) {
-            #characters{
-                display: grid;
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-                column-gap: 1rem;
-            }
-            
-            h1{
-                grid-row: 1;
-                grid-column: 2;
-                
-            }
-            #characters section{
-                grid-row: 2;
-                align-content: flex-start;
-                justify-items: center;
-                display: grid;
-            }
+        #characters section{
+            grid-row: 2;
+            align-content: flex-start;
+            justify-items: center;
+            display: grid;
         }
+    }
+    
+    /* ページ上部のヘッダー */
+    .characters-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
         
-    </style>
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        padding: 0.75rem 1rem;
+        
+        background: var(--color-bg-nav);
+        color: var(--color-accent-high);
+        border-bottom: 1px solid var(--color-hairline);
+    }
+    
+    /* サイト名 */
+    .characters-home {
+        color: inherit;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    
+    /* メニューボタン */
+    .characters-menu-toggle {
+        display: grid;
+        place-items: center;
+        
+        width: 2.75rem;
+        height: 2.75rem;
+        
+        border-radius: 50%;
+        background: var(--color-accent-high);
+        color: #1c1c1c;
+        
+        cursor: pointer;
+        list-style: none;
+    }
+    
+    .characters-menu-toggle::-webkit-details-marker {
+        display: none;
+    }
+    
+    .characters-menu-toggle:focus-visible {
+        outline: 3px solid #fff;
+        outline-offset: 3px;
+    }
+    
+    /* 開閉時にアイコンを切り替える */
+    .menu-close {
+        display: none;
+    }
+    
+    .characters-menu[open] .menu-open {
+        display: none;
+    }
+    
+    .characters-menu[open] .menu-close {
+        display: inline;
+    }
+    
+    /* 開いたときのナビゲーション */
+    .characters-menu-panel {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        
+        width: min(24rem, calc(100vw - 1rem));
+        max-height: 75dvh;
+        overflow-y: auto;
+        
+        box-sizing: border-box;
+        padding: 1.25rem;
+        
+        color: #eee;
+        background: var(--color-bg-nav);
+        border: 1px solid var(--color-hairline);
+        border-radius: 0.75rem;
+        
+        box-shadow: 0 8px 24px rgb(0 0 0 / 35%);
+    }
+    
+</style>
+
+
+<script>
+    const menu = document.querySelector<HTMLDetailsElement>(
+        '.characters-menu'
+        );
+        
+        // メニュー外をクリックしたら閉じる
+        document.addEventListener('pointerdown', (event) => {
+            if (
+            menu?.open &&
+            event.target instanceof Node &&
+            !menu.contains(event.target)
+            ) {
+                menu.open = false;
+            }
+        });
+        
+        // Escapeキーで閉じる
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && menu?.open) {
+                menu.open = false;
+                menu.querySelector('summary')?.focus();
+            }
+        });
+        
+        // リンクを選択したら閉じる
+        menu?.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => {
+                menu.open = false;
+            });
+        });
+    </script>
+    

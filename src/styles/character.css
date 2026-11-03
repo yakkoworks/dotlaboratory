@@ -159,7 +159,7 @@
     align-items: center;
 }
 
-.team1 #team-members h2,.team1 .character-cpe{font-family: "PoiretOne";}
+.team1 #team-members h2,.team1 .character-cpe{font-family: "PoiretOne"; font-weight: bold;}
 .team2 #team-members h2,.team2 .character-cpe{font-family: "PrincessSofia";}
 .team3 #team-members h2,.team3 .character-cpe{font-family: "851tegakiKakutto";}
 
