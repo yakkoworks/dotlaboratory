@@ -27,47 +27,79 @@ const charactersByTeam = teams.map(team => ({
     <title>やっこキャラズ | dotlaboratory</title>
 </head>
 <body>
-    <h1>やっこキャラズ</h1>
-    {charactersByTeam.map(team => (
-        <section>
-            <h2>{team.name}</h2>
-            
-            <ul class="characters-thumbs">
-                {team.members.map(character => (
-                    <li>
-                        <a
-                        href={`/characters/${character.id}/`}
-                        data-character-link
-                        >
-                        <CharacterThumbnail
-                        thumb={character.data.thumbnail}
-                        thumbAlt={character.data.name}
-                        sign={character.data.sign}
-                        />
-                    </a>
-                </li>
-                ))}
-            </ul>
-        </section>
-        ))}
+    <div id="characters">
+        <h1>やっこキャラズ</h1>
+        {charactersByTeam.map(team => (
+            <section>
+                <h2 id={`team${team.id}`} class="team-logo">{team.name}</h2>
+                
+                <ul class="characters-thumbs">
+                    {team.members.map(character => (
+                        <li>
+                            <a
+                            href={`/characters/${character.id}/`}
+                            data-character-link
+                            >
+                            <CharacterThumbnail
+                            thumb={character.data.thumbnail}
+                            thumbAlt={character.data.name}
+                            sign={character.data.sign}
+                            color={character.data.themeColor}
+                            />
+                        </a>
+                    </li>
+                    ))}
+                </ul>
+            </section>
+            ))}
+        </div>
         <CharacterModal                    />
     </body>
     </html>
     
     <style>
-
-.characters-thumbs {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0.5rem;
-
-    width: min(100%, 760px);
-    list-style: none;
-    padding: 0;
-}
-
-.characters-thumbs li {
-    min-width: 0;
-}
-
+        h1{
+            text-align: center;
+            font-family: "MPLUSRounded1c";
+        }
+        h2{
+            text-align: center;
+        }
+        h2#team1{font-family: "PoiretOne";}
+        h2#team2{font-family: "PrincessSofia";}
+        h2#team3{font-family: "851tegakiKakutto";}
+        .characters-thumbs {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.5rem;
+            
+            width: min(100%, 760px);
+            list-style: none;
+            padding: 0;
+        }
+        
+        .characters-thumbs li {
+            min-width: 0;
+        }
+        
+        @media (min-width: 768px) {
+            #characters{
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                column-gap: 1rem;
+            }
+            
+            h1{
+                grid-row: 1;
+                grid-column: 2;
+                
+            }
+            section{
+                grid-row: 2;
+                align-content: flex-start;
+                justify-items: center;
+                display: grid;
+            }
+        }
+        
     </style>

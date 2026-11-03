@@ -5,11 +5,13 @@ interface Props {
 	thumb: ImageMetadata;
 	thumbAlt:string;
 	sign: ImageMetadata;
+	color?:string;
 }
 const {
 	thumb,
 	thumbAlt,
 	sign,
+	color,
 }  = Astro.props;
 ---
 
@@ -17,7 +19,7 @@ const {
 	<div class="character-thumb-layer-bg">
 		<Image src={thumb} alt={thumbAlt} class="character-thumb-bg" />
 	</div>
-	<div class="character-thumb-layer-fr">
+	<div class="character-thumb-layer-fr" style={{"--chara-color":`${color}`}}>
 		<Image src={sign} alt="" class="character-thumb-fr" />
 	</div>
 </div>
@@ -50,5 +52,6 @@ const {
 	}
 	.character-thumb-fr{
 		width: min(100%, 120px);
+		filter: drop-shadow(0 0 0.55rem #000) drop-shadow(0 0 1.35rem var(--chara-color));
 	}
 </style>
