@@ -1,9 +1,9 @@
 
 export const navigation = [
-    {
-        label: 'dotlaboratory',
-        href: '/',
-    },
+    // {
+    //     label: 'dotlaboratory',
+    //     href: '/',
+    // },
     {
         label: '👥 やっこキャラズ',
         href: '/characters',

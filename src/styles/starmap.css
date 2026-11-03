@@ -1,109 +1,135 @@
 /* フォントA */
 @font-face {
-  font-family: 'Mejiro';
-  src: url('../fonts/Mejiro-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+	font-family: 'Mejiro';
+	src: url('../fonts/Mejiro-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
 }
 
 /* フォントB */
 @font-face {
-  font-family: 'NotoColorEmoji';
-  src: url('../fonts/NotoColorEmoji-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+	font-family: 'NotoColorEmoji';
+	src: url('../fonts/NotoColorEmoji-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
 }
 
 /* Starlight全体に適用 */
 :root {
-  --sl-font: 'Mejiro', 'NotoColorEmoji', sans-serif;
-  
-  --sl-text-base: clamp(0.9375rem, 0.88rem + 0.25vw, 1.0625rem);
-  
-  /* 小さなテキスト */
-  --sl-text-sm: clamp(0.8rem, 0.77rem + 0.15vw, 0.875rem);
-  --sl-text-xs: clamp(0.7rem, 0.68rem + 0.1vw, 0.75rem);
-
-  /* 見出し (h1 ~ h5 に対応する変数) */
-  --sl-text-h1: clamp(2rem, 1.6rem + 1.8vw, 3rem);     /* 32px ~ 48px */
-  --sl-text-h2: clamp(1.5rem, 1.3rem + 1vw, 2rem);      /* 24px ~ 32px */
-  --sl-text-h3: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem); /* 20px ~ 24px */
-  --sl-text-h4: clamp(1.125rem, 1.08rem + 0.2vw, 1.25rem);
-  --sl-text-h5: clamp(1rem, 1rem + 0vw, 1.125rem);
+	--sl-font: 'Mejiro', 'NotoColorEmoji', sans-serif;
+	
+	--sl-text-base: clamp(0.9375rem, 0.88rem + 0.25vw, 1.0625rem);
+	
+	/* 小さなテキスト */
+	--sl-text-sm: clamp(0.8rem, 0.77rem + 0.15vw, 0.875rem);
+	--sl-text-xs: clamp(0.7rem, 0.68rem + 0.1vw, 0.75rem);
+	
+	/* 見出し (h1 ~ h5 に対応する変数) */
+	--sl-text-h1: clamp(2rem, 1.6rem + 1.8vw, 3rem);     /* 32px ~ 48px */
+	--sl-text-h2: clamp(1.5rem, 1.3rem + 1vw, 2rem);      /* 24px ~ 32px */
+	--sl-text-h3: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem); /* 20px ~ 24px */
+	--sl-text-h4: clamp(1.125rem, 1.08rem + 0.2vw, 1.25rem);
+	--sl-text-h5: clamp(1rem, 1rem + 0vw, 1.125rem);
 }
 
 /* StarMap - Starlight Dark Theme */
 
 :root[data-theme='dark'] {
-  /* アクセントカラー：星明かりの琥珀色 */
-  --sl-color-accent-low: #45320d;
-  --sl-color-accent: #f4b942;
-  --sl-color-accent-high: #ffe4a0;
-  
-  /* 背景色：ほんのり暖色の夜空 */
-  --sl-color-bg: #181715;
-  --sl-color-bg-nav: #211e19;
-  --sl-color-bg-sidebar: #211e19;
-  
-  /* 境界線 */
-  --sl-color-hairline: #383126;
-  
+	/* アクセントカラー：星明かりの琥珀色 */
+	--sl-color-accent-low: #45320d;
+	--sl-color-accent: #f4b942;
+	--sl-color-accent-high: #ffe4a0;
+	
+	/* 背景色：ほんのり暖色の夜空 */
+	--sl-color-bg: #181715;
+	--sl-color-bg-nav: #211e19;
+	--sl-color-bg-sidebar: #211e19;
+	
+	/* 境界線 */
+	--sl-color-hairline: #383126;
+	--sl-color-hairline-shade:var(--sl-color-hairline);
+	--sl-color-hairline-light:var(--sl-color-hairline);
+	
+}
+
+a, img, * {
+	-webkit-tap-highlight-color: transparent;
+}
+
+a{
+	color: var(--color-accent);
+	text-decoration: none;
+}
+
+button{
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 /* リンクカード */
 .sl-link-card {
-  background-color: var(--sl-color-accent-high);
-  container-type: inline-size;
+	background-color: var(--sl-color-accent-high);
+	container-type: inline-size;
 }
 .sl-link-card:hover {
-  background-color: var(--sl-color-accent-high);
+	background-color: var(--sl-color-accent-high);
 }
 .sl-link-card .title{
-  color: var(--sl-color-bg);
+	color: var(--sl-color-bg);
 }
 .sl-link-card .description{
-  color: var(--sl-color-gray-6);
-  font-size: small;
-  /* text-align: center; */
+	color: var(--sl-color-gray-6);
+	font-size: small;
+	/* text-align: center; */
 }
 .sl-link-card .icon{
-  color: var(--sl-color-gray-6);
+	color: var(--sl-color-gray-6);
 }
 
 /* Lightbox対象の画像 */
 .sl-markdown-content a.glightbox img {
-  cursor: zoom-in;
+	cursor: zoom-in;
 }
 
 /* キーボード操作時のフォーカス表示 */
 .sl-markdown-content a.glightbox:focus-visible {
-  outline: 2px solid var(--sl-color-accent-high);
-  outline-offset: 4px;
+	outline: 2px solid var(--sl-color-accent-high);
+	outline-offset: 4px;
 }
 
 /* ページタイトル */
 .glightbox-clean .gslide-description{
-  display: none;
+	display: none;
 }
 
 /* h1 のフォントサイズ*/
 .sl-container h1{
-  font-size: var(--sl-text-h2);
+	font-size: var(--sl-text-h2);
 }
 
 /* サイドバーのフォントサイズ */
 .sidebar-content{
-  font-size: var(--sl-text-sm);
+	font-size: var(--sl-text-sm);
+	background: var(--sl-color-bg-nav);
 }
 
 /* スマホ版 */
 @media (max-width: 50rem) {
-  /* ハンバーガーボタン */
-  button.sl-menu-button  {
-    background-color: var(--sl-color-accent-high);
-    color: var(--sl-color-bg);
-    border-color: var(--sl-color-accent-high);
-  }
+	/* ハンバーガーボタン */
+	button.sl-menu-button  {
+		background-color: var(--sl-color-accent-high);
+		color: var(--sl-color-bg);
+		border-color: var(--sl-color-accent-high);
+		/* width: 2.75rem;
+		height: 2.75rem; */
+	}
+	/* ヘッダー */
+	:root {
+		--sl-nav-height: 4.3125rem;
+		--sl-menu-button-size: 2.75rem;
+	}
+	
 }

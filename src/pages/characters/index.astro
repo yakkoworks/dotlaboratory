@@ -31,7 +31,7 @@ const charactersByTeam = teams.map(team => ({
 <body>
     <header class="characters-toolbar">
         <a href="/" class="characters-home">
-            dotlaboratory
+            <img src="dotlaboratory.png" alt="">
         </a>
         
         <details class="characters-menu">
@@ -39,8 +39,8 @@ const charactersByTeam = teams.map(team => ({
             class="characters-menu-toggle"
             aria-label="サイトメニュー"
             >
-            <span class="menu-open" aria-hidden="true">☰</span>
-            <span class="menu-close" aria-hidden="true">×</span>
+            <svg aria-hidden="true" class="menu-open" width="16" height="16" viewBox="0 0 24 24"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"></path></svg>
+            <svg  aria-hidden="true" class="menu-close" width="16" height="16" viewBox="0 0 24 24"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"></path></svg>
         </summary>
         
         <div class="characters-menu-panel navigation">
@@ -90,7 +90,7 @@ const charactersByTeam = teams.map(team => ({
     #team1 h2{font-family: "PoiretOne"; font-weight: bold;}
     #team2 h2{font-family: "PrincessSofia";}
     #team3 h2{font-family: "851tegakiKakutto";}
-
+    
     #team3 ul{
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -146,11 +146,13 @@ const charactersByTeam = teams.map(team => ({
         border-bottom: 1px solid var(--color-hairline);
     }
     
-    /* サイト名 */
-    .characters-home {
-        color: inherit;
-        text-decoration: none;
-        font-weight: bold;
+    /* dotlaboratory */
+    .characters-home img{
+        width: 2.75rem;
+        height: 2.75rem;
+        max-width: 100%;
+        object-fit: contain;
+        display: none;
     }
     
     /* メニューボタン */
