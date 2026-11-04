@@ -2,6 +2,26 @@
 import "../styles/global.css";
 import "../styles/navigation.css";
 import GlobalSidebar from "../components/navigation/GlobalSidebar.astro";
+
+const stars = [
+    {
+        label: "やっこキャラズ",
+        href: "/characters/",
+        x: "30%",
+        y: "30%",
+        mobileX: "20%",
+        mobileY: "30%",
+    },
+    {
+        label: "YakkoWorks StarMap",
+        href: "/starmap/",
+        x: "75%",
+        y: "60%",
+        mobileX: "75%",
+        mobileY: "55%",
+    },
+];
+
 ---
 
 <html lang="ja">
@@ -40,12 +60,33 @@ I always want to be creating something.<br
 </div>
 </main> -->
 <main class="top-page">
-	<section class="hero-map">
-		<!-- 星図 -->
-	</section>
+
+<section class="hero-map" aria-labelledby="map-title">
+    <h1 id="map-title" class="star-map-title">
+        dotlaboratory
+    </h1>
+
+    {stars.map((star) => (
+        <a
+            class="map-star"
+            href={star.href}
+            style={{
+                "--star-x": star.x,
+                "--star-y": star.y,
+                "--star-mobile-x": star.mobileX,
+                "--star-mobile-y": star.mobileY,
+            }}
+        >
+            <span class="map-star-light" aria-hidden="true"></span>
+            <span class="map-star-label">{star.label}</span>
+        </a>
+    ))}
+</section>
+
 	
 	<aside class="observation-log">
 		<!-- 観測記録 -->
+		<h1>観測記録</h1>
 	</aside>
 </main>
 </body>
@@ -141,9 +182,147 @@ I always want to be creating something.<br
 	body{
 		--toolbar-height: 64px;
 	}
-	@media (max-width: 49.99rem) {
+	@media (max-width: 768px) {
 		body{
 			--toolbar-height: 69px;
 		}
 	}
+	
+	/* トップページ */
+	.top-page {
+		min-height: calc(100svh - var(--toolbar-height));
+		display: grid;
+		grid-template-rows: 1fr auto;
+		
+	}
+	
+	.hero-map {
+		min-height: 0;
+		position: relative;
+		overflow: hidden;
+
+		
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.observation-log {
+		height: clamp(120px, 20vh, 220px);
+		background-color: var(--color-bg-nav);
+
+		margin: 3rem;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	/* スマホ版トップページ */
+	@media (max-width: 768px) {
+		.observation-log {
+			height: clamp(92px, 18vh, 140px);
+			margin: 1rem;
+		}
+	}	
+	
+/* 星図のタイトル */
+.star-map-title {
+    position: absolute;
+    top: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    margin: 0;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    letter-spacing: 0.1em;
+}
+
+/* リンクになる星 */
+.map-star {
+    position: absolute;
+
+    left: var(--star-x);
+    top: var(--star-y);
+
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0.75rem;
+
+    color: var(--color-white);
+    text-decoration: none;
+    text-align: center;
+
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+/* 星の光 */
+.map-star-light {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+
+    background: var(--color-accent-high);
+
+    box-shadow:
+        0 0 8px var(--color-accent-high),
+        0 0 20px rgb(255 226 154 / 55%),
+        0 0 40px rgb(255 226 154 / 25%);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+/* 星の名前 */
+.map-star-label {
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    text-shadow: 0 2px 8px #000;
+}
+
+/* 星に触れたとき */
+.map-star:hover .map-star-light,
+.map-star:focus-visible .map-star-light {
+    transform: scale(1.5);
+
+    box-shadow:
+        0 0 12px #fff,
+        0 0 28px var(--color-accent),
+        0 0 48px rgb(255 226 154 / 65%);
+}
+
+/* キーボード操作時 */
+.map-star:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 0.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .map-star-light {
+        transition: none;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .map-star {
+        left: var(--star-mobile-x);
+        top: var(--star-mobile-y);
+    }
+
+    .star-map-title {
+        top: 8%;
+    }
+}
+
 </style>
