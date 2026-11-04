@@ -33,7 +33,10 @@ const charactersByTeam = teams.map(team => ({
         <a href="/" class="home">
             <img src="/dotlaboratory.png" alt="">
         </a>
-        
+        <p class="motto">
+            I always want to be creating something.<br> 
+            いつもなにかをつくっていたい🌞
+        </p>
         <details class="menu">
             <summary
             class="menu-toggle"
@@ -79,8 +82,9 @@ const charactersByTeam = teams.map(team => ({
 </html>
 
 <style>
-    body{
+    html{
         --toolbar-height: 64px;
+        scroll-padding-top: calc(var(--toolbar-height))
     }
     h1{
         text-align: center;
@@ -89,6 +93,7 @@ const charactersByTeam = teams.map(team => ({
     h2{
         text-align: center;
         margin: 0;
+        padding: 1.5rem;
         scroll-margin-top:var(--toolbar-height);
     }
     #team1 h2{font-family: "PoiretOne"; font-weight: bold;}
@@ -133,7 +138,7 @@ const charactersByTeam = teams.map(team => ({
         }
     }
     @media (max-width: 49.99rem) {
-        body{
+        html{
             --toolbar-height: 69px;
         }
     }
@@ -142,7 +147,7 @@ const charactersByTeam = teams.map(team => ({
 
 <script>
     const menu = document.querySelector<HTMLDetailsElement>(
-        '.characters-menu'
+        '.menu'
         );
         
         // メニュー外をクリックしたら閉じる

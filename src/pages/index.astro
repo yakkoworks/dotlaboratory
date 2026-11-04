@@ -139,6 +139,18 @@ const connections = stars.flatMap((child) => {
 });
 
 
+import { getCollection } from "astro:content";
+
+const observations = (
+await getCollection("observations", ({ data }) => !data.draft)
+)
+.sort(
+(a, b) =>
+b.data.date.getTime() - a.data.date.getTime()
+)
+.slice(0, 3);
+
+
 ---
 
 <html lang="ja">
@@ -152,6 +164,10 @@ const connections = stars.flatMap((child) => {
         <a href="/" class="top-home">
             <img src="/dotlaboratory.png" alt="">
         </a>
+        <p class="motto">
+            I always want to be creating something.<br> 
+            いつもなにかをつくっていたい🌞
+        </p>
         <details class="menu">
             <summary
             class="menu-toggle"
@@ -168,10 +184,10 @@ const connections = stars.flatMap((child) => {
 </header>
 <main class="top-page">
     <section class="hero-map" aria-labelledby="map-title">
-        <!-- <h1 id="map-title" class="star-map-title">
-        dotlaboratory
-        </h1> -->
-        <img src="dotlaboratory_logo.png" alt="dotlaboratory" class="star-map-title">
+        
+        <h1 id="map-title">
+            <img src="dotlaboratory_logo.png" alt="dotlaboratory"  class="star-map-title">
+        </h1>
         
         <svg
         class="constellation-lines"
@@ -225,15 +241,43 @@ const connections = stars.flatMap((child) => {
 </section>
 
 
-<aside class="observation-log">
-    <!-- 観測記録 -->
-    <h1>観測記録</h1>
+
+<aside class="observation-log" aria-labelledby="observation-title">
+    <h2 id="observation-title">観測記録</h2>
+    
+    <ol class="observation-list">
+        {observations.map(({ data }) => (
+        <li class="observation-item">
+            <time datetime={data.date.toISOString().slice(0, 10)}>
+                {data.date.toLocaleDateString("ja-JP", {
+                    timeZone: "Asia/Tokyo",
+                    month: "2-digit",
+                    day: "2-digit",
+                })}
+            </time>
+            
+            {
+                data.href ? (
+                <a href={data.href}>{data.title}</a>
+                ) : (
+                <span class="observation-title">
+                    {data.title}
+                </span>
+                )
+            }
+            
+            <p>{data.summary}</p>
+        </li>
+        ))}
+    </ol>
 </aside>
+
 </main>
 </body>
 </html>
 
 <style>
+    /* 全体 */
     body{
         --toolbar-height: 64px;
         background-image:
@@ -258,8 +302,6 @@ const connections = stars.flatMap((child) => {
             --toolbar-height: 69px;
         }
     }
-    
-    /* トップページ */
     .top-page {
         min-height: calc(100svh - var(--toolbar-height));
         display: grid;
@@ -267,6 +309,7 @@ const connections = stars.flatMap((child) => {
         
     }
     
+    /* 星図 */
     .hero-map {
         min-height: 0;
         position: relative;
@@ -277,6 +320,7 @@ const connections = stars.flatMap((child) => {
         align-items: center;
     }
     
+    /* 観測記録 */
     .observation-log {
         height: clamp(120px, 20vh, 220px);
         background-color: var(--color-bg-nav);
@@ -287,7 +331,90 @@ const connections = stars.flatMap((child) => {
         justify-content: center;
         align-items: center;
         
-        background-image: linear-gradient(90deg, transparent 0%, transparent 10%, var(--color-accent) calc(10% + 3px), var(--color-accent) calc(10% + 3px), transparent calc(10% + 3px), transparent 100%), repeating-linear-gradient(180deg, var(--color-hairline) 0px, var(--color-hairline) 1px, transparent 1px, transparent 20px)
+        background-image: linear-gradient(90deg, transparent 0%, transparent 12rem, var(--color-accent) calc(12rem + 3px), var(--color-accent) calc(12rem + 3px), transparent calc(12rem + 3px), transparent 100%), repeating-linear-gradient(180deg, var(--color-hairline) 0px, var(--color-hairline) 1px, transparent 1px, transparent 20px);
+        
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: 10rem minmax(0, 1fr);
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1rem 2rem;
+        overflow: hidden;
+    }
+    .observation-log h2 {
+        margin: 0;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    
+    .observation-list {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+        
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    
+    .observation-item {
+        min-width: 0;
+    }
+    
+    .observation-item time {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-size: 0.75rem;
+        color: var(--color-accent);
+    }
+    
+    .observation-item a,
+    .observation-title {
+        display: block;
+        color: var(--color-white);
+        font-weight: bold;
+        text-decoration: none;
+    }
+    
+    .observation-item a:hover {
+        color: var(--color-accent);
+    }
+    
+    .observation-item p {
+        margin: 0.4rem 0 0;
+        font-size: 0.8rem;
+        line-height: 1.5;
+        
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+    
+    /* スマホ版 */
+    @media (max-width: 768px) {
+        .observation-log {
+            grid-template-columns: 1fr;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            background-image:  repeating-linear-gradient(180deg, var(--color-hairline) 0px, var(--color-hairline) 1px, transparent 1px, transparent 20px);;
+        }
+        
+        .observation-log h2 {
+            font-size: 1rem;
+        }
+        
+        .observation-list {
+            grid-template-columns: 1fr;
+        }
+        
+        .observation-item:not(:first-child) {
+            display: none;
+        }
+        
+        .observation-item p {
+            -webkit-line-clamp: 1;
+        }
     }
     
     /* スマホ版トップページ */
@@ -473,3 +600,36 @@ const connections = stars.flatMap((child) => {
     }
     
 </style>
+
+<script>
+    const menu = document.querySelector<HTMLDetailsElement>(
+        '.menu'
+        );
+        
+        // メニュー外をクリックしたら閉じる
+        document.addEventListener('pointerdown', (event) => {
+            if (
+            menu?.open &&
+            event.target instanceof Node &&
+            !menu.contains(event.target)
+            ) {
+                menu.open = false;
+            }
+        });
+        
+        // Escapeキーで閉じる
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && menu?.open) {
+                menu.open = false;
+                menu.querySelector('summary')?.focus();
+            }
+        });
+        
+        // リンクを選択したら閉じる
+        menu?.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => {
+                menu.open = false;
+            });
+        });
+    </script>
+    

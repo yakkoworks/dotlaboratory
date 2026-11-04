@@ -42,7 +42,26 @@ const characters = defineCollection({
 		
 	}),
 });
+
+
+const observations = defineCollection({
+    loader: glob({
+        pattern: "**/*.md",
+        base: "./src/content/observations",
+    }),
+
+    schema: z.object({
+        title: z.string(),
+        date: z.coerce.date(),
+        summary: z.string(),
+        href: z.string().optional(),
+        draft: z.boolean().default(false),
+    }),
+});
+
 export const collections = {
 	docs,
 	characters,
+	observations,
 };
+

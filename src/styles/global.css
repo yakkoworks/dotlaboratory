@@ -28,7 +28,10 @@
 	--color-black: #000000;
 	--color-cream: #f0ece1;
 }
+html{
+        scroll-behavior: smooth;
 
+}
 body{
 	background-color: var(--color-bg);
 	color: var(--color-white);
