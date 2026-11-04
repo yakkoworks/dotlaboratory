@@ -27,6 +27,10 @@
     font-display: swap;
 }
 
+body{
+    user-select: none;
+}
+
 /* PC・スマホ共通 */
 .character-profile{
     background:var(--color-cream);

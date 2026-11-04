@@ -3,240 +3,473 @@ import "../styles/global.css";
 import "../styles/navigation.css";
 import GlobalSidebar from "../components/navigation/GlobalSidebar.astro";
 
-const stars = [
-    {
-        label: "やっこキャラズ",
-        href: "/characters/",
-        x: "30%",
-        y: "30%",
-        mobileX: "20%",
-        mobileY: "30%",
-    },
-    {
-        label: "YakkoWorks StarMap",
-        href: "/starmap/",
-        x: "75%",
-        y: "60%",
-        mobileX: "75%",
-        mobileY: "55%",
-    },
+import {
+    STAR_COLORS,
+    STAR_SIZES,
+    type StarColor,
+    type StarSize,
+} from "../constants/starStyles";
+
+
+const stars: {
+    id: string;
+    parent?: string;
+    label: string;
+    href: string;
+    color: StarColor;
+    size: StarSize;
+    x: string;
+    y: string;
+    mobileX: string;
+    mobileY: string;
+}[] = [
+{
+    id: "characters",
+    label: "やっこキャラズ",
+    href: "/characters/",
+    color: "gateway",
+    size: "primary",
+    x: "32%",
+    y: "30%",
+    mobileX: "20%",
+    mobileY: "20%",
+},
+{
+    id: "twinklesparkle",
+    parent: "characters",
+    label: "TwinkleSparkle",
+    href: "/characters/#team1",
+    color: "twinklesparkle",
+    size: "secondary",
+    x: "35%",
+    y: "45%",
+    mobileX: "18%",
+    mobileY: "35%",
+},
+{
+    id: "daydreamers",
+    parent: "characters",
+    label: "DayDreamers",
+    href: "/characters/#team2",
+    color: "daydreamers",
+    size: "secondary",
+    x: "40%",
+    y: "53%",
+    mobileX: "38%",
+    mobileY: "43%",
+},
+{
+    id: "radiantdaze",
+    parent: "characters",
+    label: "RadiantDaze",
+    href: "/characters/#team3",
+    color: "radiantdaze",
+    size: "secondary",
+    x: "45%",
+    y: "45%",
+    mobileX: "45%",
+    mobileY: "35%",
+},
+{
+    id: "starmap",
+    label: "YakkoWorks StarMap",
+    href: "/starmap/",
+    color: "gateway",
+    size: "primary",
+    x: "75%",
+    y: "60%",
+    mobileX: "75%",
+    mobileY: "65%",
+},
+{
+    id: "modeling",
+    parent: "starmap",
+    label: "3D Modeling",
+    href: "/starmap/3dmodeling",
+    color: "modeling",
+    size: "secondary",
+    x: "67%",
+    y: "50%",
+    mobileX: "71%",
+    mobileY: "55%",
+},
+{
+    id: "development",
+    parent: "starmap",
+    label: "Development",
+    href: "/starmap/development",
+    color: "development",
+    size: "secondary",
+    x: "65%",
+    y: "60%",
+    mobileX: "48%",
+    mobileY: "62%",
+},
+{
+    id: "annotations",
+    parent: "starmap",
+    label: "Annotations",
+    href: "/starmap/annotations",
+    color: "annotations",
+    size: "minor",
+    x: "70%",
+    y: "70%",
+    mobileX: "52%",
+    mobileY: "72%",
+},
 ];
+
+
+const starById = new Map(
+stars.map((star) => [star.id, star])
+);
+
+const connections = stars.flatMap((child) => {
+    if (!child.parent) return [];
+    
+    const parent = starById.get(child.parent);
+    
+    if (!parent) {
+        throw new Error(
+        `親星 ${child.parent} が見つからないよ！`
+        );
+    }
+    
+    return [{ parent, child }];
+});
+
 
 ---
 
 <html lang="ja">
 <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width" />
-	<title>dotlaboratory</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>dotlaboratory</title>
 </head>
 <body>
-	<header class="toolbar">
-		<a href="/" class="top-home">
-			<img src="/dotlaboratory.png" alt="">
-		</a>
-		<details class="menu">
-			<summary
-			class="menu-toggle"
-			aria-label="サイトメニュー"
-			>
-			<svg aria-hidden="true" class="menu-open" width="16" height="16" viewBox="0 0 24 24"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"></path></svg>
-			<svg  aria-hidden="true" class="menu-close" width="16" height="16" viewBox="0 0 24 24"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"></path></svg>
-		</summary>
-		
-		<div class="menu-panel navigation">
-			<GlobalSidebar />
-		</div>
-	</details>
+    <header class="toolbar">
+        <a href="/" class="top-home">
+            <img src="/dotlaboratory.png" alt="">
+        </a>
+        <details class="menu">
+            <summary
+            class="menu-toggle"
+            aria-label="サイトメニュー"
+            >
+            <svg aria-hidden="true" class="menu-open" width="16" height="16" viewBox="0 0 24 24"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"></path></svg>
+            <svg  aria-hidden="true" class="menu-close" width="16" height="16" viewBox="0 0 24 24"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"></path></svg>
+        </summary>
+        
+        <div class="menu-panel navigation">
+            <GlobalSidebar />
+        </div>
+    </details>
 </header>
-
-<!-- <main>
-<div id="site-title">
-<h1>dotlaboratory</h1>
-<p>
-I always want to be creating something.<br
-/>いつもなにかをつくっていたい🌞
-</p>
-</div>
-</main> -->
 <main class="top-page">
-
-<section class="hero-map" aria-labelledby="map-title">
-    <h1 id="map-title" class="star-map-title">
+    <section class="hero-map" aria-labelledby="map-title">
+        <!-- <h1 id="map-title" class="star-map-title">
         dotlaboratory
-    </h1>
-
+        </h1> -->
+        <img src="dotlaboratory_logo.png" alt="dotlaboratory" class="star-map-title">
+        
+        <svg
+        class="constellation-lines"
+        aria-hidden="true"
+        focusable="false"
+        >
+        <!-- PC版の星座線 -->
+        <g class="lines-desktop">
+            {connections.map(({ parent, child }) => (
+            <line
+            x1={parent.x}
+            y1={parent.y}
+            x2={child.x}
+            y2={child.y}
+            />
+            ))}
+        </g>
+        
+        <!-- スマホ版の星座線 -->
+        <g class="lines-mobile">
+            {connections.map(({ parent, child }) => (
+            <line
+            x1={parent.mobileX}
+            y1={parent.mobileY}
+            x2={child.mobileX}
+            y2={child.mobileY}
+            />
+            ))}
+        </g>
+    </svg>
+    
     {stars.map((star) => (
         <a
-            class="map-star"
-            href={star.href}
-            style={{
-                "--star-x": star.x,
-                "--star-y": star.y,
-                "--star-mobile-x": star.mobileX,
-                "--star-mobile-y": star.mobileY,
-            }}
+        class="map-star"
+        href={star.href}
+        style={{
+            "--star-x": star.x,
+            "--star-y": star.y,
+            "--star-mobile-x": star.mobileX,
+            "--star-mobile-y": star.mobileY,
+            
+            "--star-color": STAR_COLORS[star.color],
+            "--star-size": `${STAR_SIZES[star.size]}px`,
+        }}
         >
-            <span class="map-star-light" aria-hidden="true"></span>
-            <span class="map-star-label">{star.label}</span>
-        </a>
+        <span class="map-star-light" aria-hidden="true"></span>
+        <span class="map-star-label">{star.label}</span>
+    </a>
     ))}
+    
 </section>
 
-	
-	<aside class="observation-log">
-		<!-- 観測記録 -->
-		<h1>観測記録</h1>
-	</aside>
+
+<aside class="observation-log">
+    <!-- 観測記録 -->
+    <h1>観測記録</h1>
+</aside>
 </main>
 </body>
 </html>
 
 <style>
-	body{
-		--toolbar-height: 64px;
-	}
-	@media (max-width: 768px) {
-		body{
-			--toolbar-height: 69px;
-		}
-	}
-	
-	/* トップページ */
-	.top-page {
-		min-height: calc(100svh - var(--toolbar-height));
-		display: grid;
-		grid-template-rows: 1fr auto;
-		
-	}
-	
-	.hero-map {
-		min-height: 0;
-		position: relative;
-		overflow: hidden;
-
-		
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-	
-	.observation-log {
-		height: clamp(120px, 20vh, 220px);
-		background-color: var(--color-bg-nav);
-
-		margin: 3rem;
-
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-	
-	/* スマホ版トップページ */
-	@media (max-width: 768px) {
-		.observation-log {
-			height: clamp(92px, 18vh, 140px);
-			margin: 1rem;
-		}
-	}	
-	
-/* 星図のタイトル */
-.star-map-title {
-    position: absolute;
-    top: 8%;
-    left: 50%;
-    transform: translateX(-50%);
-
-    margin: 0;
-    font-size: clamp(1.5rem, 3vw, 2.5rem);
-    letter-spacing: 0.1em;
-}
-
-/* リンクになる星 */
-.map-star {
-    position: absolute;
-
-    left: var(--star-x);
-    top: var(--star-y);
-
-    transform: translate(-50%, -50%);
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
-
-    min-width: 44px;
-    min-height: 44px;
-    padding: 0.75rem;
-
-    color: var(--color-white);
-    text-decoration: none;
-    text-align: center;
-
-    white-space: nowrap;
-    cursor: pointer;
-}
-
-/* 星の光 */
-.map-star-light {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-
-    background: var(--color-accent-high);
-
-    box-shadow:
-        0 0 8px var(--color-accent-high),
-        0 0 20px rgb(255 226 154 / 55%),
-        0 0 40px rgb(255 226 154 / 25%);
-
-    transition:
+    body{
+        --toolbar-height: 64px;
+        background-image:
+        repeating-linear-gradient(0deg,color-mix(in srgb,var(--color-hairline) 10%,transparent) 0px,color-mix(in srgb,var(--color-hairline) 10%,transparent) 1px, transparent 1px, transparent 30px), 
+        repeating-linear-gradient(0deg,color-mix(in srgb,var(--color-hairline) 10%,transparent) 0px,color-mix(in srgb,var(--color-hairline) 10%,transparent) 2px, transparent 2px, transparent 150px),
+        repeating-linear-gradient(90deg,color-mix(in srgb,var(--color-hairline) 10%,transparent) 0px,color-mix(in srgb,var(--color-hairline) 10%,transparent) 1px, transparent 1px, transparent 30px),
+        repeating-linear-gradient(90deg,color-mix(in srgb,var(--color-hairline) 10%,transparent) 0px,color-mix(in srgb,var(--color-hairline) 10%,transparent) 2px, transparent 2px, transparent 150px);
+    }
+    body::before{
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        background-color: var(--color-cream);
+        mask-image: url("main_background.png");
+        mask-repeat: repeat;
+        mask-size: 1224px 688px;
+    }
+    @media (max-width: 768px) {
+        body{
+            --toolbar-height: 69px;
+        }
+    }
+    
+    /* トップページ */
+    .top-page {
+        min-height: calc(100svh - var(--toolbar-height));
+        display: grid;
+        grid-template-rows: 1fr auto;
+        
+    }
+    
+    .hero-map {
+        min-height: 0;
+        position: relative;
+        overflow: hidden;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .observation-log {
+        height: clamp(120px, 20vh, 220px);
+        background-color: var(--color-bg-nav);
+        
+        margin: 3rem;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        background-image: linear-gradient(90deg, transparent 0%, transparent 10%, var(--color-accent) calc(10% + 3px), var(--color-accent) calc(10% + 3px), transparent calc(10% + 3px), transparent 100%), repeating-linear-gradient(180deg, var(--color-hairline) 0px, var(--color-hairline) 1px, transparent 1px, transparent 20px)
+    }
+    
+    /* スマホ版トップページ */
+    @media (max-width: 768px) {
+        .observation-log {
+            height: clamp(92px, 18vh, 140px);
+            margin: 1rem;
+        }
+    }	
+    
+    /* 星図のタイトル */
+    .star-map-title {
+        position: absolute;
+        top: 5%;
+        left: 50%;
+        transform: translateX(-50%);
+        
+        margin: 0;
+        
+        max-width: 280px;
+    }
+    
+    /* リンクになる星 */
+    .map-star {
+        position: absolute;
+        --star-hit-padding: 0.75rem;
+        
+        left: var(--star-x);
+        
+        top: calc(
+        var(--star-y)
+        - var(--star-size) / 2
+        - var(--star-hit-padding)
+        );
+        
+        transform: translateX(-50%);
+        
+        padding: var(--star-hit-padding);
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+        
+        min-width: 44px;
+        min-height: 44px;
+        
+        color: var(--color-white);
+        text-decoration: none;
+        text-align: center;
+        
+        white-space: nowrap;
+        cursor: pointer;
+    }
+    
+    /* 星の光 */
+    
+    .map-star-light {
+        width: var(--star-size, 16px);
+        height: var(--star-size, 16px);
+        
+        flex-shrink: 0;
+        border-radius: 50%;
+        
+        background-color: var(--star-color, #ffe29a);
+        
+        box-shadow:
+        0 0 8px var(--star-color),
+        0 0 20px color-mix(
+        in srgb,
+        var(--star-color) 55%,
+        transparent
+        ),
+        0 0 40px color-mix(
+        in srgb,
+        var(--star-color) 10%,
+        transparent
+        );
+        
+        transition:
         transform 0.2s ease,
         box-shadow 0.2s ease;
-}
-
-/* 星の名前 */
-.map-star-label {
-    font-size: 0.9rem;
-    letter-spacing: 0.05em;
-    text-shadow: 0 2px 8px #000;
-}
-
-/* 星に触れたとき */
-.map-star:hover .map-star-light,
-.map-star:focus-visible .map-star-light {
-    transform: scale(1.5);
-
-    box-shadow:
+    }
+    
+    /* 星の名前 */
+    .map-star-label {
+        font-size: 0.9rem;
+        letter-spacing: 0.05em;
+        text-shadow: 0 2px 8px #000;
+    }
+    
+    /* 星に触れたとき */
+    .map-star:hover .map-star-light,
+    .map-star:focus-visible .map-star-light {
+        transform: scale(1.5);
+        
+        box-shadow:
         0 0 12px #fff,
         0 0 28px var(--color-accent),
         0 0 48px rgb(255 226 154 / 65%);
-}
-
-/* キーボード操作時 */
-.map-star:focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 2px;
-    border-radius: 0.5rem;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .map-star-light {
-        transition: none;
     }
-}
-
-
-@media (max-width: 768px) {
+    
+    /* キーボード操作時 */
+    .map-star:focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 2px;
+        border-radius: 0.5rem;
+    }
+    
+    
+    .hero-map {
+        position: relative;
+    }
+    
+    /* 星座線を星図全体に重ねる */
+    .constellation-lines {
+        position: absolute;
+        inset: 0;
+        
+        width: 100%;
+        height: 100%;
+        
+        pointer-events: none;
+        z-index: 0;
+    }
+    
+    /* 星座線の見た目 */
+    .constellation-lines line {
+        stroke: var(--color-hairline);
+        /* stroke: rgb(200 210 230 / 45%); */
+        stroke-width: 1.5;
+        stroke-linecap: round;
+    }
+    
+    /* PCではスマホ用の線を隠す */
+    .lines-mobile {
+        display: none;
+    }
+    
+    /* 星を線より前面に表示 */
     .map-star {
-        left: var(--star-mobile-x);
-        top: var(--star-mobile-y);
+        z-index: 1;
     }
-
+    
+    /* タイトルも前面に */
     .star-map-title {
-        top: 5%;
+        z-index: 2;
     }
-}
-
+    
+    /* スマホでは線を切り替える */
+    @media (max-width: 768px) {
+        .lines-desktop {
+            display: none;
+        }
+        
+        .lines-mobile {
+            display: initial;
+        }
+    }
+    
+    
+    @media (prefers-reduced-motion: reduce) {
+        .map-star-light {
+            transition: none;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .map-star {
+            left: var(--star-mobile-x);
+            
+            top: calc(
+            var(--star-mobile-y)
+            - var(--star-size) / 2
+            - var(--star-hit-padding)
+            );
+        }
+        
+        .star-map-title {
+            top: 3%;
+            max-width: 200px;
+        }
+    }
+    
 </style>
