@@ -1,3 +1,90 @@
+	/* ページ上部のヘッダー */
+	.toolbar {        
+		position: sticky;
+		top: 0;
+		z-index: 100;
+		
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		
+		height: var(--toolbar-height);
+		box-sizing: border-box;
+		padding: 0 1rem;
+		
+		background: var(--color-bg-nav);
+		color: var(--color-accent-high);
+		border-bottom: 1px solid var(--color-hairline);
+	}
+	
+	/* dotlaboratory */
+		.toolbar img{
+		width: calc(4.3125rem - 2 * 0.75rem);
+		height: auto;
+		max-width: 100%;
+		object-fit: contain;
+		display: block;
+	}
+	
+	/* メニューボタン */
+	.menu-toggle {
+		display: grid;
+		place-items: center;
+		
+		width: 2.75rem;
+		height: 2.75rem;
+		
+		border-radius: 50%;
+		background: var(--color-accent-high);
+		color: #1c1c1c;
+		
+		cursor: pointer;
+		list-style: none;
+	}
+	
+	.menu-toggle::-webkit-details-marker {
+		display: none;
+	}
+	
+	.menu-toggle:focus-visible {
+		outline: 3px solid #fff;
+		outline-offset: 3px;
+	}
+	
+	/* 開閉時にアイコンを切り替える */
+	.menu-close {
+		display: none;
+	}
+	
+	.menu[open] .menu-open {
+		display: none;
+	}
+	
+	.menu[open] .menu-close {
+		display: inline;
+	}
+	
+	/* 開いたときのナビゲーション */
+	.menu-panel {
+		position: absolute;
+		top: 100%;
+		right: 0;
+		
+		width: min(24rem, calc(100vw - 1rem));
+		max-height: 75dvh;
+		overflow-y: auto;
+		
+		box-sizing: border-box;
+		padding: 1.25rem;
+		
+		color: #eee;
+		background: var(--color-bg-nav);
+		border: 1px solid var(--color-hairline);
+		border-radius: 0.75rem;
+		
+		box-shadow: 0 8px 24px rgb(0 0 0 / 35%);
+	}
+
 .navigation li {
 	list-style: none;
 	margin: 0;
@@ -69,7 +156,7 @@
 }
 
 /* 折りたたみメニュー内では常に縦並び */
-.characters-menu-panel.navigation nav > ul, .top-menu-panel.navigation nav > ul{
+.menu-panel.navigation nav > ul{
     display: grid;
     grid-auto-flow: row;
     grid-template-columns: minmax(0, 1fr);
