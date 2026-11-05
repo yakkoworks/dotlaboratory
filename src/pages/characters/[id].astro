@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import { getCollection, render } from "astro:content";
+import BaseHead from "../../components/BaseHead.astro";
 import { TEAM_NAMES } from '../../constants/teams';
 import CharacterPortrait from "../../components/characters/CharacterPortrait.astro";
 import "../../styles/global.css";
@@ -35,7 +36,8 @@ const { Content } = await render(character);
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>{character.data.name}</title>
+    <title>{character.data.name} | dotlaboratory</title>
+    <BaseHead title={`${character.data.name} | やっこキャラズ` } description={`${character.data.cpj}／${character.data.cpe}`}></BaseHead>
 </head>
 <body>
     <article

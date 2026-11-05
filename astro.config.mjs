@@ -32,6 +32,43 @@ export default defineConfig({
         },
         customCss: ["./src/styles/starmap.css"],
         sidebar: starlightSidebar,
-		}), mdx()],
-        
+        head: [
+            {
+                tag: 'meta',
+                attrs: {
+                    property: 'og:title',
+                    content: 'YakkoWorks StarMap | dotlaboratory',
+                },
+            },
+            {
+                tag: 'meta',
+                attrs: {
+                    property: 'og:description',
+                    content: 'やっこワークスのポートフォリオ 兼 作業記録',
+                },
+            },
+            {
+                tag: 'meta',
+                attrs: {
+                    property: 'og:type',
+                    content: 'website',
+                },
+            },
+            {
+                tag: 'meta',
+                attrs: {
+                    property: 'og:image',
+                    content: 'https://dotlaboratory.xyz/public/ogpImage.png',
+                },
+            },
+            {
+                tag: 'meta',
+                attrs: {
+                    property: 'twitter:card',
+                    content: 'https://dotlaboratory.xyz/public/ogpImage.png',
+                },
+            },
+        ],
+    }), mdx()],
+    
 });

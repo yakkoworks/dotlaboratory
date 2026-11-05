@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import "../styles/navigation.css";
 import GlobalSidebar from "../components/navigation/GlobalSidebar.astro";
+import Head  from "../components/BaseHead.astro";
 
 import {
     STAR_COLORS,
@@ -158,6 +159,7 @@ b.data.date.getTime() - a.data.date.getTime()
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <title>dotlaboratory</title>
+    <Head title="dotlaboratory" description="dotlaboratory | いつもなにかをつくっていたい🌞"></Head>
 </head>
 <body>
     <header class="toolbar">

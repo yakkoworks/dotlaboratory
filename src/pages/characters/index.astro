@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import CharacterThumbnail  from '../../components/characters/CharacterThumbnail.astro';
 import CharacterModal from '../../components/characters/CharacterModal.astro';
 import GlobalSidebar from "../../components/navigation/GlobalSidebar.astro";
+import BaseHead from '../../components/BaseHead.astro';
 const characters = await getCollection('characters');
 import "../../styles/global.css";
 import "../../styles/navigation.css";
@@ -27,6 +28,7 @@ const charactersByTeam = teams.map(team => ({
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <title>やっこキャラズ | dotlaboratory</title>
+    <BaseHead title='やっこキャラズ | dotlaboratory' description='やっこキャラズのご紹介 | dotlaboratory'></BaseHead>
 </head>
 <body>
     <header class="toolbar">
