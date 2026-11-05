@@ -5,7 +5,7 @@ interface Props {
   image?: string;
 }
 
-const { title, description, image = '/public/ogpImage.png' } = Astro.props;
+const { title, description, image = 'ogpImage.png' } = Astro.props;
 // 相対パスを絶対URLに変換
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL(image, Astro.site);
