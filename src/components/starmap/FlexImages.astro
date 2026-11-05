@@ -1,0 +1,47 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from 'astro';
+interface ImageItem {
+	src: ImageMetadata | string;
+	alt: string;
+}
+interface Props {
+	images: ImageItem[];
+	caption?:string;
+}
+const {
+	images,
+	caption,
+}  = Astro.props;
+---
+
+<div class="flex-images">
+	{	
+		images.map((image)=>(
+		<div class="flex-image-wrapper">
+			{typeof image.src === 'string' ? (
+			<img src={image.src} alt={image.alt}/>
+			) : (
+			<Image src={image.src} alt={image.alt}/>
+			)}
+		</div>
+		))
+	}
+</div>
+<p class="flex-image-caption">{caption}</p>
+
+<style>
+	.flex-images{
+		display: flex;
+		width: 100%;
+		gap: 0.8rem;
+	}
+	.flex-image-wrapper{
+		flex: 1;
+		margin-top: 0;
+	}
+	.flex-image-caption{
+		text-align: center;
+		font-size: 0.8rem;
+	}
+</style>
