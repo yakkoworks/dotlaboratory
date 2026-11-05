@@ -1,0 +1,18 @@
+---
+title: Git関連まとめ
+# note: Astro Starlight
+draft: true
+sidebar:
+  order: 3
+---
+import { Steps } from "@astrojs/starlight/components"
+
+## 指定したディレクトリだけをクローンする
+<Steps>
+	1. `git clone --filter=blob:none --sparse git@github.com:【ユーザー名】/【リポジトリ名】.git`
+	2. `cd 【リポジトリ名】`
+	3. `git sparse-checkout set 【ディレクトリ】`
+</Steps>
+
+## ディレクトリを信頼する的な設定
+`git config --global --add safe.directory  /path/to/【リポジトリ名】`
