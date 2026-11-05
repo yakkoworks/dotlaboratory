@@ -1,0 +1,48 @@
+---
+title: Midnights KeyStar and Invisible Rainbow
+description: 鍵星と夜の虹の聖遺物
+cover: ./images/mkir/mkir.png
+note: Blender
+sidebar:
+ order: 1
+---
+import { Steps } from "@astrojs/starlight/components"
+import FlexImages from "../../../../components/starmap/FlexImages.astro"
+import img01 from "./images/mkir/20261106-015757.png"
+import img02 from "./images/mkir/20261106-020213.png"
+import img03 from "./images/mkir/20261106-021253.png"
+import img04 from "./images/mkir/20261106-021330.png"
+
+## 巻き付く虹のつくりかた
+### かたちをつくる
+<FlexImages
+images={[
+	{src: img01,alt:"巻き付く虹‐01"},
+	{src: img02,alt:"巻き付く虹‐02"}
+]}
+caption= ""
+/>
+軸に巻き付いている虹は「Extra Curve Objects」を使用してつくっています
+
+標準アドオン（のはず）ですがデフォルトではインストールされていません、以下の手順でインストールが可能です
+
+<Steps>
+1.  プリファレンス＞エクステンションを入手
+2. 検索窓に `extra curve` と入力、 `Extra Curve Objects` をインストール
+</Steps>
+
+### 溝を入れる
+モディファイアを駆使して溝を入れていきます
+<FlexImages
+images={[
+	{src: img03,alt:"巻き付く虹‐03"},
+	{src: img04,alt:"巻き付く虹‐04"}
+]}
+caption= ""
+/>
+<Steps>
+1. 溝を入れたい部分の辺を選択＞シャープをマーク
+2. 生成＞辺分離モディファイアを追加、 `シャープな辺`を有効化
+3. 生成＞ソリッド化モディファイアを追加、 `幅` を設定する（今回は0.8mm）
+4. 生成＞ベベルモディファイアを追加、いい感じになるようにパラメーターをいじる
+</Steps>

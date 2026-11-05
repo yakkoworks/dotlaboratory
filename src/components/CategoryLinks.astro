@@ -16,27 +16,34 @@ const allDocs = await getCollection("docs");
 const filteredDocs = allDocs.filter((doc) => {
 	// 1. 指定された親カテゴリ配下のフォルダにあるか
 	const isInPrefix = doc.id.includes(`${category}/`);
-
+	
 	// 2. スラッシュが2つ以上含まれているか
 	const slashCount = doc.id.split("/").length - 1;
 	const hasMultipleSlashes = slashCount >= 2;
-
+	
 	// 3. index ページではないか
 	const isNotIndex = !doc.id.endsWith("index");
-
+	
 	// すべての条件を満たすものだけを返す
 	return isInPrefix && hasMultipleSlashes && isNotIndex;
-});
+}).sort((a, b) => {
+	const orderA = a.data.sidebar?.order ?? Infinity;
+	const orderB = b.data.sidebar?.order ?? Infinity;
+	return (
+	orderA - orderB ||
+	a.id.localeCompare(b.id)
+	);
+})
 ---
 
 <CardGrid>
 	{
 		filteredDocs.map((doc) => (
-			<LinkCard
-				title={doc.data.title}
-				href={`/${doc.id}/`}
-				description={doc.data.note}
-			/>
+		<LinkCard
+		title={doc.data.title}
+		href={`/${doc.id}/`}
+		description={doc.data.note}
+		/>
 		))
 	}
 </CardGrid>
