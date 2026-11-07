@@ -58,10 +58,23 @@ const observations = defineCollection({
         draft: z.boolean().default(false),
     }),
 });
+const theworld = defineCollection({
+    loader: glob({
+        pattern: "**/*.md",
+        base: "./src/content/sekai",
+    }),
+
+    schema: z.object({
+        title: z.string(),
+        date: z.coerce.date(),
+        draft: z.boolean().default(false),
+    }),
+});
 
 export const collections = {
 	docs,
 	characters,
 	observations,
+	theworld,
 };
 
