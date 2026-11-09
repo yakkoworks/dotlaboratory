@@ -77,7 +77,6 @@ const { Content } = await render(character);
         <nav aria-label={teamName} id="team-members" style={{}}>
             <h2>{teamName}</h2>
             <ul>
-                
                 {teamMembers.map(member => (
                     <li>
                         {member.id === character.id ? (
