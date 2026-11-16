@@ -58,7 +58,15 @@ import "../../styles/navigation.css";
 			{posts.map(post=>(
 				<article>
 					<h2 class="meta-data">
-						<p class="post-date">{post.data.date}</p>
+						{/* <p class="post-date">{post.data.date}</p> */}
+						<p class="post-date">
+							{post.data.date.toLocaleDateString("ja-JP", {
+								timeZone: "Asia/Tokyo",
+								year: "numeric",
+								month: "2-digit",
+								day: "2-digit",
+							})}
+						</p>
 						<p class="post-title">{post.data.title}</p>
 					</h2>
 					<div class="post-content">
@@ -68,7 +76,7 @@ import "../../styles/navigation.css";
 				))}
 			</div>
 			<!-- <div class="sidebar"> -->
-				<!-- <img src="dotlaboratory.png" alt=""> -->
+			<!-- <img src="dotlaboratory.png" alt=""> -->
 			<!-- </div> -->
 		</div>
 	</div>
@@ -105,7 +113,7 @@ import "../../styles/navigation.css";
 	.contents{
 		display: grid;
 		grid-template-rows: 3fr 1fr;
-    width: 100%;
+		width: 100%;
 		/* grid-template-rows: minmax(min-content, 1fr) auto;; */
 	}
 	.posts{
@@ -116,11 +124,13 @@ import "../../styles/navigation.css";
 		font-size: 1rem;
 		text-align: right;
 	}
-	.post-date::after{
-		content: "";
-		display: block;
-		border-bottom: 1px dashed #fff;
-		margin-top: 1rem;
+	.meta-data{
+		display: flex;
+		flex-flow: column;
+		flex-direction: row-reverse;
+		align-items: center;
+		justify-content: space-between;
+		/* padding: 0 3rem; */
 	}
 	.post-title{
 		font-size: 1.8rem;
@@ -133,8 +143,23 @@ import "../../styles/navigation.css";
 	}
 	.post-content{
 		font-size: 1rem;
+		/* padding: 0 3rem; */
+		
+	}
+	.post-content::before{
+		content: "";
+		display: block;
+		border-bottom: 1px dashed #fff;
+		margin-top: 1rem;
+	}
+	article{
 		padding: 0 3rem;
-
+	}
+	article::after{
+		content: "";
+		display: block;
+		border-bottom: 3px dashed #fff;
+		margin-top: 2rem;
 	}
 	.sidebar{
 		grid-column: 2;
