@@ -9,12 +9,13 @@ import "../../styles/character.css";
 
 export async function getStaticPaths() {
     const characters = await getCollection('characters');
-    
+    // characters = 
     return characters.map(character => ({
         params: { id: character.id },
         props: {
             character,
             teamMembers: characters
+            .filter(member => member.data.draft != true)
             .filter(member =>
             member.data.team === character.data.team
             // member.data.team === character.data.team &&

@@ -39,7 +39,7 @@ const characters = defineCollection({
 		portraitScale: z.number().min(0.5).max(1.6).default(1),
 		portraitX: z.number().default(0),
 		portraitY: z.number().default(0),
-		
+		draft: z.boolean().optional()
 	}),
 });
 

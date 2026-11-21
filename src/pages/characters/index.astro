@@ -18,6 +18,7 @@ const teams = [
 const charactersByTeam = teams.map(team => ({
     ...team,
     members: characters
+    .filter(member => member.data.draft != true)
     .filter(character => character.data.team === team.id)
     .sort((a, b) => a.data.order - b.data.order),
 }));
